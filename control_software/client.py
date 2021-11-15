@@ -3,11 +3,12 @@ import socket, time, threading
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-s.connect(("10.4.2.246",1201))
+s.connect(("192.168.1.225",1201))
 while True:
     s.send(bytes("Test message", "utf-8"))
     message = s.recv(32)
     print(message.decode("utf-8"))
+    #time.sleep(3)
 
 
 

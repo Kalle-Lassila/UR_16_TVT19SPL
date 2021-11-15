@@ -25,18 +25,20 @@ class UserInterface():
         self.rcm = rcm  #rcm object is needed for it contains the socket that we can use to send data
     
     def send_data(self):
-        print("ui thread started")
-        message = input()
-        self.rcm.robot_socket.send(bytes(message,"utf-8"))
+        while True:
+            message = input()
+            self.rcm.robot_socket.send(bytes(message,"utf-8"))
 
 class Main():
     @staticmethod
     def main():
         rcm = RobotConnectionManager(1201, 14)
         ui = UserInterface(rcm)
-        rcm_thread = threading.Thread(rcm.start())  #create a thread so communication and user input can happen simultaneously
+        ui_thread = threading.Thread(target=ui.send_data)
+        ui_thread.daemon = True
+        rcm_thread = threading.Thread(target=rcm.start)  #create a thread so communication and user input can happen simultaneously
+        
         rcm_thread.start()
-        ui_thread = threading.Thread(ui.send_data())
         ui_thread.start()
         
 
