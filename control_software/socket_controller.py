@@ -26,6 +26,7 @@ class RobotConnectionManager():
     
     def send(self):
         '''Take user input and sen it to socket'''
+        #TODO command messages should only be sent when the robot is ready to recieve new instructions
         while True:
             message = input()
             self.robot_socket.send(bytes(message,"utf-8"))  #use the socket created in rcm to send string as bytes
@@ -40,7 +41,7 @@ class RobotConnectionManager():
 class Main():
     @staticmethod
     def main():
-        rcm = RobotConnectionManager(1201, 14)  #takes port number and buffer size as inputs for init
+        rcm = RobotConnectionManager(1201, 256)  #takes port number and buffer size as inputs for init
         rcm.start()
         
 if __name__ == "__main__":
