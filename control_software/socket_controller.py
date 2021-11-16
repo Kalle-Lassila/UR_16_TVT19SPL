@@ -1,5 +1,5 @@
 #socket_controller module for handling comms with ur16e and ur10 robots
-#Oulu University of Applied Sciences
+#Oulu University of Applied Sci.ences
 #TVT19SPL
 import socket, threading
 
@@ -23,15 +23,31 @@ class RobotConnectionManager():
             message = self.robot_socket.recv(self.buffer_size)  #get buffer_size of bytes from socket buffer
             message = message.decode("utf-8")   #decode bytes to utf-8 character string
             print(message)
+
+    def client_connection(self):
+        self.robot_address = "172.16.177.128"
+        self.robot_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.robot_socket.connect((self.robot_address, self.robot_port))
+        while True:
+            message = self.robot_socket.recv(self.buffer_size)
+            #message = message.decode("utf-8")
+            #print(message)
     
     def send(self):
         '''Take user input and sen it to socket'''
         #TODO command messages should only be sent when the robot is ready to recieve new instructions
         while True:
-            message = input()
+            message = 'popup("Hi")'
+            gg = input()
             self.robot_socket.send(bytes(message,"utf-8"))  #use the socket created in rcm to send string as bytes
     
-    def start(self):
+    def start_client(self):
+        client_thread = threading.Thread(target=self.client_connection)
+        send_thread = threading.Thread(target=self.send, daemon=True)
+        send_thread.start()
+        client_thread.start()
+        
+    def start_server(self):
         '''Automatically creates needed threads so user does not need to worry about these'''
         send_thread = threading.Thread(target=self.send, daemon=True)   #create thread and put it to background
         socket_thread = threading.Thread(target=self.connection)
@@ -41,8 +57,8 @@ class RobotConnectionManager():
 class Main():
     @staticmethod
     def main():
-        rcm = RobotConnectionManager(1201, 256)  #takes port number and buffer size as inputs for init
-        rcm.start()
+        rcm = RobotConnectionManager(29999, 4096)#30001, 256)  #takes port number and buffer size as inputs for init
+        rcm.start_client()
         
 if __name__ == "__main__":
     c = Main()

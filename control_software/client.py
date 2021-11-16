@@ -4,11 +4,15 @@ import socket, time, threading
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-s.connect(("192.168.1.225",1201))
+s.connect(("172.16.177.128",30020))
 while True:
-    s.send(bytes("Test message", "utf-8"))
-    message = s.recv(32)
-    print(message.decode("utf-8"))
+    send = input()
+    msg= 'def qwer():\n popup("hi")\nend\nqwer()\n'
+    msg='popup("hi2")\n'
+    s.send(bytes(msg, "UTF-8"))
+    #message = s.recv(256)
+    #print(message.decode("utf-8"))
+    #print(message)
     #time.sleep(3)
 
 
