@@ -1,0 +1,15 @@
+ Program
+   BeforeStart
+     pcip≔"10.42.0.1"
+     connection1≔ False 
+     Loop  not connection1
+       connection1≔socket_open(pcip,1201)
+   Robot Program
+     socket_send_string("Test packet")
+     recieve_srv≔socket_read_string(timeout=0)
+     If recieve_srv≟"1"
+       MoveJ
+         Waypoint_1
+     ElseIf recieve_srv≟"2"
+       MoveJ
+         Waypoint_2
