@@ -1,0 +1,7 @@
+#Examples on how to send commands with socket_controller
+
+#home position
+movej([0, -90, 0, -90, 0, 0])
+
+movej(q=[0, -170, -9, -170, 0, -1])
+movej(p[100, 100, 100, 0, 0, 0])
