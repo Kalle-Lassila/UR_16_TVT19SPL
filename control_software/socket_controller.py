@@ -57,7 +57,7 @@ class Main():
     @staticmethod
     def main():
         rcm = RobotConnectionManager(30020, 4096)   #takes port number and buffer size as inputs for init
-        rcm.robot_address = "172.16.140.130"    #ip of the robot, needed in client mode
+        rcm.robot_address = "192.168.100.2"    #ip of the robot, needed in client mode
         rcm.begin("client")  #start rcm in client mode
         #rcm.start_server()  #start rcm in server mode
         
