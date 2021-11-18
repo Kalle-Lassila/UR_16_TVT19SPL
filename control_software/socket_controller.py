@@ -28,6 +28,7 @@ class RobotConnectionManager():
         self.robot_socket.connect((self.robot_address, self.robot_port))
         while True:
             #TODO This resets user input with each print... Fix it
+            print("Hello")
             time.sleep(1)
             #message = self.robot_socket.recv(self.buffer_size)
             #message = message.decode("utf-8")
@@ -37,7 +38,7 @@ class RobotConnectionManager():
         '''Take user input and sen it to socket'''
         #TODO command messages should only be sent when the robot is ready to recieve new instructions
         while True:
-            message = input()   #Commands can be entered as in "popup("Hi")"
+            message = raw_input("give input")   #Commands can be entered as in "popup("Hi")"
             message += "\n" #append newline to the end to avoid always typing it
             self.robot_socket.send(bytes(message,"utf-8"))  #use the socket created in rcm to send string as bytes
     
@@ -57,7 +58,8 @@ class Main():
     @staticmethod
     def main():
         rcm = RobotConnectionManager(30020, 4096)   #takes port number and buffer size as inputs for init
-        rcm.robot_address = "192.168.100.2"    #ip of the robot, needed in client mode
+        #rcm.robot_address = "192.168.100.2"    #ip of the robot, needed in client mode
+        rcm.robot_address = "172.16.140.130"    #ip of the robot, needed in client mode
         rcm.begin("client")  #start rcm in client mode
         #rcm.start_server()  #start rcm in server mode
         

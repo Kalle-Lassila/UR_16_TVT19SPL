@@ -1,0 +1,3 @@
+import urwid
+
+urwid.Edit("-")
