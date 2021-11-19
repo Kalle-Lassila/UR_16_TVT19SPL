@@ -38,7 +38,7 @@ class RobotConnectionManager():
         '''Take user input and sen it to socket'''
         #TODO command messages should only be sent when the robot is ready to recieve new instructions
         while True:
-            message = raw_input("give input")   #Commands can be entered as in "popup("Hi")"
+            message = input("give input")   #Commands can be entered as in "popup("Hi")"
             message += "\n" #append newline to the end to avoid always typing it
             self.robot_socket.send(bytes(message,"utf-8"))  #use the socket created in rcm to send string as bytes
     
