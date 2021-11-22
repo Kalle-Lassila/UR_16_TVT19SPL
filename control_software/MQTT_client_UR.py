@@ -1,3 +1,5 @@
+#easy to use MQTT functionality for the whole family
+
 from paho.mqtt import client as mqtt_client
 from queue import Queue
 from multipledispatch import dispatch
@@ -30,7 +32,7 @@ class MQTT_functionality:
         def on_message(client, userdata, msg):
             print(f"Received '{msg.payload.decode()}' from '{msg.topic}' topic")
             self.q1.put(msg.payload.decode())
-            print(self.q1.get())  #TODo This needs to be commented out in the final code otherwise the que will empty here
+            #print(self.q1.get())  #TODo This needs to be commented out in the final code otherwise the que will empty here
         self.__client.on_message = on_message
         self.__client.subscribe(topic)
         self.__client.loop_forever()
@@ -42,10 +44,10 @@ class MQTT_functionality:
             print(f"Received '{msg.payload.decode()}' from '{msg.topic}' topic")
             if msg.topic == topicSt:
                 self.q1.put(msg.payload.decode())
-                print(self.q1.get())  #TODo This needs to be commented out in the final code otherwise the que will empty here
+                #print(self.q1.get())  #TODo This needs to be commented out in the final code otherwise the que will empty here
             elif msg.topic == topicNd:
                 self.q2.put(msg.payload.decode())
-                print(self.q2.get())  #TODo This needs to be commented out in the final code otherwise the que will empty here
+                #print(self.q2.get())  #TODo This needs to be commented out in the final code otherwise the que will empty here
         self.__client.on_message = on_message
         self.__client.subscribe(topicSt)
         self.__client.subscribe(topicNd)
@@ -77,6 +79,7 @@ def main():
     test_MQTT_client.publish('order/messageCounter','hehehe')
 
     #with subscribe method you can subscribe to either one or two topics
+    #NOTICE use of this method calls the network loop functions in a infinite loop
     #syntax:  xxxxxx.subscribe('topic name') or xxxxxx.subscribe('first topic name','second topic name')
     test_MQTT_client.subscribe('order/messageCounter','order/messageContents')
 
