@@ -35,6 +35,9 @@ class RobotConnectionManager():
             #message = message.decode("utf-8")
             #print(message)
     
+    def get_recv_buffer(self):
+        return self.robot_socket.recv(self.buffer_size)
+        
     def send_input(self):
         '''Take user input and send it to socket'''
         #TODO command messages should only be sent when the robot is ready to recieve new instructions
@@ -63,8 +66,11 @@ class Main():
     @staticmethod
     def main():
         rcm = RobotConnectionManager(30001, 4096)   #takes port number and buffer size as inputs for init
-        rcm.robot_address = "192.168.100.10"    #ip of the robot, needed in client mode
+        #rcm.robot_address = "192.168.100.10"    #ip of the robot, needed in client mode
+        rcm.robot_address = "172.16.140.130"
         rcm.begin("client")  #start rcm in client mode
+        send_thread = threading.Thread(target=rcm.send_input, daemon=True)
+        send_thread.start()
         #rcm.start_server()  #start rcm in server mode
         
 if __name__ == "__main__":
