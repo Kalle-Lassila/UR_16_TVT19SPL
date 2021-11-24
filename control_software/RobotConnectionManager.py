@@ -1,8 +1,10 @@
 #socket_controller module for handling comms with ur16e and ur10 robots
 #Oulu University of Applied Sciences
 #TVT19SPL
-#Currently robot needs to be in local control mode and the following function must be running in the robot
-#interpreter_mode(clearQueueOnEnter=False)
+#####can be used for port 30020? operation to send URscript commands
+    #Currently robot needs to be in local control mode and the following function must be running in the robot
+    #interpreter_mode(clearQueueOnEnter=False)
+
 import socket, threading, time
 
 class RobotConnectionManager():
@@ -33,7 +35,7 @@ class RobotConnectionManager():
             #message = message.decode("utf-8")
             #print(message)
     
-    def send(self):
+    def send_input(self):
         '''Take user input and send it to socket'''
         #TODO command messages should only be sent when the robot is ready to recieve new instructions
         while True:
@@ -41,6 +43,10 @@ class RobotConnectionManager():
             message += "\n" #append newline to the end to avoid always typing it
             self.robot_socket.send(bytes(message,"utf-8"))  #use the socket created in rcm to send string as bytes
     
+    def send(self, message):
+        '''take input from another module and send it'''
+        self.robot_socket.send(bytes(message,"utf-8"))  #use the socket created in rcm to send string as bytes
+
     def begin(self, mode: str):
         '''Automatically creates needed threads so user does not need to worry about these.
         possible options for mode are: "server" and "client"'''
@@ -48,9 +54,9 @@ class RobotConnectionManager():
             connection_thread = threading.Thread(target=self.client_connection)
         elif mode == "server":
             connection_thread = threading.Thread(target=self.server_connection)
-
-        send_thread = threading.Thread(target=self.send, daemon=True)
-        send_thread.start()
+        #TODO create a new mode for these, kinda annoying if input thread is always started.
+        #send_thread = threading.Thread(target=self.send_input, daemon=True)
+        #send_thread.start()
         connection_thread.start()
 
 class Main():
