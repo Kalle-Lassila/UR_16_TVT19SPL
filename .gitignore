@@ -2,4 +2,4 @@
 #UR_16_TVT19SPL.code-workspace
 
 #Ignore pycache.
-control_software/__pycache__/
+control_software/__pycache__
