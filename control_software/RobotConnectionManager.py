@@ -1,11 +1,11 @@
 #socket_controller module for handling comms with ur16e and ur10 robots
 #Oulu University of Applied Sciences
 #TVT19SPL
-#####can be used for port 30020? operation to send URscript commands
+#####can be used for port 30020 operation to send URscript commands
     #Currently robot needs to be in local control mode and the following function must be running in the robot
     #interpreter_mode(clearQueueOnEnter=False)
 
-import socket, threading
+import socket, threading, time
 
 class RobotConnectionManager():
     '''Creates socket for communicating with the robot and handles recieved TCP messages'''
@@ -33,9 +33,33 @@ class RobotConnectionManager():
         self.__robot_socket.connect((self.robot_address, self.__robot_port))    #Connect as a client to (remote address, port)
     
     def get_recv_buffer(self):
-        '''Only get the current buffer content and return it'''
-        return self.__robot_socket.recv(self.buffer_size)
+        '''Only get the current buffer contents and return it'''
+        #Set the socket to non-blocking
+        self.__robot_socket.setblocking(False)
+
+        #Inits
+        data = []   #complete data
+        part = None #partial data, used inside the loop to collect parts
+        begin = time.time() #current time
+        timeout = 0.01  #in seconds
         
+        while True:
+            #if we have data, and timeout has passed then quit
+            if data and time.time()-begin > timeout:
+                break
+            #if not, wait a little longer, not sure if necessary: Internet told me to do this
+            elif time.time()-begin > timeout*2:
+                break
+            #try to get data from buffer, non-blocking recv() returns immediately and raises an exeption if buffer was empty
+            try:
+                part = self.__robot_socket.recv(self.buffer_size)
+                if part:
+                    data.append(part.decode("utf-8"))
+                    begin=time.time()
+            except: 
+                pass
+        return ''.join(data)    #combine all parts into one string
+
     def _send_input(self):
         '''Take user input and send it to socket'''
         #TODO command messages should only be sent when the robot is ready to recieve new instructions
@@ -51,13 +75,9 @@ class RobotConnectionManager():
     def begin(self, mode: str):
         '''Automatically creates needed threads so user does not need to worry about these.
         possible options for mode are: "server" and "client"'''
-        if mode == "client":
-            connection_thread = threading.Thread(target=self.__client_connection)
-        elif mode == "server":
-            connection_thread = threading.Thread(target=self.__server_connection)
-        #TODO create a new mode for these, kinda annoying if input thread is always started.
-        #send_thread = threading.Thread(target=self.send_input, daemon=True)
-        #send_thread.start()
+        if mode == "client":   connection_thread = threading.Thread(target=self.__client_connection)
+        elif mode == "server": connection_thread = threading.Thread(target=self.__server_connection)
+        
         connection_thread.start()
 
 class Main():
