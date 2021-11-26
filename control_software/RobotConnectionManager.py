@@ -33,7 +33,8 @@ class RobotConnectionManager():
         self.__robot_socket.connect((self.robot_address, self.__robot_port))    #Connect as a client to (remote address, port)
     
     def get_recv_buffer(self):
-        '''Only get the current buffer contents and return it'''
+        '''Get the current buffer contents and return it'''
+        #TODO this can prob get stuck in an infinite loop if data is constantly received
         #Set the socket to non-blocking
         self.__robot_socket.setblocking(False)
 
@@ -68,9 +69,13 @@ class RobotConnectionManager():
             message += "\n" #append newline to the end to avoid always typing it
             self.__robot_socket.send(bytes(message,"utf-8"))  #use the socket created in rcm to send string as bytes
     
-    def send(self, message: str):
+    def send_str(self, message: str):
         '''take input from another module and send it'''
         self.__robot_socket.send(bytes(message,"utf-8"))  #use the socket created in rcm to send string as bytes
+
+    def send_bytes(self, message: bytes):
+        '''take input from another module and send it'''
+        self.__robot_socket.send(message)
 
     def begin(self, mode: str):
         '''Automatically creates needed threads so user does not need to worry about these.

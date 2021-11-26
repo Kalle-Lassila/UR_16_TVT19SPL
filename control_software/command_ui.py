@@ -32,8 +32,8 @@ class Main():
         self.selected_port = StringVar()
 
         #Set starting values for StringVars
-        self.selected_ip.set("192.168.100.10")
-        self.selected_port.set("30001")
+        self.selected_ip.set("172.16.140.130")
+        self.selected_port.set("29999")
         
         #################Create widgets#################
         self.command_box = Entry(width=80)   #Text entry box to manually send commands
@@ -42,14 +42,16 @@ class Main():
         self.ip_select = OptionMenu(self.window, self.selected_ip, *ip_options)
         self.send_command_button = Button(text="send",state=DISABLED, command=lambda: Main.send_command_method(self))#create a button
         start_rcm_button = Button(text="Start", command=self.start_rcm_method)
+        send_file_button = Button(text="Send file", command=self.send_file)
 
         #################Place widgets in the main window#################
         self.output_box.grid(row=0, column=0, columnspan=5)     #place the output_box to 0, 0 and say it takes x columns
         self.command_box.grid(row=1, column=0, columnspan=5)
-        self.ip_select.grid(row=2, column=2)
-        self.port_select.grid(row=2, column=3)
         self.send_command_button.grid(row=2, column=0)
         start_rcm_button.grid(row=2, column=1)
+        self.ip_select.grid(row=2, column=2)
+        self.port_select.grid(row=2, column=3)
+        send_file_button.grid(row=2, column=4)
         
         #start mainloop to display the window
         self.window.mainloop()
@@ -65,10 +67,14 @@ class Main():
         command = self.command_box.get() + "\n" #get input and append newline to it for the robot to execute command as an instruction
         #self.command_box.delete(0, END) #clear command_box
         self.output_box.insert(INSERT, f"Sent command: {command}")
-        self.rcm.send(command)  #send command using rcm objects method
+        self.rcm.send_str(command)  #send command using rcm objects method
 
     def return_key_event_handler(self, event):
         self.send_command_method()
+
+    def send_file(self):
+        with open("control_software/testi.script", "rb") as file:
+            self.rcm.send_bytes(file.read(1024))
         
     def start_rcm_method(self):
         self.rcm = RobotConnectionManager.RobotConnectionManager(self.selected_ip.get(), int(self.selected_port.get()), 1) #as in obj = Module.Class()
