@@ -32,7 +32,7 @@ class RobotConnectionManager():
         self.__robot_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #initialize socket
         self.__robot_socket.connect((self.robot_address, self.__robot_port))    #Connect as a client to (remote address, port)
     
-    def get_recv_buffer(self):
+    def get_recv_buffer(self) -> str:
         '''Get the current buffer contents and return it'''
         #TODO this can prob get stuck in an infinite loop if data is constantly received
         #Set the socket to non-blocking
@@ -84,6 +84,9 @@ class RobotConnectionManager():
         elif mode == "server": connection_thread = threading.Thread(target=self.__server_connection)
         
         connection_thread.start()
+
+    def get_port(self) -> int:
+        return self.__robot_port
 
 class Main():
     @staticmethod

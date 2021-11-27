@@ -3,3 +3,4 @@
 
 #Ignore pycache.
 control_software/__pycache__
+control_software/robot_commander/__pycache__
