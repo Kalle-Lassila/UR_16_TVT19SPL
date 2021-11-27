@@ -1,1 +1,6 @@
-UR_16_TVT19SPL.code-workspace 
+#Put workspace in gitignore in case others use different editors/editorsettings
+#UR_16_TVT19SPL.code-workspace
+
+#Ignore pycache.
+control_software/__pycache__
+control_software/robot_commander/__pycache__

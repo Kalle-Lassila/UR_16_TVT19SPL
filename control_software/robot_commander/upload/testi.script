@@ -1,0 +1,6 @@
+def testi():
+    popup("This is a hello from script")
+    global muuttuja = 11
+    
+end
+testi()

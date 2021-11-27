@@ -14,3 +14,4 @@ client_socket, address = s.accept() #accept inbound connection
 while True:
     send = input("Message: ")  #take user input
     client_socket.send(bytes(send, "UTF-8"))    #send input encoded in UTF-8
+
