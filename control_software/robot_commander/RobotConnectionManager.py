@@ -85,6 +85,9 @@ class RobotConnectionManager():
         
         connection_thread.start()
 
+    def disconnect(self):
+        self.__robot_socket.close()
+
     def get_port(self) -> int:
         return self.__robot_port
 

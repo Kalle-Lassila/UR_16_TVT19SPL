@@ -3,11 +3,13 @@
 #TVT19SPL
 
 from tkinter import Tk, scrolledtext, StringVar, Button, OptionMenu, Entry, WORD, INSERT, END, DISABLED, NORMAL
-import RobotConnectionManager, os
+from tkinter.constants import NO
+import RobotConnectionManager, os, time
 
 class Main():
     def main(self):
         #TODO, make this __init__()
+        self.started = False
         #options for ip dropdown menu
         ip_options = [
             "192.168.100.10",
@@ -69,9 +71,12 @@ class Main():
 
     def update_output_stream(self):
         '''periodically updates the ScrolledText widget to display new information'''
-        self.output_box.insert(INSERT, self.rcm.get_recv_buffer())  #Insert text from the socket, or bytes as text, not formatted at all, other than in get_recv_buffer
-        self.output_box.see(END)  #scrolls the "wall of text" to the bottom so most recent entry is always visible
-        self.window.after(10, self.update_output_stream)    #after() is a tkinter method that allows this function to call itself after a time peroid (in milliseconds)
+        if self.started == True:
+            self.window.after(100, self.update_output_stream)    #after() is a tkinter method that allows this function to call itself after a time peroid (in milliseconds)
+            #Insert text from the socket, or bytes as text, not formatted at all, other than in get_recv_buffer
+            self.output_box.insert(INSERT, self.rcm.get_recv_buffer())
+            #scrolls the "wall of text" to the bottom so most recent entry is always visible
+            self.output_box.see(END)
 
     def send_command_method(self):
         '''Get contents from input Entry widget and send it out'''
@@ -84,21 +89,38 @@ class Main():
         self.send_command_method()
 
     def send_file(self):
-        with open(f"{__file__.replace('command_ui.py', f'upload/{self.selected_file.get()}')}", "rb") as file:    #maybe concatenated formatstrings are not a good idea
-            self.rcm.send_bytes(file.read(1024))
+        if self.selected_file.get() != "empty":
+            with open(f"{__file__.replace('command_ui.py', f'upload/{self.selected_file.get()}')}", "rb") as file:    #maybe concatenated formatstrings are not a good idea
+                self.rcm.send_bytes(file.read(1024))
 
     def update_file_options(self):
         self.file_options = os.listdir(__file__.replace("command_ui.py","upload"))
-        print(self.file_options)
+
+    def disconnect_method(self):
+        self.window.after_cancel(self.update_output_stream) #cancelling is in fashion nowdays, right?
+        self.started = False    #used to track if output text should be updated
+        time.sleep(0.2) #to allow update_output_stream to finish before disconnecting
+        self.rcm.disconnect()
+
+        #reconfigure buttons
+        self.send_file_button.configure(state=DISABLED)
+        self.send_command_button.configure(state=DISABLED)
+        self.ip_select.configure(state=NORMAL)
+        self.port_select.configure(state=NORMAL)
+        self.start_rcm_button.configure(text="Start", command=self.start_rcm_method)    #configure start button to be a start button
+        self.window.unbind("<Return>")
         
     def start_rcm_method(self):
         self.rcm = RobotConnectionManager.RobotConnectionManager(self.selected_ip.get(), int(self.selected_port.get()), 1) #as in obj = Module.Class()
         self.rcm.begin(mode="client")
+        self.started = True #used to track if output text should be updated
 
         #disable ui buttons once connected
         self.ip_select.configure(state=DISABLED)
         self.port_select.configure(state=DISABLED)
-        self.start_rcm_button.configure(state=DISABLED)
+
+        #make start_rcm_button to be a stop button
+        self.start_rcm_button.configure(text="stop", command=self.disconnect_method)
 
         #enable send command button and bind send to enter key
         self.send_command_button.configure(state=NORMAL)
