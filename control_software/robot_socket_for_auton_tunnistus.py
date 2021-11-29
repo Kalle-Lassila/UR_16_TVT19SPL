@@ -5,7 +5,7 @@
 import socket
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)   #initialize socket stream
-s.bind(("0.0.0.0", 1440))   #open socket
+s.bind(("0.0.0.0", 1201))   #open socket
 s.listen(5) #listen for connection, allow 5 fails
 #s.connect(("192.168.100.10",1440)) #connect to remote socket(the robot) with the robots ip and port 1440(can be pretty much anything between 1k and 64k)
 
