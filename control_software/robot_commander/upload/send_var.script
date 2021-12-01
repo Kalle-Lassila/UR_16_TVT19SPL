@@ -1,0 +1,3 @@
+sec secondary_program():
+  var1 = True
+end

@@ -82,7 +82,7 @@ class Main():
     def send_command_method(self):
         '''Get contents from input Entry widget and send it out'''
         #Only append newline if it's needed
-        if self.rcm.get_port() in [30001, 30002, 30003]: command = self.command_box.get() + "\n" #get input and append newline to it for the robot to execute command as an instruction
+        if self.rcm.get_port() in [30001, 30002, 30003, 29999]: command = self.command_box.get() + "\n" #get input and append newline to it for the robot to execute command as an instruction
         else: command = self.command_box.get()
         #self.command_box.delete(0, END) #clear command_box
         self.output_box.insert(INSERT, f"Sent command: {command}\n")
@@ -115,7 +115,7 @@ class Main():
         
     def start_rcm_method(self):
         self.rcm = RobotConnectionManager.RobotConnectionManager(self.selected_ip.get(), int(self.selected_port.get()), 1) #as in obj = Module.Class()
-        if self.selected_port in [30001, 30002, 30003]: self.rcm.begin(mode="client")
+        if self.rcm.get_port() in [30001, 30002, 30003, 29999]: self.rcm.begin(mode="client"); print("client mode")
         else: self.rcm.begin(mode="server")
 
         self.started = True #used to track if output text should be updated

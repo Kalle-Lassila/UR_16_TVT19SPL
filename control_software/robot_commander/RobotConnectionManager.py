@@ -60,7 +60,7 @@ class RobotConnectionManager():
             except: 
                 pass
         #append newline when in server mode
-        if self.get_port() not in [30001, 30002, 30003] and data: data.append("\n")
+        if self.get_port() not in [30001, 30002, 30003, 29999] and data: data.append("\n")
         return ''.join(data)    #combine all parts into one string
 
     def _send_input(self):
