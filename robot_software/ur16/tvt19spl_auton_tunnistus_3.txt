@@ -1,51 +1,50 @@
- Program
-   Robot Program
-     Cam Locate
-       For object(s) found
-         MoveJ
-           start
-         MoveJ
-           readqr
-           Scan Code
-             If a code is found
-               'Insert actions here'
-               parempi_paikka
-               If rq_code_string≟"auto2"
-                 Cam Locate
-                   For object(s) found
-                     MoveJ
-                       paketti_qr
-                       Scan Code
-                         If a code is found
-                           'Insert actions here'
-                           If rq_code_string≟"paketti3"
-                             MoveJ
-                               pickup_box
-                               down
-                               Vacuum Grip  (1)           
-                               Waypoint_1
-                             MoveJ
-                               drop
-                               Vacuum Release  (1)           
-                           If rq_code_string≟"paketti4"
-                             MoveJ
-                               pickup_box
-                               down
-                               Vacuum Grip  (1)           
-                               Waypoint_1
-                             Cam Locate
-                               For object(s) found
-                                 MoveJ
-                                   korkea_paikka
-                                   Vacuum Release  (1)           
-                                   korkea_paikka
-                               If no object found
-                                 'Optional'
-                         If no code found
-                           'Optional'
-                   If no object found
-                     'Optional'
-             If no code found
-               'Optional'
-       If no object found
-         'Optional'
+Robot Program
+	Cam Locate
+		For object(s) found
+			MoveJ
+           			start
+         		MoveJ
+           			readqr
+           			Scan Code
+             				If a code is found
+               					'Insert actions here'
+               					parempi_paikka
+               					If rq_code_string≟"auto2"
+                 					Cam Locate
+                   						For object(s) found
+                     							MoveJ
+                       								paketti_qr
+                       								Scan Code
+                         								If a code is found
+                           									'Insert actions here'
+                           									If rq_code_string≟"paketti3"
+                             										MoveJ
+                               											pickup_box
+                               											down
+                               											Vacuum Grip  (1)           
+                               											Waypoint_1
+                             										MoveJ
+                               											drop
+                               											Vacuum Release  (1)           
+                           									If rq_code_string≟"paketti4"
+                             										MoveJ
+                               											pickup_box
+                               											down
+                               											Vacuum Grip  (1)           
+                               											Waypoint_1
+                             										Cam Locate
+                               											For object(s) found
+                                											MoveJ
+                                   											korkea_paikka
+                                   											Vacuum Release  (1)           
+                                   											korkea_paikka
+                               											If no object found
+                                 											'Optional'
+                         								If no code found
+                           									'Optional'
+                   						If no object found
+                     							'Optional'
+             				If no code found
+               					'Optional'
+       		If no object found
+         		'Optional'
