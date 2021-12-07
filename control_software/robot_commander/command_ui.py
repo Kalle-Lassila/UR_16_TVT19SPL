@@ -3,7 +3,6 @@
 #TVT19SPL
 
 from tkinter import Tk, scrolledtext, StringVar, Button, OptionMenu, Entry, WORD, INSERT, END, DISABLED, NORMAL
-from tkinter.constants import NO
 import RobotConnectionManager, os, time
 
 class Main():
@@ -19,6 +18,7 @@ class Main():
 
         #options for port dropdown menu
         port_options = [
+            "1201",
             "29999",
             "30001",
             "30002",
@@ -42,8 +42,8 @@ class Main():
         self.selected_file = StringVar()
 
         #Set starting values for StringVars
-        self.selected_ip.set("172.16.140.130")
-        self.selected_port.set("29999")
+        self.selected_ip.set("192.168.100.10")
+        self.selected_port.set("1201")
         self.selected_file.set("empty")
         
         #################Create widgets#################
@@ -80,9 +80,11 @@ class Main():
 
     def send_command_method(self):
         '''Get contents from input Entry widget and send it out'''
-        command = self.command_box.get() + "\n" #get input and append newline to it for the robot to execute command as an instruction
+        #Only append newline if it's needed
+        if self.rcm.get_port() in [29999, 30001, 30002, 30003]: command = self.command_box.get() + "\n" #get input and append newline to it for the robot to execute command as an instruction
+        else: command = self.command_box.get()
         #self.command_box.delete(0, END) #clear command_box
-        self.output_box.insert(INSERT, f"Sent command: {command}")
+        self.output_box.insert(INSERT, f"Sent command: {command}\n")
         self.rcm.send_str(command)  #send command using rcm objects method
 
     def return_key_event_handler(self, event):
@@ -112,7 +114,9 @@ class Main():
         
     def start_rcm_method(self):
         self.rcm = RobotConnectionManager.RobotConnectionManager(self.selected_ip.get(), int(self.selected_port.get()), 1) #as in obj = Module.Class()
-        self.rcm.begin(mode="client")
+        if self.rcm.get_port() in [29999, 30001, 30002, 30003]: self.rcm.begin(mode="client"); print("client mode")
+        else: self.rcm.begin(mode="server")
+
         self.started = True #used to track if output text should be updated
 
         #disable ui buttons once connected

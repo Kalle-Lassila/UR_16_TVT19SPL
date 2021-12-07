@@ -5,6 +5,8 @@
     #Currently robot needs to be in local control mode and the following function must be running in the robot
     #interpreter_mode(clearQueueOnEnter=False)
 
+#TODO add usage instructions
+
 import socket, threading, time
 
 class RobotConnectionManager():
@@ -22,10 +24,8 @@ class RobotConnectionManager():
         self.__base_socket.bind(("0.0.0.0", self.__robot_port))    #bind the socket to unroutable address for now, and listen to __robot_port
         self.__base_socket.listen(5) #start listening and allow 5 failed attempts to connect
         self.__robot_socket, self.robot_address = self.__base_socket.accept()   #accept inbound connection
-        while True:
-            message = self.__robot_socket.recv(self.buffer_size)  #get buffer_size of bytes from socket buffer
-            message = message.decode("utf-8")   #decode bytes to utf-8 character string
-            print(message)
+        # while True:
+        #     self.__robot_socket
 
     def __client_connection(self):
         '''Connect to a server socket'''
@@ -59,6 +59,8 @@ class RobotConnectionManager():
                     begin=time.time()
             except: 
                 pass
+        #append newline when in server mode
+        if self.get_port() not in [29999, 30001, 30002, 30003] and data: data.append("\n")
         return ''.join(data)    #combine all parts into one string
 
     def _send_input(self):
