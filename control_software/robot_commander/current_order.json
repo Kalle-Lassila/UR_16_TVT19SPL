@@ -1,0 +1,20 @@
+{
+	"Banana":
+	{
+		"quantity": "2",
+		"UrStatus": "0",
+		"GoPiGoStatus": "0"
+	},
+	"Cheese":
+	{
+		"quantity": "3",
+		"UrStatus": "0",
+		"GoPiGoStatus": "0"	
+	},
+	"Milk":
+	{
+		"quantity": "1",
+		"UrStatus": "0",
+		"GoPiGoStatus": "0"
+	}
+}
