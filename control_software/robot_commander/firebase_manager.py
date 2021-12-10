@@ -3,14 +3,15 @@ from firebase_admin import db
 
 class database_manager():
 	def __init__(self):
-		self.__cred_obj = firebase_admin.credentials.Certificate(json.load(open('firebase/key.json')))
+		self.__cred_obj = firebase_admin.credentials.Certificate(json.load(open(__file__.replace("firebase_manager.py", "key.json"))))
 		self.__default_app = firebase_admin.initialize_app(self.__cred_obj, {
 			'databaseURL':'https://ur16-dev-default-rtdb.europe-west1.firebasedatabase.app'
 		})
 		self.ref = db.reference("/")
 
 	def recreate(self):
-		with open("firebase/current_order.json", "r") as f:
+		#with open("firebase/current_order.json", "r") as f:
+		with open(__file__.replace("firebase_manager.py", "current_order.json")) as f:
 			contents = json.load(f)
 		print(contents)
 		self.ref.child("CurrentOrder").set(contents)
