@@ -23,19 +23,25 @@ class database_manager():
 		for product in current_order:
 			#get the number of items in product
 			number_of_items = int(current_order[product]["quantity"])
-			#add correct number of products to db/processing
+			#add correct number of products to db/orderList
 			for db_product in range(number_of_items):
 				update_data = {
-					"Name": product,
-					"GoPiGoStatus": "0",
-					"URStatus": "0"
+					"item": product,
+					"gopigo": "0",
+					"status": "ordered"
 				}
-				self.ref.child(f"Processing/Product{db_product_number}").update(update_data)
+				self.ref.child(f"orderList/Product{db_product_number}").update(update_data)
 				db_product_number += 1
 	
-	def listen_callback(self, Event):
-		if Event.data != "0":
+	def listen_callback(self, event):
+		if event.data != "0":
 			self.create_process_table()
+		
+	def rpa_callback(self, event) -> int:	#Yo! not used rn.
+		'''Return the number of products in orderList table'''
+		if event.data != "0":
+			num = len(event.data)
+			print(num)
 
 	def start_listener(self):
 		#TODO explain the line below
@@ -45,8 +51,16 @@ class database_manager():
 			pass
 
 	def delete_process_table(self):
-		#The point is to set the value of the whole Process table to one
-		self.ref.update({"Processing": "0"})
+		#The point is to set the value of the whole Process table to zero
+		self.ref.update({"orderList": "0"})
+
+	def return_product_ammount(self):
+		#self.ref.child("orderList").listen(self.rpa_callback) #wip
+		while True:
+			content = self.ref.child("orderList").get()
+			if content != "0":
+				return len(content)
+			time.sleep(10)
 
 	def delete_currentOrder_table(self):
 		#The point is to set the value of the whole currentOrder table to one
@@ -61,6 +75,8 @@ class Main():
 		while True:
 			time.sleep(5)
 			c.recreate()
+			print("################################")
+			print(c.return_product_ammount())
 			time.sleep(5)
 			c.ref.update({"CurrentOrder": "0"})
 			c.delete_process_table()
