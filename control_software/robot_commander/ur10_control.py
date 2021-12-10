@@ -4,7 +4,7 @@ import socket, threading, time, firebase_admin, json
 from firebase_admin import db
 
 if __name__ == "__main__":
-    robot_con_man = RobotConnectionManager(1201,4096)   #takes port number and buffer size as inputs for init
+    robot_con_man = RobotConnectionManager("192.168.100.10",1201,4096)   #takes port number and buffer size as inputs for init
     db_man = database_manager()
     
     # Start connection with the robot in server mode
