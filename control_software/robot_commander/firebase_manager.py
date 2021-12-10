@@ -48,6 +48,10 @@ class database_manager():
 		#The point is to set the value of the whole Process table to one
 		self.ref.update({"Processing": "0"})
 
+	def delete_currentOrder_table(self):
+		#The point is to set the value of the whole currentOrder table to one
+		self.ref.update({"currentOrder": "0"})
+
 class Main():
 	@staticmethod
 	def main():

@@ -11,12 +11,14 @@ if __name__ == "__main__":
     robot_con_man.robot_address = "192.168.100.10"
     robot_con_man.begin("server")
     
-    # Send amount of ordered packets to UR10
-    robot_con_man.send_str(5)#db_man.process_table_count())
+    while True:
+        # Send amount of ordered packets to UR10
+        robot_con_man.send_str(5)#db_man.process_table_count())
 
-    # When robot reports being ready delete "process" table from database to indicate order being complete
-    # Also do the same for "currentOrder" table
-    if robot_con_man.blockking_get_recv_byte_buffer() == 1:
-        db_man.delete_process_table()
-        db_man.delete_currentOrder_table()
+        # When robot reports being ready delete "process" table from database to indicate order being complete
+        # Also do the same for "currentOrder" table
+        if robot_con_man.blockking_get_recv_byte_buffer() == 1:
+            db_man.delete_process_table()
+            db_man.delete_currentOrder_table()
+    
 
