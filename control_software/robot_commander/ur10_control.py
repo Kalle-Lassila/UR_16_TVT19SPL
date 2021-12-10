@@ -13,7 +13,7 @@ if __name__ == "__main__":
     
     while True:
         # Send amount of ordered packets to UR10
-        robot_con_man.send_str(5)#db_man.process_table_count())
+        robot_con_man.send_str(db_man.return_product_ammount())
 
         # When robot reports being ready delete "process" table from database to indicate order being complete
         # Also do the same for "currentOrder" table
