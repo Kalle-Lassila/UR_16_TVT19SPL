@@ -1,0 +1,55 @@
+def unnamed():
+  step_count_71cdf1ab_0fc5_4cee_8d38_9d8aab046d4a = 0.0
+  thread Step_Counter_Thread_66e6d577_7bc5_4c99_a39b_59538827521a():
+    while (True):
+      step_count_71cdf1ab_0fc5_4cee_8d38_9d8aab046d4a = step_count_71cdf1ab_0fc5_4cee_8d38_9d8aab046d4a + 1.0
+      sync()
+    end
+  end
+  run Step_Counter_Thread_66e6d577_7bc5_4c99_a39b_59538827521a()
+  set_gravity([0.0, 0.0, 9.82])
+  set_safety_mode_transition_hardness(1)
+  set_standard_analog_input_domain(0, 1)
+  set_standard_analog_input_domain(1, 1)
+  set_tool_analog_input_domain(0, 1)
+  set_tool_analog_input_domain(1, 1)
+  set_analog_outputdomain(0, 0)
+  set_analog_outputdomain(1, 0)
+  set_input_actions_to_default()
+  set_tcp(p[0.0,0.0,0.0,0.0,0.0,0.0])
+  set_target_payload(1.000000, [0.000000, 0.000000, 0.000000], [0.001539, 0.001539, 0.001539, 0.000000, 0.000000, 0.000000])
+  set_tool_communication(False, 115200, 0, 1, 1.5, 3.5)
+  set_tool_output_mode(0)
+  set_tool_digital_output_mode(0, 1)
+  set_tool_digital_output_mode(1, 1)
+  set_tool_voltage(0)
+  $ 1 "BeforeStart"
+  $ 2 "connection≔ False "
+  global connection=  False  
+  $ 3 "Loop  not connection"
+  while (  not  connection):
+    $ 4 "connection≔socket_open('172.16.140.1',1201)"
+    global connection=socket_open("172.16.140.1",1201)
+  end
+  while (True):
+    $ 5 "Robot Program"
+    $ 6 "socket_send_string('Anna auto')"
+    socket_send_string("Anna auto")
+    $ 7 "auto≔socket_read_string(timeout=0)"
+    global auto=socket_read_string(timeout=0)
+    $ 8 "socket_send_string('Anna paketti')"
+    socket_send_string("Anna paketti")
+    $ 9 "paketti≔socket_read_string(timeout=0)"
+    global paketti=socket_read_string(timeout=0)
+    $ 10 "Popup"
+    popup(str_cat("",paketti), "Message", False, False, blocking=True)
+    $ 11 "Wait: 0"
+    $ 12 "socket_send_string('paskea')"
+    socket_send_string("paskea")
+    $ 13 "Wait: 2.0"
+    sleep(2.0)
+    $ 14 "socket_send_string('Lastattu')"
+    socket_send_string("Lastattu")
+    $ 15 "Wait: 0"
+  end
+end
