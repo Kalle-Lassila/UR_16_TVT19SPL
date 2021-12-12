@@ -5,46 +5,58 @@ from firebase_admin import db
 
 class ur5_control():
     def __init__(self):
-        #takes port number and buffer size as inputs for init
-        #TODO UNCOMMENT below
-        #self.__robot_con_man = RobotConnectionManager(ip="192.168.100.10",port=1201,buffer=4096)   
+        #takes robots ip, port number and buffer size as inputs for init
+        self.__robot_con_man = RobotConnectionManager(ip="192.168.100.10",port=1201,buffer=4096)   
         self.__db_man = database_manager()
+
+        # DEBUG create back up of current database
         #self.__db_man.database_back_up_create()
+        
         # Start connection with the robot in server mode
-        #self.__robot_con_man.robot_address = "192.168.100.10" # not required
-        #TODO UNCOMMENT below 
-        #self.__robot_con_man.begin("server")
+        #self.__robot_con_man.robot_address = "192.168.100.10" # not required 
+        self.__robot_con_man.begin("server")
 
     def work(self):
-        time.sleep(5)
         # get amount of products to unload for the current order from the database
         self.__packetCount = self.__db_man.return_product_ammount()
         __delivery_increment = 0
-        for __delivery_increment in range(self.__packetCount):
-            # Tell UR5 to keep working until delivery is completed
-            #TODO UNCOMMENT below
-            #self.__robot_con_man.send_str("more")
-            print("DEBUG more")
-            if 1:#self.__robot_con_man.blockking_get_recv_byte_buffer() == "1":
-                __delivery_increment = __delivery_increment + 1
-                print("DEBUG delivery_increment value PROCESS:"+str(__delivery_increment))
-        #TODO UNCOMMENT below
-        # Tell robot that the order is complete
-        # (necessary so robot knows to when to start stacking process over from the beginning)
-        #self.__robot_con_man.send_str("ready")
 
-        # When robot is done with the current order set orderList table from database to indicate order being complete
-        # Also do the same for "currentOrder" table
-        #TODO commented out for testing purposes, remember to UNCOMMENT below
-        #self.__db_man.delete_process_table()
-        #self.__db_man.delete_currentOrder_table()    
-        print("DEBUG database remove")
-        print("DEBUG delivery_increment value END:"+str(__delivery_increment))
+        #if there are workable orders initiate the robot, otherwise wait a while and check the database again
+        if self.__packetCount != 0:
+            # Tell UR5 to keep working until delivery is completed
+            for __delivery_increment in range(self.__packetCount):
+                self.__robot_con_man.send_str("work")
+                #TODO REMOVE debug print below
+                print("DEBUG work")
+                # Wait for robot to indicate it has completed one move cycle
+                if self.__robot_con_man.blockking_get_recv_byte_buffer() == "1":
+                    __delivery_increment = __delivery_increment + 1
+                    #TODO REMOVE debug print below
+                    print("DEBUG delivery_increment value PROCESS:"+str(__delivery_increment))
+                    time.sleep(1) #TODO sleep here might not be necessary delete this line if so
+        
+            # Tell robot that the order is complete
+            # (necessary so robot knows to when to start stacking process over from the beginning)
+            time.sleep(1) #wait a sec so robot is ready in listening mode, maybe not necessary
+            self.__robot_con_man.send_str("ready")
+
+            #TODO commented out for testing purposes, remember to UNCOMMENT below
+            # When robot is done with the current order set orderList table from database to indicate order being complete
+            # Also do the same for "currentOrder" table
+            #self.__db_man.delete_process_table()
+            #self.__db_man.delete_currentOrder_table()
+        
+            #TODO REMOVE debug print below    
+            print("DEBUG database remove")
+            print("DEBUG delivery_increment value END:"+str(__delivery_increment))
+        else:
+            time.sleep(5)
 
 if __name__ == "__main__":
     def main():
         desdi = ur5_control()
-        desdi.work()
+        while True:
+            desdi.work()
     main()
     
 
