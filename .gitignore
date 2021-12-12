@@ -5,3 +5,7 @@
 control_software/__pycache__
 control_software/robot_commander/__pycache__
 control_software/robot_commander/key.json
+databaseBackUp.json
+control_software/databaseBackUp.json
+control_software/robot_commander/databaseBackUp.json
+

@@ -1,4 +1,4 @@
-import firebase_admin, json, threading, time
+import firebase_admin, json, threading, time, re
 from firebase_admin import db
 
 class database_manager():
@@ -15,6 +15,15 @@ class database_manager():
 			contents = json.load(f)
 		print(contents)
 		self.ref.child("CurrentOrder").set(contents)
+
+	# Creates json file backup of the database, useful in testing
+	def database_back_up_create(self):
+		backUpQuery = self.ref.get()
+		backUpQuery = re.sub("\'", "\"", str(backUpQuery))
+		f = open("databaseBackUp.json", "w")
+		f.write(str(backUpQuery))
+		f = open("databaseBackUp.json","r")
+		print(f.read())
 
 	def create_process_table(self):
 		current_order = self.ref.child("CurrentOrder").get()
