@@ -14,7 +14,7 @@ class ur5_control():
         
         # Start connection with the robot in server mode
         #self.__robot_con_man.robot_address = "192.168.100.10" # not required 
-        self.__robot_con_man.begin("server")
+        self.__robot_con_man.begin(mode="server")
 
     def work(self):
         # get amount of products to unload for the current order from the database
@@ -25,19 +25,22 @@ class ur5_control():
         if self.__packetCount != 0:
             # Tell UR5 to keep working until delivery is completed
             for __delivery_increment in range(self.__packetCount):
+                time.sleep(1) #TODO sleep here might not be necessary delete this line if so
                 self.__robot_con_man.send_str("work")
                 #TODO REMOVE debug print below
                 print("DEBUG work")
-                # Wait for robot to indicate it has completed one move cycle
+                # Wait for robot to indicate it has completed one packet move cycle
                 if self.__robot_con_man.blockking_get_recv_byte_buffer() == "1":
                     __delivery_increment = __delivery_increment + 1
                     #TODO REMOVE debug print below
                     print("DEBUG delivery_increment value PROCESS:"+str(__delivery_increment))
-                    time.sleep(1) #TODO sleep here might not be necessary delete this line if so
+                else:
+                    #TODO change for the software to lock up in this if statement if the robot end goes haywire
+                    pass
         
             # Tell robot that the order is complete
             # (necessary so robot knows to when to start stacking process over from the beginning)
-            time.sleep(1) #wait a sec so robot is ready in listening mode, maybe not necessary
+            time.sleep(1) #wait a sec so robot is ready in listening mode, delay here might not be necessary
             self.__robot_con_man.send_str("ready")
 
             #TODO commented out for testing purposes, remember to UNCOMMENT below
@@ -45,13 +48,14 @@ class ur5_control():
             # Also do the same for "currentOrder" table
             #self.__db_man.delete_process_table()
             #self.__db_man.delete_currentOrder_table()
-        
             #TODO REMOVE debug print below    
             print("DEBUG database remove")
             print("DEBUG delivery_increment value END:"+str(__delivery_increment))
+        
         else:
-            time.sleep(5)
-
+            print("DEBUG orderList empty")
+            time.sleep(10)
+            
 if __name__ == "__main__":
     def main():
         desdi = ur5_control()

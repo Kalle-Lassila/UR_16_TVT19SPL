@@ -72,7 +72,7 @@ class RobotConnectionManager():
         data = []   # received complete data
 
         data = self.__robot_socket.recv(8)  # try to get datafrom buffer 
-        return int(data.decode("utf-8"))    #decode received ascii character to utf-8 and morph it to  a int
+        return str(data.decode("utf-8"))    #decode received ascii character to utf-8
 
     def _send_input(self):
         '''Take user input and send it to socket'''
