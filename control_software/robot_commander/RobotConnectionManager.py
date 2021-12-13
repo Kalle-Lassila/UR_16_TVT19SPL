@@ -60,8 +60,18 @@ class RobotConnectionManager():
             except: 
                 pass
         #append newline when in server mode
-        if self.get_port() not in [29999, 30001, 30002, 30003] and data: data.append("\n")
+        if self.get_port() not in [1201, 29999, 30001, 30002, 30003] and data: data.append("\n")
         return ''.join(data)    #combine all parts into one string
+
+    #same as above method but blocking and return only one byte worth of data
+    def blockking_get_recv_byte_buffer(self) -> str:
+        self.__robot_socket.setblocking(True)
+
+        #Inits
+        data = []   # received complete data
+
+        data = self.__robot_socket.recv(8)  # try to get datafrom buffer 
+        return str(data.decode("utf-8"))    #decode received ascii character to utf-8
 
     def _send_input(self):
         '''Take user input and send it to socket'''

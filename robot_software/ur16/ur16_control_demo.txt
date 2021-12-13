@@ -1,0 +1,16 @@
+ Program
+   BeforeStart
+     connection≔ False 
+     Loop  not connection
+       connection≔socket_open("172.16.140.1",1201)
+   Robot Program
+     socket_send_string("Anna auto")
+     auto≔socket_read_string(timeout=0)
+     socket_send_string("Anna paketti")
+     paketti≔socket_read_string(timeout=0)
+     Popup
+     Wait: 0
+     socket_send_string("paskea")
+     Wait: 2.0
+     socket_send_string("Lastattu")
+     Wait: 0
