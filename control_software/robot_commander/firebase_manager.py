@@ -83,7 +83,6 @@ class Main():
 		#c.start_listener()
 		time.sleep(20)
 		c.recreate()
-		time.sleep(5)
 
 if __name__ == "__main__":
 	c = Main()

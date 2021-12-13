@@ -16,8 +16,8 @@ class ur16_control():
         self.waiting_car = False
         self.waiting_pkg = False
         self.fm = database_manager()
-        #self.rcm = RobotConnectionManager(ip="192.168.100.10", port=1201, buffer=4069)
-        self.rcm = RobotConnectionManager(ip="172.16.140.130", port=1201, buffer=4069)
+        self.rcm = RobotConnectionManager(ip="192.168.100.10", port=1201, buffer=4069)
+        #self.rcm = RobotConnectionManager(ip="172.16.140.130", port=1201, buffer=4069)
         #threaded so we can keep track of the state constantly. Not strictly necessary as we also control the other side of the connection.
         self.state_thread = threading.Thread(target=self._robot_state_check)
         self.load_thread = threading.Thread(target=self.__load_product)
@@ -39,18 +39,19 @@ class ur16_control():
             #Get all products from orderList
             products = self.fm.ref.child("orderList").get()
             #Check status from each Product
-            for product in products:
-                if products[product]["status"] == "loading":
-                    print(f"{product} loading")
-                    #Translate packet name for the robot
-                    packet_name = self.translate_product_name(products[product]["item"])
-                    if packet_name != 0:
-                        print(f"Load one {packet_name}")  #TODO remove this
-                        self.current_product = product  #to keep track which productX we are dealing with
-                        self.car_id = products[product]["gopigo"]
-                        self.packet_id = packet_name
-                        #self.this_car_loaded = False
-            print("Nothing to load yet")
+            if products != "0":   #to not try to get orderList from "0"
+                for product in products:
+                    if products[product]["status"] == "loading":
+                        print(f"{product} loading")
+                        #Translate packet name for the robot
+                        packet_name = self.translate_product_name(products[product]["item"])
+                        if packet_name != 0 and not self.this_car_sent:
+                            print(f"Load one {packet_name}")  #TODO remove this
+                            self.current_product = product  #to keep track which productX we are dealing with
+                            self.car_id = products[product]["gopigo"]
+                            self.packet_id = packet_name
+                            #self.this_car_loaded = False
+            print("Nothing to load yet")    #not descriptive printout
     
     def __load_product(self):
         '''Threaded to continuously send instructions if needed'''
@@ -71,14 +72,14 @@ class ur16_control():
         while True:
             time.sleep(1)   #check message interval
             rcv = self.rcm.get_recv_buffer()
-            if "Anna auto" in rcv:
+            if "Enter car" in rcv:
                 self.waiting_car = True
                 self.waiting_pkg = False
-            elif "Anna paketti" in rcv:
+            elif "Enter packet" in rcv:
                 self.waiting_pkg = True
                 self.waiting_car = False
             #Lastattu message can come at the same time as "Anna auto" so a separate check needs to be in place
-            if "Lastattu" in rcv:
+            if "Loaded" in rcv:
                 self.fm.ref.child(f"orderList/{self.current_product}").update({"status": "loaded"})
                 self.this_pkg_sent = False
                 self.this_car_sent = False
