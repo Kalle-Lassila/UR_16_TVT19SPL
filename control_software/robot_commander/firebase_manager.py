@@ -80,15 +80,10 @@ class Main():
 	def main():
 		c = database_manager()
 		c.ref.update({"CurrentOrder": "0"})
-		c.start_listener()
-		while True:
-			time.sleep(5)
-			c.recreate()
-			print("################################")
-			print(c.return_product_ammount())
-			time.sleep(5)
-			c.ref.update({"CurrentOrder": "0"})
-			c.delete_process_table()
+		#c.start_listener()
+		time.sleep(20)
+		c.recreate()
+		time.sleep(5)
 
 if __name__ == "__main__":
 	c = Main()
