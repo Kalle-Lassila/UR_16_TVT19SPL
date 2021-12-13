@@ -13,54 +13,51 @@ class ur5_control():
         #self.__db_man.database_back_up_create()
         
         # Start connection with the robot in server mode
-        #self.__robot_con_man.robot_address = "192.168.100.10" # not required 
         self.__robot_con_man.begin(mode="server")
 
     def work(self):
-        # get amount of products to unload for the current order from the database
-        self.__packetCount = self.__db_man.return_product_ammount()
-        __delivery_increment = 0
+        while True:    
+            # get amount of products to unload for the current order from the database
+            self.__packetCount = self.__db_man.return_product_ammount()
+            print(self.__packetCount)
+            __delivery_increment = 0
 
-        #if there are workable orders initiate the robot, otherwise wait a while and check the database again
-        if self.__packetCount != 0:
-            # Tell UR5 to keep working until delivery is completed
-            for __delivery_increment in range(self.__packetCount):
-                time.sleep(1) #TODO sleep here might not be necessary delete this line if so
-                self.__robot_con_man.send_str("work")
-                #TODO REMOVE debug print below
-                print("DEBUG work")
-                # Wait for robot to indicate it has completed one packet move cycle
-                if self.__robot_con_man.blockking_get_recv_byte_buffer() == "1":
-                    __delivery_increment = __delivery_increment + 1
-                    #TODO REMOVE debug print below
-                    print("DEBUG delivery_increment value PROCESS:"+str(__delivery_increment))
-                else:
-                    #TODO change for the software to lock up in this if statement if the robot end goes haywire
-                    pass
-        
-            # Tell robot that the order is complete
-            # (necessary so robot knows to when to start stacking process over from the beginning)
-            time.sleep(1) #wait a sec so robot is ready in listening mode, delay here might not be necessary
-            self.__robot_con_man.send_str("ready")
+            #if there are workable orders initiate the robot, otherwise wait a while and check the database again
+            if self.__packetCount != 0:
+                # Tell UR5 to keep working until delivery is completed
+                while __delivery_increment <= self.__packetCount:
+                    time.sleep(2) #TODO sleep before sending
+                    if __delivery_increment == 0:
+                        # Tell robot that the order is complete
+                        self.__robot_con_man.send_str("first")
+                        print("DEBUG first")
+                    else:
+                        self.__robot_con_man.send_str("work")
+                        print("DEBUG work")
 
-            #TODO commented out for testing purposes, remember to UNCOMMENT below
-            # When robot is done with the current order set orderList table from database to indicate order being complete
-            # Also do the same for "currentOrder" table
-            #self.__db_man.delete_process_table()
-            #self.__db_man.delete_currentOrder_table()
-            #TODO REMOVE debug print below    
-            print("DEBUG database remove")
-            print("DEBUG delivery_increment value END:"+str(__delivery_increment))
+                     #Wait for robot to indicate it has completed one packet move cycle
+                    if self.__robot_con_man.blockking_get_recv_byte_buffer() == "1":
+                        __delivery_increment = __delivery_increment + 1
+                        #TODO REMOVE debug print below
+                        print("DEBUG delivery completed, progress:"+str(__delivery_increment))
+                    else:
+                        #TODO change for the software to lock up in this if statement if the robot end goes haywire
+                        print("DEBUG delivery not completed, progress:"+str(__delivery_increment))
         
-        else:
-            print("DEBUG orderList empty")
-            time.sleep(10)
+                # When robot is done with the current order set orderList table from database to indicate order being complete
+                # Also do the same for "currentOrder" table
+                self.__db_man.delete_process_table()
+                self.__db_man.delete_currentOrder_table()    
+                print("DEBUG database remove")
+        
+            else:
+                print("DEBUG orderList empty")
+                time.sleep(10)
             
 if __name__ == "__main__":
     def main():
         desdi = ur5_control()
-        while True:
-            desdi.work()
+        desdi.work()
     main()
     
 

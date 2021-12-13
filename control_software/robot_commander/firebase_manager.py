@@ -68,12 +68,12 @@ class database_manager():
 		while True:
 			content = self.ref.child("orderList").get()
 			if content != "0":
-				return len(content)
+				return int(len(content))
 			time.sleep(10)
 
 	def delete_currentOrder_table(self):
 		#The point is to set the value of the whole currentOrder table to one
-		self.ref.update({"currentOrder": "0"})
+		self.ref.update({"CurrentOrder": "0"})
 
 class Main():
 	@staticmethod
