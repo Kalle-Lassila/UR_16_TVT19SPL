@@ -38,7 +38,6 @@ class ur16_control():
             time.sleep(10)
             #Get all products from orderList
             products = self.fm.ref.child("orderList").get()
-            #Check status from each Product
             if products != "0":   #to not try to get orderList from "0"
                 for product in products:
                     if products[product]["status"] == "loading":
@@ -53,6 +52,8 @@ class ur16_control():
                             #self.this_car_loaded = False
             print("Nothing to load yet")    #not descriptive printout
     
+    def __listener_event(event):
+        pass
     def __load_product(self):
         '''Threaded to continuously send instructions if needed'''
         while True:

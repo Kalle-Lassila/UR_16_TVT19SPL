@@ -39,7 +39,7 @@ class database_manager():
 					"gopigo": "0",
 					"status": "ordered"
 				}
-				self.ref.child(f"orderList/Product{db_product_number}").update(update_data)
+				self.ref.child(f"orderList/product{db_product_number}").update(update_data)
 				db_product_number += 1
 	
 	def listen_callback(self, event):
@@ -79,9 +79,9 @@ class Main():
 	@staticmethod
 	def main():
 		c = database_manager()
-		c.ref.update({"CurrentOrder": "0"})
-		#c.start_listener()
-		time.sleep(20)
+		# c.ref.update({"CurrentOrder": "0"})
+		# c.start_listener()
+		# time.sleep(20)
 		c.recreate()
 
 if __name__ == "__main__":
