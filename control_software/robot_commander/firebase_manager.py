@@ -2,7 +2,7 @@ import firebase_admin, json, threading, time, re, key1
 from firebase_admin import db, credentials
 
 class database_manager():
-	def xx__init__(self):
+	def __init__(self):
 		#self.db_url = 'https://ur16-dev-default-rtdb.europe-west1.firebasedatabase.app'	#ur test
 		self.db_url = 'https://backend-2d7fd-default-rtdb.firebaseio.com/'	#backend
 		#self.__cred_obj = firebase_admin.credentials.Certificate(json.load(open(__file__.replace("firebase_manager.py", "key.json"))))	#test db
@@ -55,7 +55,8 @@ class database_manager():
 	
 	def listen_callback(self, event):
 		if event.data != "0":
-			self.create_process_table()
+			if self.ref.child("orderList").get() == "0":	#so to not do duplicate updates
+				self.create_process_table()
 		
 	def rpa_callback(self, event) -> int:	#Yo! not used rn.
 		'''Return the number of products in orderList table'''

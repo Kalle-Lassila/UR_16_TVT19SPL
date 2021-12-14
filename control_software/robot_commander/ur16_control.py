@@ -91,7 +91,7 @@ class ur16_control():
         #I did not do this in python 3.10 so no match here
         if db_name == "Banana": return "paketti1"
         elif db_name == "Cheese": return "paketti2"
-        elif db_name == "Milk": return "paketti3"
+        elif db_name == "Milk": return "paketti4"
         else: return 1  #error
 
 if __name__ == "__main__":
