@@ -22,10 +22,13 @@ class ur5_control():
             print(self.__packetCount)
             __delivery_increment = 0
 
+            #TODO use this to make this work correctly
+            #products = self.fm.ref.child("orderList").get()
+
             #if there are workable orders initiate the robot, otherwise wait a while and check the database again
-            if self.__packetCount != 0:
+            if self.__packetCount >= 1:
                 # Tell UR5 to keep working until delivery is completed
-                while __delivery_increment <= self.__packetCount:
+                while __delivery_increment < self.__packetCount:
                     time.sleep(2) #TODO sleep before sending
                     if __delivery_increment == 0:
                         # Tell robot that the order is complete
@@ -37,6 +40,7 @@ class ur5_control():
 
                      #Wait for robot to indicate it has completed one packet move cycle
                     if self.__robot_con_man.blockking_get_recv_byte_buffer() == "1":
+                        self.__db_man.ref.child(f"orderList/product{__delivery_increment}").update({"status": "unloaded"})
                         __delivery_increment = __delivery_increment + 1
                         #TODO REMOVE debug print below
                         print("DEBUG delivery completed, progress:"+str(__delivery_increment))
