@@ -50,6 +50,7 @@ class ur5_control():
         
                 # When robot is done with the current order set orderList table from database to indicate order being complete
                 # Also do the same for "currentOrder" table
+                time.sleep(2)
                 self.__db_man.delete_process_table()
                 self.__db_man.delete_currentOrder_table()    
                 print("DEBUG database remove")
