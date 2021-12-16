@@ -66,10 +66,7 @@ class database_manager():
 
 	def start_listener(self):
 		#TODO explain the line below
-		try:
-			listen_thread = threading.Thread(self.ref.child("CurrentOrder").listen(self.listen_callback))
-		except:
-			pass
+		self.ref.child("CurrentOrder").listen(self.listen_callback)
 
 	def delete_process_table(self):
 		#The point is to set the value of the whole Process table to zero

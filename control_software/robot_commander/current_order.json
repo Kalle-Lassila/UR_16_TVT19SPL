@@ -1,13 +1,13 @@
 {
 	"Banana":
 	{
-		"quantity": "1",
+		"quantity": "3",
 		"UrStatus": "0",
 		"GoPiGoStatus": "0"
 	},
 	"Cheese":
 	{
-		"quantity": "1",
+		"quantity": "2",
 		"UrStatus": "0",
 		"GoPiGoStatus": "0"	
 	},
