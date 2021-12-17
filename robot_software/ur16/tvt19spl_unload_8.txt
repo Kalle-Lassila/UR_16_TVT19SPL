@@ -1,0 +1,52 @@
+ Program
+   BeforeStart
+     Before the beginning
+       Gripper Activate
+       Gripper Open (1)
+       eka_auto≔ True 
+       'Connect to the control device'
+       pcip≔"192.168.100.5"
+       connection1≔ False 
+       Loop connection1≟ False 
+         connection1≔socket_open(pcip,1201)
+   Robot Program
+     'Receive order'
+     orders≔socket_read_string(timeout=0)
+     If orders ≟ "first"
+       eka_auto≔ True 
+     MoveJ
+       start
+     'look for a inbound car'
+     Cam Locate
+       For object(s) found
+         approach_pos≔pose_trans(tvt19spl_calib, p[0, -0.003, -0.1, 0, 0, 1.57])
+         pickup_pos≔pose_trans(tvt19spl_calib, p[0, -0.003, 0.03, 0, 0, 1.57])
+         MoveJ
+           approach_pos
+         MoveL
+           pickup_pos
+           Gripper Close (1)
+           approach_pos
+         MoveJ
+           more_clear
+           approach_drop
+         If eka_auto≟ True 
+           MoveJ
+             stackbottom
+             Gripper Open (1)
+             stackupper≔stackbottom
+             eka_auto≔ False 
+             stackexit
+             'Alert control device about succesful delivery'
+             socket_send_string(1)
+         Else
+           MoveJ
+             stackupper≔pose_trans(stackupper, p[0, 0, -0.04, 0, 0, 0])
+             stackupper
+             Gripper Open (1)
+             stackexit
+             'Alert control device about succesful delivery'
+             socket_send_string(1)
+       If no object found
+         'Packet was not found'
+         socket_send_string(0)

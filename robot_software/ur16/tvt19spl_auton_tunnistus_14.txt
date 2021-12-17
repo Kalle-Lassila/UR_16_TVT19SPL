@@ -1,0 +1,66 @@
+ Program
+   BeforeStart
+     BeforeStartF
+       pcip≔"192.168.100.5"
+       connection1≔False
+       Loop not connection1
+         connection1≔socket_open(pcip,1201)
+   Robot Program
+     MoveJ
+       start
+     loaded≔ False 
+     car_found≔ False 
+     socket_send_string("Enter car")
+     receive_srv≔socket_read_string(timeout=0)
+     socket_send_string("Enter packet")
+     receive_srv1≔socket_read_string(timeout=0)
+     socket_send_string(receive_srv)
+     socket_send_string(receive_srv1)
+     'Cam locate to check for GoPiGo(s) in the loading zone'
+     Cam Locate
+       For object(s) found
+         read_qr_pos≔pose_trans(cal_new_rear, p[0 ,0.12, -0.05, 0, 0.78, 3.14])
+         MoveJ
+           read_qr_pos
+         'Checking if the GoPiGo is present in the loading zone'
+         Scan Code
+           If a code is found
+             MoveJ
+               clear_for_turn1
+             If rq_code_string≟receive_srv
+               'Cam locate for the packet(s)'
+               Loop  not loaded
+                 Cam Locate
+                   For next object
+                     MoveJ
+                       paketti_qr
+                     'Checking the Qr code in the packet(s)'
+                     Scan Code
+                       If a code is found
+                         If rq_code_string≟receive_srv1
+                           MoveJ
+                             pickup_box
+                             down
+                             Vacuum Grip  (1)           
+                             Waypoint_1
+                           MoveJ
+                             start
+                             drop_pos≔pose_trans(cal_new_rear, p[0, 0, -0.05, 0, 0, 3.14])
+                             drop_pos
+                             Vacuum Release  (1)           
+                             Wait: 1.0
+                             socket_send_string("Loaded")
+                             loaded≔ True 
+                             start
+                       If no code found
+                         'Optional'
+                         socket_send_string("paketti found, but not QR")
+                   If no object found
+                     'Optional'
+                     socket_send_string("no paketti found")
+           If no code found
+             'Optional'
+             socket_send_string("auto found, but not QR")
+       If no object found
+         'Optional'
+         socket_send_string("auto not found")

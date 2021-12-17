@@ -1,20 +1,16 @@
-def network_test():
-  set_safety_mode_transition_hardness(1)
-  set_tool_communication(True, 115200, 0, 1, 1.5, 3.5)
-  set_tool_output_mode(0)
-  set_tool_digital_output_mode(0, 1)
-  set_tool_digital_output_mode(1, 1)
-  set_tool_voltage(24)
-  step_count_4d0d9de6_35e6_429e_bdc8_97d30a6c56a5 = 0.0
-  thread Step_Counter_Thread_d51852f5_4625_4663_a2f4_078efb56e2b7():
+def tvt19spl_unload_8():
+  set_gravity([0.0, 0.0, 9.82])
+  set_tool_voltage(0)
+  step_count_b216d34e_8f5d_4efa_96e1_c8f8e56c04cf = 0.0
+  thread Step_Counter_Thread_15102d99_9cc4_4838_9711_157f895a04e5():
     while (True):
-      step_count_4d0d9de6_35e6_429e_bdc8_97d30a6c56a5 = step_count_4d0d9de6_35e6_429e_bdc8_97d30a6c56a5 + 1.0
+      step_count_b216d34e_8f5d_4efa_96e1_c8f8e56c04cf = step_count_b216d34e_8f5d_4efa_96e1_c8f8e56c04cf + 1.0
       sync()
     end
   end
-  run Step_Counter_Thread_d51852f5_4625_4663_a2f4_078efb56e2b7()
-  set_target_payload(1.200000, [0.000000, 0.000000, 0.070000], [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000])
-  set_tcp(p[0.0,0.0,0.15800999999999998,0.0,0.0,0.0])
+  run Step_Counter_Thread_15102d99_9cc4_4838_9711_157f895a04e5()
+  set_tcp(p[0.0,0.0,0.17,0.0,0.0,0.0])
+  set_payload(1.0)
   set_standard_analog_input_domain(0, 1)
   set_standard_analog_input_domain(1, 1)
   set_tool_analog_input_domain(0, 1)
@@ -22,20 +18,22 @@ def network_test():
   set_analog_outputdomain(0, 0)
   set_analog_outputdomain(1, 0)
   set_input_actions_to_default()
-  set_gravity([0.0, 0.0, 9.82])
-  global Calib_1=p[-0.03623359862212251,-0.43018634925717064,-0.03267274488408867,0.01735573136442801,-3.1406031675345156,0.0016566374506637425]
-  global Calib_2=p[0.0910613477843828,-0.4757037861226157,-0.02856616514693549,3.1398882140179585,-0.04891937033496491,-0.0021656608034391145]
-  global Plane_1=p[0.4053735948869057,-0.28569707589610993,-0.1913,8.471973782555211E-4,-0.027711535111693088,-3.1413479618533833]
-  global Plane_2=p[0.3888836801148317,-0.8063220222267695,-0.19076365043436722,-0.04177749153409525,0.002775087493024656,-0.0775856548502669]
-  global Point_1=p[0.13466891259606373,-0.21188759550883418,0.05650625689013608,-0.040899323276067066,2.956589375001118,0.32941038828907643]
-  global Point_2=p[0.00512392746783773,-0.48165788519059727,0.3703586905563553,1.877955397174551,1.9121767882284393,-0.579455009897847]
-  global cal_rear_table=p[0.004832258355760615,0.609261432464665,-0.10576786440338352,-2.028818732580312,2.392611470129047,0.028439735138273248]
-  global demo_alusta=p[0.141855513079771,-0.7999285132575794,-0.029827983293901666,-0.033427908390989525,3.107116249559726,-0.09839899925865152]
-  global g54=p[0.2931578909513762,-0.4686351626381921,-0.04005107437907998,3.1415806652198035,-0.0013311045083307185,-9.531154633788048E-5]
-  global gopigo_alusta=p[-0.0873182240575635,0.7124725438659446,-0.6405228516359519,-3.139762296804946,-0.05917106180462609,0.007734637256706361]
-  global rear_table=p[0.0,0.0,0.0,0.0,0.0,0.0]
+  set_safety_mode_transition_hardness(0)
+  global korner3=p[0, 0, 0, 0, 0, 0]
+  global exitti=p[0, 0, 0.05, 0, 0, 0]
+  global korner2=p[0, 0, 0, 0, 0, 0]
+  global approachi=p[0, 0, 0.05, 0, 0, 0]
+  global korner1=p[0, 0, 0, 0, 0, 0]
+  global korner4=p[0, 0, 0, 0, 0, 0]
+  global Plane_1=p[0.08359891373974895,-0.3763155708617785,-0.3402467637606312,0.4483526797096509,0.6873931045708578,3.0004815143551022]
+  global corner1=p[0.0,0.0,0.0,0.0,0.0,0.0]
+  global corner2=p[0.0,0.0,0.0,0.0,0.0,0.0]
+  global corner3=p[0.0,0.0,0.0,0.0,0.0,0.0]
+  global corner4=p[0.0,0.0,0.0,0.0,0.0,0.0]
+  global tvt19spl_cal=p[-0.06068912264098573,-0.35406203910382,-0.13144147857171679,0.024126239589875375,-3.140818199088903,0.002362826100279071]
+  global tvt19spl_calib=p[-0.3583504448136211,-0.2986989169773557,-0.12984172500295008,3.1394593579017718,-0.06191634673955677,-0.001003924406804629]
   # begin: URCap Installation Node
-  #   Source: Robotiq_Grippers, 1.8.4.4844, Robotiq Inc.
+  #   Source: Robotiq_Grippers, 1.8.8.13523, Robotiq Inc.
   #   Type: Vacuum
   #################################################
   # Vacuum Grip Check
@@ -85,7 +83,7 @@ def network_test():
       socket_send_byte(10, "dashboardServerSocket")
       socket_close("dashboardServerSocket")
   
-      sync()
+      sleep(0.008)
     end
   end
   
@@ -102,7 +100,7 @@ def network_test():
   
   def waitForVacuumGripCheckThreadStarted():
     while (not(vacuumGripCheckThreadStarted)):
-      sync()
+      sleep(0.008)
     end
     vacuumGripCheckThreadStarted = False
   end
@@ -155,7 +153,7 @@ def network_test():
   
   def waitForStopPumpOnDistanceTravelledThreadStarted(gripper_socket="1"):
     while (not(stopPumpThreadStarted[rq_socket_to_index(gripper_socket)])):
-      sync()
+      sleep(0.008)
     end
   end
   
@@ -180,7 +178,7 @@ def network_test():
           if (rq_is_vacuum_timeout(gripper_socket)):
               return False
           end
-          sync()
+          sleep(0.008)
       end
       return True
   end
@@ -190,7 +188,7 @@ def network_test():
           if (rq_is_vacuum_timeout(gripper_socket)):
               return False
           end
-          sync()
+          sleep(0.008)
       end
       return True
   end
@@ -225,19 +223,19 @@ def network_test():
   
   def rq_is_vacuum_obj_detected(gripper_socket="1"):
       gOBJ = rq_get_var("OBJ", 1, gripper_socket)
-      sync()
+      sleep(0.008)
       return is_vacuum_OBJ_object_detected(gOBJ)
   end
   
   def rq_is_vacuum_obj_secured(gripper_socket="1"):
       gOBJ = rq_get_var("OBJ", 1, gripper_socket)
-      sync()
+      sleep(0.008)
       return is_vacuum_OBJ_object_secured(gOBJ)
   end
   
   def rq_is_vacuum_obj_in_suction(gripper_socket="1"):
       gOBJ = rq_get_var("OBJ", 1, gripper_socket)
-      sync()
+      sleep(0.008)
   
       if(is_vacuum_OBJ_object_in_motion(gOBJ)):
           return True
@@ -248,7 +246,7 @@ def network_test():
   
   def rq_is_vacuum_timeout(gripper_socket="1"):
       gFLT = rq_get_var("FLT", 2, gripper_socket)
-      sync()
+      sleep(0.008)
   
       if(gFLT ==6):
           return True
@@ -285,6 +283,24 @@ def network_test():
       rq_set_pos_spd_for(pressure, timeout, minimum, gripper_socket)
   end
   
+  def rq_set_vacuum_and_wait(pressure, timeout, minimum, mode, gripper_socket="1"):
+      rq_set_pressure_timeout_minimum_vacuum(pressure, timeout, minimum, gripper_socket)
+      gPRE = rq_get_var("PRE", 3, gripper_socket)
+      while (gPRE != pressure):
+          rq_set_pressure_timeout_minimum_vacuum(pressure, timeout, minimum, gripper_socket)
+          sleep(0.008)
+          gPRE = rq_get_var("PRE", 3, gripper_socket)
+      end
+  
+      rq_set_gripper_mode(mode, gripper_socket)
+      gMOD = rq_get_var("MOD", 3, gripper_socket)
+      while (gMOD != mode):
+          rq_set_gripper_mode(mode, gripper_socket)
+          sleep(0.008)
+          gMOD = rq_get_var("MOD", 3, gripper_socket)
+     end
+  end
+  
   def is_FLT_vacuum_timeout(gFLT):
     if (gFLT == 6):
         return True
@@ -307,26 +323,28 @@ def network_test():
   
   def rq_vacuum_release_raw(advanced_mode, pressure, minimum, timeout, shutoff_distance, wait_for_object_released, gripper_socket):
     rq_reset_fault_and_activate(gripper_socket)
-    rq_set_pressure_timeout_minimum_vacuum(pressure, timeout, minimum, gripper_socket)
   
     if advanced_mode:
-      rq_set_gripper_mode(1, gripper_socket)
+      rq_set_vacuum_and_wait(pressure, timeout, minimum, 1, gripper_socket)
     else:
-      rq_set_gripper_mode(0, gripper_socket)
+      rq_set_vacuum_and_wait(pressure, timeout, minimum, 0, gripper_socket)
     end
   
+    # The following patch is for Robotiq's Camera issue when communication is lost, but not the activation
+    # the communication driver reset the GTO bit
     rq_set_GTO_and_wait(1, gripper_socket)
   
     if wait_for_object_released:
       while (rq_is_vacuum_obj_detected(gripper_socket)):
-        rq_set_pressure_timeout_minimum_vacuum(pressure, timeout, minimum, gripper_socket)
   
         if advanced_mode:
-          rq_set_gripper_mode(1, gripper_socket)
+          rq_set_vacuum_and_wait(pressure, timeout, minimum, 1, gripper_socket)
         else:
-          rq_set_gripper_mode(0, gripper_socket)
+          rq_set_vacuum_and_wait(pressure, timeout, minimum, 0, gripper_socket)
         end
   
+        # The following patch is for Robotiq's Camera issue when communication is lost, but not the activation
+        # the communication driver reset the GTO bit
         rq_set_GTO_and_wait(1, gripper_socket)
         sleep(0.01)
       end
@@ -354,16 +372,13 @@ def network_test():
     stopStopPumpOnDistanceTravelledThread(gripper_socket)
     rq_reset_fault_and_activate(gripper_socket)
   
-    rq_set_pressure_timeout_minimum_vacuum(pressure, timeout, minimum, gripper_socket)
-  
     if advanced_mode:
-      rq_set_gripper_mode(1, gripper_socket)
+      rq_set_vacuum_and_wait(pressure, timeout, minimum, 1, gripper_socket)
     else:
-      rq_set_gripper_mode(0, gripper_socket)
+      rq_set_vacuum_and_wait(pressure, timeout, minimum, 0, gripper_socket)
     end
   
     rq_set_GTO_and_wait(1, gripper_socket)
-  
   end
   
   def rq_reset_fault_and_activate(gripper_socket):
@@ -390,7 +405,7 @@ def network_test():
   vacuumGripTimeoutMessage = "Grip has timed out"
   # end: URCap Installation Node
   # begin: URCap Installation Node
-  #   Source: Robotiq_Wrist_Camera, 1.10.2.5254, Robotiq Inc.
+  #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
   #   Type: Camera
   
   ###########################################
@@ -417,1575 +432,17 @@ def network_test():
   xmlrpc_server=rpc_factory("xmlrpc","http://127.0.0.1:4242")
   
   # Open connection with visual offset monitor
-  cam_locate_monitor=rpc_factory("xmlrpc","http://127.0.0.1:42539")
+  cam_locate_monitor=rpc_factory("xmlrpc","http://127.0.0.1:39810")
   
   # Open connection with visual offset monitor
-  visual_offset_monitor=rpc_factory("xmlrpc","http://127.0.0.1:40073")
+  visual_offset_monitor=rpc_factory("xmlrpc","http://127.0.0.1:52236")
   
   #######Vision urcap preamble end##########
   ###########################################
   
   # end: URCap Installation Node
   # begin: URCap Installation Node
-  #   Source: Robotiq_Copilot, 1.14.4.3276, Robotiq Inc.
-  #   Type: Copilot
-  ###############################################################
-  # Script file used to communicate with Robotiq's ft sensor
-  # Version: 0.0.1
-  ###############################################################
-
-  node_rpc_server = rpc_factory("xmlrpc","http://127.0.0.1:4251/node")
-  linalg = rpc_factory("xmlrpc","http://127.0.0.1:4251/linalg")
-  storevar = rpc_factory("xmlrpc","http://127.0.0.1:4251/storevariable")
-
-  global Fx = 0.0
-  global Fy = 0.0
-  global Fz = 0.0
-  global Mx = 0.0
-  global My = 0.0
-  global Mz = 0.0
-  global T_base_sensor = p[0,0,0,0,0,0]
-  global tcp_wrench = [0,0,0,0,0,0]
-  global base_wrench = [0,0,0,0,0,0]
-  global rq_target_joint_positions = get_actual_joint_positions()
-  global rq_ft_sensor_connected = False
-  global rq_active_node = 0
-  global rq_elapsed_time = 0
-  rq_force_protect_urcap = 0.0
-  rq_torque_protect_urcap = 0.0
-  rq_collision_detection_enabled = False
-  rq_collision_detection_active_time = 0.0
-  rq_halt_on_collision_detection = True
-  sensor_wrench = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-  rq_node_executor_thread_running = False
-  rq_lookahead_time = 0.05
-
-  rq_controller_time_step = get_steptime()
-
-  def pose_to_list(p):
-    return [p[0], p[1], p[2], p[3], p[4], p[5]]
-  end
-
-  def rq_init_path(pathId):
-     initPathAnswer = node_rpc_server.initpath(pathId)
-     verify_path_answer(initPathAnswer)
-     return initPathAnswer[0]
-  end
-
-  def setup_force_node_on_server(generic_rq_insertion_force_node_id = 1,
-                                 feature=1,
-                                 targetforce = [0,0,0,0,0,0],
-                                 force_control_enabled_axes = [False, False, False, False, False, False],
-                                 max_negative_deviation_vector = [-0.1, -0.1, -0.1, -0.1, -0.1, -0.1],
-                                 max_positive_deviation_vector = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
-                                 adaptiveStiffness = True):
-    node_rpc_server.setforcecontrolfeature(generic_rq_insertion_force_node_id, feature)
-    node_rpc_server.setforcecontroltargetforce(generic_rq_insertion_force_node_id, targetforce)
-    node_rpc_server.setforcecontrolenabledaxes(generic_rq_insertion_force_node_id, force_control_enabled_axes)
-    node_rpc_server.setforcecontrolmaximaldeviation(generic_rq_insertion_force_node_id, max_negative_deviation_vector, max_positive_deviation_vector)
-    node_rpc_server.setforcecontroladaptivestiffnessenabledaxes(generic_rq_insertion_force_node_id, True)
-  end
-
-  def verify_path_answer(path_answer):
-   initPathStatusCode = path_answer[1]
-   handle_path_node_error_code(initPathStatusCode)
-  end
-
-  def handle_path_node_error_code(initPathStatusCode):
-    if initPathStatusCode == -1:
-      popup("Could not compute path with the selected options.", "Robotiq's FT Sensor", error=True)
-    elif initPathStatusCode == 1:
-      popup("Joint solution impossible. Change your starting position.", "Robotiq's FT Sensor", error=True)
-    elif initPathStatusCode == 2:
-      popup("Discontinuous path detected. Change your starting position.", "Robotiq's FT Sensor", error=True)
-    elif initPathStatusCode == 3:
-      popup("Path time limit has been reached. Increase the speed of your path or break it down in multiple shorter paths.", "Robotiq's FT Sensor", error=True)
-    elif initPathStatusCode == 4:
-      popup("Could not compute path with the selected options. Computing path timeout.", "Robotiq's FT Sensor", error=True)
-    elif initPathStatusCode == 5:
-      popup("Path computation was aborted.", "Robotiq's FT Sensor", error=True)
-    elif initPathStatusCode == 6:
-      popup("A previous path computation is still in progress. Please try again in a few seconds.", "Robotiq's FT Sensor", error=True)
-    elif initPathStatusCode == 7:
-      textmsg("Path initialization error: Invalid path id.") # No popup needed in this case.
-    elif initPathStatusCode == 8:
-      popup("Palletizer error: box number out of range.")
-    elif initPathStatusCode == 9:
-      popup("Palletizer error: collision detected.")
-    end
-    if initPathStatusCode != 0:
-      halt
-    end
-  end
-
-
-  def rq_wait_ft_sensor_steady(timeout = 2000):
-
-    max_mean_squared_error = [0.1, 0.1, 0.1, 0.0001, 0.0001, 0.0001]
-    mean = sensor_wrench
-
-    mean_squared_error = sensor_wrench
-    i=0
-    while i<6:
-      mean_squared_error[i] = mean_squared_error[i] * mean_squared_error[i]
-      i=i+1
-    end
-
-    is_sensor_steady = False
-    alpha = 0.9
-    timer = 0
-
-    while (not is_sensor_steady) and (timer < timeout):
-      sleep(0.008)
-      timer = timer + 8
-
-      i = 0
-      while i < 6:
-        mean[i] = alpha * mean[i] + (1.0 - alpha) * sensor_wrench[i]
-        error = sensor_wrench[i] - mean[i]
-        mean_squared_error[i] = alpha * mean_squared_error[i] + ((1.0 - alpha) * error * error)
-        i = i+1
-      end
-
-      is_sensor_steady = True
-      i = 0
-      while (i < 6) and is_sensor_steady:
-        is_sensor_steady = mean_squared_error[i] < max_mean_squared_error[i]
-        i = i+1
-      end
-    end
-
-    return is_sensor_steady
-  end
-
-  thread rq_elapsed_timer_ms():
-    rq_elapsed_time = 0
-  dt = 1000/500
-    while True:
-      rq_elapsed_time =  rq_elapsed_time + dt
-      sync()
-    end
-  end
-
-  def get_sensor_fx():
-    return Fx
-  end
-
-  def get_sensor_fy():
-    return Fy
-  end
-
-  def get_sensor_fz():
-    return Fz
-  end
-
-  def get_sensor_mx():
-    return Mx
-  end
-
-  def get_sensor_my():
-    return My
-  end
-
-  def get_sensor_mz():
-    return Mz
-  end
-
-  def get_applied_tcp_force(index):
-    return -1.0 * tcp_wrench[index]
-  end
-
-  def get_applied_base_force(index):
-    return -1.0 * base_wrench[index]
-  end
-
-  def express_vector_in_new_frame(T_from_to, V_from):
-    Q_from_to = p[0, 0, 0, T_from_to[3], T_from_to[4], T_from_to[5]]
-    V_to = pose_trans(pose_inv(Q_from_to), p[V_from[0], V_from[1], V_from[2], 0, 0, 0])
-    return [V_to[0], V_to[1], V_to[2]]
-  end
-
-  def express_force_in_frame(T_from_to, wrench_from):
-    F = express_vector_in_new_frame(T_from_to, [wrench_from[0], wrench_from[1], wrench_from[2]])
-    T = express_vector_in_new_frame(T_from_to, [wrench_from[3], wrench_from[4], wrench_from[5]])
-    return [F[0], F[1], F[2], T[0], T[1], T[2]]
-  end
-
-  thread read_force():
-
-
-    if (not socket_open("127.0.0.1", 29999, "RQDashboardClient")):
-      popup("Can't connect to the Dashboard server", "Robotiq's FT Sensor", error=True)
-      halt
-    end
-
-    rq_collision_detection_active_count = 0
-    rq_collision_detection_active = False
-
-    while True:
-
-        T_base_tcp = get_actual_tcp_pose()
-        T_base_flange = get_actual_tool_flange_pose()
-        T_flange_sensor = p[0, 0, 0, 0, 0, 0]
-        T_base_sensor = pose_trans(T_base_flange, T_flange_sensor)
-
-        T_flange_tcp = pose_trans( pose_inv(T_base_flange), T_base_tcp)
-        T_sensor_tcp = pose_trans( pose_inv(T_flange_sensor), T_flange_tcp)
-
-        sensor_wrench = express_force_in_frame(T_base_sensor, get_tcp_force())
-        tcp_wrench = wrench_trans(pose_inv(T_sensor_tcp), sensor_wrench)
-        base_wrench = express_force_in_frame(pose_inv(T_base_tcp), tcp_wrench)
-
-        Fx = sensor_wrench[0]
-        Fy = sensor_wrench[1]
-        Fz = sensor_wrench[2]
-        Mx = sensor_wrench[3]
-        My = sensor_wrench[4]
-        Mz = sensor_wrench[5]
-
-        write_output_float_register(TCP_FX_ACTUAL_OUTPUT_DOUBLE, tcp_wrench[0])
-        write_output_float_register(TCP_FY_ACTUAL_OUTPUT_DOUBLE, tcp_wrench[1])
-        write_output_float_register(TCP_FZ_ACTUAL_OUTPUT_DOUBLE, tcp_wrench[2])
-        write_output_float_register(TCP_MX_ACTUAL_OUTPUT_DOUBLE, tcp_wrench[3])
-        write_output_float_register(TCP_MY_ACTUAL_OUTPUT_DOUBLE, tcp_wrench[4])
-        write_output_float_register(TCP_MZ_ACTUAL_OUTPUT_DOUBLE, tcp_wrench[5])
-
-        if rq_collision_detection_enabled:
-            if rq_collision_detection_active_time < (0.5*rq_controller_time_step):
-                if norm([Fx, Fy, Fz]) > rq_force_protect_urcap:
-                    rq_on_collision_detection("Force limit value exceeded.")
-                elif norm([Mx, My, Mz]) > rq_torque_protect_urcap:
-                    rq_on_collision_detection("Torque limit value exceeded.")
-                end
-            else:
-                rq_collision_detection_active_time = rq_collision_detection_active_time + rq_controller_time_step
-                if rq_collision_detection_active_time >= 1.0:
-                    rq_collision_detection_active_time = 0.0
-                end
-            end
-        end
-
-        sync()
-
-    end
-  end
-
-  def rq_get_ft_sensor_state():
-    socket_open("127.0.0.1",63350,"rq_ft_sensor_state")
-    socket_send_string("CURRENT STATE", "rq_ft_sensor_state")
-    rq_sensor_state = socket_read_string("rq_ft_sensor_state")
-    socket_close("rq_ft_sensor_state")
-
-    if rq_sensor_state == "":
-      rq_sensor_state = "RQ_STATE_INIT"
-    end
-
-    return rq_sensor_state
-  end
-
-  def rq_ft_sensor_disconnected_warn_user():
-    socket_open("127.0.0.1",29999,"SensorWarning")
-    socket_send_string("popup FT Sensor must be connected to run this program.","SensorWarning")
-    socket_send_byte(10,"SensorWarning")
-    socket_close("SensorWarning")
-  end
-
-  def rq_ft_sensor_disconnected_stop_program():
-    socket_open("127.0.0.1", 30002, "rq_ft_sensor_stop_socket")
-
-    socket_send_string("def rq_ft_sensor_stop_program():", "rq_ft_sensor_stop_socket")
-    socket_send_byte(10, "rq_ft_sensor_stop_socket")
-    socket_send_string("  stopj(5.0)", "rq_ft_sensor_stop_socket")
-    socket_send_byte(10, "rq_ft_sensor_stop_socket")
-    socket_send_string("end", "rq_ft_sensor_stop_socket")
-    socket_send_byte(10, "rq_ft_sensor_stop_socket")
-
-    socket_close("rq_ft_sensor_stop_socket")
-  end
-
-  def rq_ft_sensor_disconnected_check():
-    if rq_get_ft_sensor_state() == "RQ_STATE_INIT":
-      rq_ft_sensor_disconnected_stop_program()
-      rq_ft_sensor_disconnected_warn_user()
-
-      return True
-    else:
-      return False
-    end
-  end
-
-  #RTDE input registers
-  TARGET_JOINT_0_INPUT_REGISTER_DOUBLE = 40
-  TARGET_JOINT_1_INPUT_REGISTER_DOUBLE = 41
-  TARGET_JOINT_2_INPUT_REGISTER_DOUBLE = 42
-  TARGET_JOINT_3_INPUT_REGISTER_DOUBLE = 43
-  TARGET_JOINT_4_INPUT_REGISTER_DOUBLE = 44
-  TARGET_JOINT_5_INPUT_REGISTER_DOUBLE = 45
-  FINISH_NODE_INPUT_REGISTER_INT32 = 40
-  LICENSING_ERROR_INPUT_REGISTER_INT32 = 41
-  ACTIVATION_NODE_COUNT_INPUT_REGISTER_INT32 = 42
-
-  #RTDE output registers
-  ACTIVE_NODE_OUTPUT_REGISTER_INT32 = 0
-  NODE_EXECUTION_OUTPUT_COUNT_INT32 = 1
-  ACTIVATION_NODE_COUNT_OUTPUT_REGISTER_INT32 = 2
-  TCP_FX_ACTUAL_OUTPUT_DOUBLE = 0
-  TCP_FY_ACTUAL_OUTPUT_DOUBLE = 1
-  TCP_FZ_ACTUAL_OUTPUT_DOUBLE = 2
-  TCP_MX_ACTUAL_OUTPUT_DOUBLE = 3
-  TCP_MY_ACTUAL_OUTPUT_DOUBLE = 4
-  TCP_MZ_ACTUAL_OUTPUT_DOUBLE = 5
-  GENERAL_OUTPUT_DOUBLE_6 = 6
-  GENERAL_OUTPUT_DOUBLE_7 = 7
-  GENERAL_OUTPUT_DOUBLE_8 = 8
-  GENERAL_OUTPUT_DOUBLE_9 = 9
-  GENERAL_OUTPUT_DOUBLE_10 = 10
-  GENERAL_OUTPUT_DOUBLE_11 = 11
-
-  write_output_integer_register(ACTIVE_NODE_OUTPUT_REGISTER_INT32, 0)
-  write_output_integer_register(NODE_EXECUTION_OUTPUT_COUNT_INT32, 0)
-  write_output_integer_register(ACTIVATION_NODE_COUNT_OUTPUT_REGISTER_INT32, 0)
-  write_output_float_register(TCP_FX_ACTUAL_OUTPUT_DOUBLE, 0)
-  write_output_float_register(TCP_FY_ACTUAL_OUTPUT_DOUBLE, 0)
-  write_output_float_register(TCP_FZ_ACTUAL_OUTPUT_DOUBLE, 0)
-  write_output_float_register(TCP_MX_ACTUAL_OUTPUT_DOUBLE, 0)
-  write_output_float_register(TCP_MY_ACTUAL_OUTPUT_DOUBLE, 0)
-  write_output_float_register(TCP_MZ_ACTUAL_OUTPUT_DOUBLE, 0)
-
-  global activation_node_count = 0
-  global node_execution_count = 0
-
-  def element_wise_subtract(l1, l2):
-    global r = l1
-    i=0
-    while i<length(r):
-      r[i]=l1[i]-l2[i]
-      i=i+1
-    end
-    return r
-  end
-
-  def list_by_scalar_multiply(l1, scalar):
-      global r = l1
-      i=0
-      while i<length(r):
-        r[i]=l1[i]*scalar
-        i=i+1
-      end
-      return r
-   end
-
-  def norm_inf(v):
-    norm = 0
-    i=0
-    while i<length(v):
-        n = norm(v[i])
-        if(n > norm):
-          norm = n
-        end
-      i=i+1
-    end
-    return norm
-  end
-
-  def active_and_reset_node(nodeId):
-    server_activation_node_count = read_input_integer_register(ACTIVATION_NODE_COUNT_INPUT_REGISTER_INT32)
-
-    activation_node_count = activation_node_count + 1
-    node_execution_count = 0
-    write_output_integer_register(NODE_EXECUTION_OUTPUT_COUNT_INT32, node_execution_count)
-    rq_active_node = nodeId
-    write_output_integer_register(ACTIVE_NODE_OUTPUT_REGISTER_INT32, nodeId)
-    write_output_integer_register(ACTIVATION_NODE_COUNT_OUTPUT_REGISTER_INT32, activation_node_count)
-
-    while server_activation_node_count == read_input_integer_register(ACTIVATION_NODE_COUNT_INPUT_REGISTER_INT32):
-      sync()
-    end
-  end
-
-  def execute_node(nodeId, startThread = False):
-    node_execution_thread = 0
-    active_and_reset_node(nodeId)
-    if startThread:
-      rq_target_joint_positions = get_actual_joint_positions()
-      movej(rq_target_joint_positions) # This movej is used to prevent the "another thread is already controlling the robot" error.
-      node_execution_thread = run execute_node_thread()
-    end
-    while not active_node_completed():
-      sync()
-    end
-    return node_execution_thread
-  end
-
-  def setup_node_execution_related_variables():
-    activation_node_count = 0
-    node_execution_count = 0
-    write_output_integer_register(ACTIVE_NODE_OUTPUT_REGISTER_INT32, 0)
-    write_output_integer_register(ACTIVATION_NODE_COUNT_OUTPUT_REGISTER_INT32, activation_node_count)
-    write_output_integer_register(NODE_EXECUTION_OUTPUT_COUNT_INT32, node_execution_count)
-    sync()
-  end
-
-  def start_node_executor():
-    setup_node_execution_related_variables()
-
-    succeeded = node_rpc_server.startnodeexecutor()
-    if not succeeded:
-      node_rpc_server.stopnodeexecutor()
-      succeeded = node_rpc_server.startnodeexecutor()
-      if not succeeded:
-        popup("RTDE interface cannot initialize. Make sure that Ethernet/IP adapter and Profinet are disabled, and that no other URCaps use the RTDE interface.", "Robotiq Copilot", error=True)
-        halt
-      end
-    end
-
-    hand_shake_xmlrpcserver()
-  end
-
-  def reset_node_executor():
-    setup_node_execution_related_variables()
-
-    succeeded = node_rpc_server.resetnodeexecutor()
-    if not succeeded:
-      popup("RTDE interface cannot initialize. Make sure that Ethernet/IP adapter and Profinet are disabled, and that no other URCaps use the RTDE interface.", "Robotiq Copilot", error=True)
-      halt
-    end
-
-    hand_shake_xmlrpcserver()
-  end
-
-  def hand_shake_xmlrpcserver():
-    timer_thread = run rq_elapsed_timer_ms()
-    sync()
-    node_execution_initialized = False
-    while (not node_execution_initialized) and (rq_elapsed_time < 100):
-      node_execution_initialized = (read_input_integer_register(FINISH_NODE_INPUT_REGISTER_INT32) == -1)
-      sync()
-    end
-    kill timer_thread
-
-    if (not node_execution_initialized):
-      popup("Node Execution initialization failed.", "Robotiq Copilot", error=True)
-      halt
-    end
-  end
-
-  thread execute_node_thread():
-    rq_target_joint_positions = get_actual_joint_positions()
-    servoj(rq_target_joint_positions)
-    while True:
-      new_rq_target_joint_positions = update_target_position()
-      joint_target_distances = element_wise_subtract(rq_target_joint_positions, new_rq_target_joint_positions)
-      max_joint_target_displacement = norm_inf(joint_target_distances)
-      if max_joint_target_displacement > 0.2:
-          textmsg("previous target position: ", rq_target_joint_positions)
-          textmsg("next target position: ", new_rq_target_joint_positions)
-          textmsg("max joint target displacement: ", max_joint_target_displacement)
-          popup("Node executor error: see Log tab for details", "Robotiq Copilot", False, True, True)
-          halt
-      end
-      servoj(new_rq_target_joint_positions, t=0.008, lookahead_time=rq_lookahead_time, gain=500)
-      rq_target_joint_positions = new_rq_target_joint_positions
-    end
-  end
-
-  # The thread below is used to prevent "another thread is already controlling the robot error".
-  # In some occasions, even a sleep(0.05) will not work so this is necessary (until fixed by UR).
-  # The thread is immediately killed to avoid unnecessary motion for the case of a parent node
-  # that modifies the servoj target joint positions.
-  def kill_thread( thread_id ):
-    kill thread_id
-    run_movej_thread = run movej_thread()
-    sync()
-    kill run_movej_thread
-  end
-
-  thread movej_thread():
-    movej(rq_target_joint_positions)
-  end
-
-  def active_node_completed():
-    return (read_input_integer_register(ACTIVATION_NODE_COUNT_INPUT_REGISTER_INT32) == activation_node_count) and
-           (read_input_integer_register(FINISH_NODE_INPUT_REGISTER_INT32) == rq_active_node)
-  end
-
-  def update_target_position():
-
-    if read_input_integer_register(LICENSING_ERROR_INPUT_REGISTER_INT32):
-        popup("Robotiq license error!", "Robotiq Copilot", error=True)
-        halt
-    end
-
-    new_rq_target_joint_positions = [0,0,0,0,0,0]
-    new_rq_target_joint_positions[0] = read_input_float_register(TARGET_JOINT_0_INPUT_REGISTER_DOUBLE)
-    new_rq_target_joint_positions[1] = read_input_float_register(TARGET_JOINT_1_INPUT_REGISTER_DOUBLE)
-    new_rq_target_joint_positions[2] = read_input_float_register(TARGET_JOINT_2_INPUT_REGISTER_DOUBLE)
-    new_rq_target_joint_positions[3] = read_input_float_register(TARGET_JOINT_3_INPUT_REGISTER_DOUBLE)
-    new_rq_target_joint_positions[4] = read_input_float_register(TARGET_JOINT_4_INPUT_REGISTER_DOUBLE)
-    new_rq_target_joint_positions[5] = read_input_float_register(TARGET_JOINT_5_INPUT_REGISTER_DOUBLE)
-
-    node_execution_count = node_execution_count + 1
-    write_output_integer_register(NODE_EXECUTION_OUTPUT_COUNT_INT32, node_execution_count)
-    return new_rq_target_joint_positions
-  end
-
-  def set_servoj_node_cmd(q):
-    write_output_float_register(GENERAL_OUTPUT_DOUBLE_6, q[0])
-    write_output_float_register(GENERAL_OUTPUT_DOUBLE_7, q[1])
-    write_output_float_register(GENERAL_OUTPUT_DOUBLE_8, q[2])
-    write_output_float_register(GENERAL_OUTPUT_DOUBLE_9, q[3])
-    write_output_float_register(GENERAL_OUTPUT_DOUBLE_10, q[4])
-    write_output_float_register(GENERAL_OUTPUT_DOUBLE_11, q[5])
-  end
-
-  def rq_collision_detection_start(force_limit = 140, torque_limit = 14, halt_on_collision = True):
-    rq_force_protect_urcap = force_limit
-    rq_torque_protect_urcap = torque_limit
-    rq_collision_detection_active_time = 0.0
-    rq_collision_detection_enabled = True
-    rq_halt_on_collision_detection = halt_on_collision
-  end
-
-  def rq_collision_detection_stop():
-    rq_collision_detection_enabled = False
-  end
-
-  def rq_on_collision_detection(message):
-    textmsg("Collision Detection. " + message)
-    popupTitle = "Collision Detection"
-    if rq_halt_on_collision_detection:
-      popup(message + " Program halt.", popupTitle, False, True, False)
-      halt
-    else:
-      popup(message + " Program suspend.", popupTitle, True, False, False)
-      socket_send_line("pause", "RQDashboardClient")
-      rq_collision_detection_active_time = rq_controller_time_step
-    end
-  end
-
-  ################################
-  # MAIN
-  ################################
-
-  run read_force()
-  start_node_executor()
-  
-  #***********************************************************************************************
-  # verify tap detection
-  #***********************************************************************************************
-  
-  def rq_tap_count(forces, high_threshold):
-  
-    low_threshold = 2
-    tapCount = 0
-    lookingForPeak = True
-    indexDown = 0
-  
-    i = 1
-    lastIndex = length(forces) - 1
-    while i <= lastIndex:
-  
-      deltaForce = forces[i] - forces[0]
-  
-     if lookingForPeak:
-        if deltaForce >  high_threshold:
-          lookingForPeak = False
-        end
-      else:
-        if deltaForce < low_threshold:
-          tapCount = tapCount + 1
-          lookingForPeak = True
-          indexDown = i
-        end
-      end
-      i = i + 1
-  
-    end
-  
-    if indexDown != lastIndex:
-      tapCount = 0
-    end
-  
-    return tapCount
-  
-  end
-  def shift_right(list, default_value = 0):
-  
-     i = length(list)-1
-     while (i > 0):
-        list[i]=list[i-1]
-        i=i-1
-     end
-     list[0] = default_value
-  
-     return list
-  end
-  
-  #***********************************************************************************************
-  # Wait for force reached
-  #***********************************************************************************************
-  # desired_wrench : desired wrench
-  # is_active      : list of 0 and 1, 1 : axis is controlled
-  # feature        : 0:base, 1:tcp
-  # timeout        : timeout in miliseconds
-  #***********************************************************************************************
-  def rq_wait_for_force_reached(desired_wrench, is_active, feature, timeout):
-  
-    feature_base = 0
-    feature_tool = 1
-    time_constant = 0.025
-    alpha = 1 - pow(2.718, -1.0 * get_steptime() / time_constant)
-  
-    thresholds = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-    minimal_thresholds = [1.0, 1.0, 1.0, 0.1, 0.1, 0.1]
-  
-    applied_wrench = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-    filtered_wrench = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-  
-    if (feature == feature_base):
-      applied_wrench = list_by_scalar_multiply(base_wrench, -1.0)
-    else:
-      applied_wrench = list_by_scalar_multiply(tcp_wrench, -1.0)
-    end
-    filtered_wrench = applied_wrench
-  
-    i = 0
-    while (i < 6):
-      if (is_active[i]):
-        thresholds[i] = 0.05 * norm(desired_wrench[i])
-        if thresholds[i] < minimal_thresholds[i]:
-          thresholds[i] = minimal_thresholds[i]
-        end
-      else:
-        thresholds[i] = 10000
-      end
-      i = i+1
-    end
-  
-   force_reached = False
-  
-   timer = 0
-  
-   while ((not force_reached) and (timer < timeout)):
-  
-      if (feature == feature_base):
-         applied_wrench = list_by_scalar_multiply(base_wrench, -1.0)
-      else:
-         applied_wrench = list_by_scalar_multiply(tcp_wrench, -1.0)
-      end
-  
-      i = 0
-      while (i < 6):
-        filtered_wrench[i] = (alpha * applied_wrench[i]) + ((1.0 - alpha) * filtered_wrench[i])
-        i = i+1
-      end
-  
-      force_reached = True
-  
-      i = 0
-      while ((i < 6) and force_reached):
-        error = norm(desired_wrench[i] - filtered_wrench[i])
-        if (error > thresholds[i]):
-          force_reached = False
-        end
-        i = i + 1
-      end
-  
-      timer = timer + get_steptime()
-  
-      sync()
-  
-    end
-  
-    return force_reached
-  end
-  #***********************************************************************************************
-  # verify click detection
-  #***********************************************************************************************
-  click_detection_children_ended = False
-  
-  def rq_click_detection(force_drop_threshold = 10, torque_drop_threshold = 1, force_radio_button_selected = True):
-  
-    current_norm = 0
-    drop_threshold = 0
-    norms = [0.0, 0.0, 0.0, 0.0, 0.0]
-    click_detected = False
-    wrench_indices = [0,0,0]
-  
-    if(force_radio_button_selected):
-      drop_threshold = force_drop_threshold
-      wrench_indices = [0,1,2]
-    else:
-      drop_threshold =torque_drop_threshold
-      wrench_indices = [3,4,5]
-    end
-  
-    while ((not click_detection_children_ended) and (not click_detected)):
-  
-      current_norm = norm([sensor_wrench[wrench_indices[0]], sensor_wrench[wrench_indices[1]], sensor_wrench[wrench_indices[2]]])
-  
-      norms[4] = norms[3]
-      norms[3] = norms[2]
-      norms[2] = norms[1]
-      norms[1] = norms[0]
-      norms[0] = current_norm
-  
-      avg_norm = (norms[2] + norms[3] + norms[4]) / 3.0
-  
-      #Check if clicking is detected with force
-      norm_drop = avg_norm - current_norm
-      if(norm_drop > drop_threshold):
-        textmsg("Click detected")
-        click_detected=True
-      else:
-        sleep(0.008)
-      end
-    end
-  
-    return click_detected
-  end
-  ###############################################################
-  # Script file used to define Robotiq functions for the Insertion node
-  # Version: 0.0.2
-  ###############################################################
-  
-  rq_ins_offset = p[0, 0, 0, 0, 0, 0]
-  rq_ins_start_pose = p[0, 0, 0, 0, 0, 0]
-  rq_actual_to_destination = p[0, 0, 0, 0, 0, 0]
-  rq_ins_destination =p[0, 0, 0, 0, 0, 0]
-  rq_ins_speed_setting = 0
-  rq_rotation_not_completed = False
-  rq_find_bottom_not_completed = False
-  rq_spiral_not_completed = False
-  
-  def ins_actual_force_urcap(direction="X+"):
-    axis = str_at(direction, 0)
-    if (axis == "x") or (axis == "X"):
-      return norm(get_applied_tcp_force(0))
-    elif (axis == "y") or (axis == "Y"):
-      return norm(get_applied_tcp_force(1))
-    elif (axis == "z") or (axis == "Z"):
-      return norm(get_applied_tcp_force(2))
-    else:
-      textmsg("ins_actual_force_urcap, invalid direction ", direction)
-    end
-  end
-  
-  def ins_actual_torque_urcap(direction = "Z+"):
-    if (direction == "X+") or (direction == "X-") or (direction == "X"):
-      return get_applied_tcp_force(3)
-    elif (direction == "Y+") or (direction == "Y-") or (direction == "Y"):
-      return get_applied_tcp_force(4)
-    else:
-      return get_applied_tcp_force(5)
-    end
-  
-  end
-  
-  def square(a):
-    return a*a
-  end
-  
-  def update_servoj_node_target(target_joint_pos):
-    set_servoj_node_cmd(target_joint_pos)
-    sync()
-  end
-  
-  def create_all_insertion_nodes():
-    global rq_insertion_force_node_id = node_rpc_server.createnewforcenode()
-    global rq_insertion_movej_node_id = node_rpc_server.createnewmovejnode()
-    global rq_insertion_servoj_node_id = node_rpc_server.createnewservojnode()
-    node_rpc_server.setparentid(rq_insertion_movej_node_id, rq_insertion_force_node_id)
-    node_rpc_server.setparentid(rq_insertion_servoj_node_id, rq_insertion_force_node_id)
-  end
-  
-  def get_offset_projected_in_spiral_plane(direction, current_pose, pose_ref):
-    axis = str_at(direction, 0)
-    axis_index = 0
-    if axis == "X":
-      axis_index = 0
-    elif axis == "Y":
-      axis_index = 1
-    elif axis == "Z":
-      axis_index = 2
-    else:
-      textmsg("get_offset_projected_in_spiral_plane, invalid direction ", direction)
-    end
-  
-    pose_offset = pose_trans( pose_inv(pose_ref), current_pose ) # current_pose and pose_ref should have the same orientations.
-                                                                 # pose_offset is returned expressed in pose_ref frame
-  
-    pose_offset[axis_index] = 0 # valeur en direction mise a zero
-    pose_offset[3] = 0 # valeur en Rx mise a zero
-    pose_offset[4] = 0 # valeur en Ry mise a zero
-    pose_offset[5] = 0 # valeur en Rz mise a zero
-  
-    return pose_offset
-  end
-  
-  def update_spiral_offset(direction, spiral_initial_pose, spiral_initial_pose_offset, spiral_initial_pose_offset_name):
-    pos_diff_tcp = get_offset_projected_in_spiral_plane(direction, get_actual_tcp_pose(), spiral_initial_pose)
-    spiral_initial_pose_offset = interpolate_pose(spiral_initial_pose_offset, pos_diff_tcp, 0.35)
-    storevar.setvariable(spiral_initial_pose_offset_name, spiral_initial_pose_offset)
-  end
-  
-  def determine_max_spiral_radius_from_actual_position(direction, spiral_initial_pose, max_radius):
-      dist_to_initial_pose = norm( get_offset_projected_in_spiral_plane(direction, get_actual_tcp_pose(), spiral_initial_pose))
-      if (max_radius > dist_to_initial_pose):
-        new_max_radius = max_radius - dist_to_initial_pose
-      else:
-        new_max_radius = 0
-      end
-  
-      return new_max_radius
-  end
-  
-  def insertion_compliant_move_urcap(axis = "Z",
-                                     direction_sign = 1,
-                                     compliant_insert_force_threshold = 20,
-                                     speed = 0.04,
-                                     feature = 1,
-                                     max_position_deviation = 0.1):
-    feature_base = 0
-    feature_tool = 1
-  
-    if axis == "X":
-      axis_index = 0
-    elif axis == "Y":
-      axis_index = 1
-    elif axis == "Z":
-      axis_index = 2
-    else:
-      textmsg("insertion_compliant_move_urcap, invalid direction ", axis)
-    end
-  
-    current_pose = get_actual_tcp_pose()
-    insertion_offset = p[0,0,0,0,0,0]
-    rq_actual_to_destination = pose_trans(pose_inv(current_pose), rq_ins_destination)
-    insertion_offset[axis_index] = rq_actual_to_destination[axis_index]
-    insertion_pose = pose_trans(current_pose, insertion_offset)
-    distance = point_dist(current_pose, insertion_pose)
-    number_of_steps = floor( distance / (speed * get_steptime()) ) + 1
-    alpha_step  = 1.0 / number_of_steps
-  
-    # initialize forcenode
-    node_execution_thread = initialise_force_node(position_controlled_direction = axis_index,
-                                                  feature = feature_tool,
-                                                  max_position_deviation = max_position_deviation)
-  
-    alpha = 0.0
-    surface_found = False
-    while (alpha <= 1.0) and (not surface_found):
-      alpha = alpha + alpha_step
-      interpolated_pose = interpolate_pose(current_pose, insertion_pose, alpha)
-      q0 = get_inverse_kin(interpolated_pose) # define waypoint target
-      update_servoj_node_target(q0)
-      force = 0
-      if feature == feature_base:
-        force = get_applied_base_force(axis_index)
-      elif feature == feature_tool:
-        force = get_applied_tcp_force(axis_index)
-      end
-      if (direction_sign * force) >= compliant_insert_force_threshold:
-        surface_found = True
-      end
-    end
-  
-    final_pos_reached = (alpha >= 1)
-  
-    kill_thread( node_execution_thread )
-  
-    return final_pos_reached
-  end # insertion_compliant_move_urcap
-  
-  def insert_spiral_find_hole(axis = "Z", direction_sign = 1,
-                              stop_force_threshold = 3,
-                              max_radius = 0.005,
-                              radius_incr_per_turn = 0.0003,
-                              peck_mode = False,
-                              tangential_speed = 0.005):
-  
-    if (stop_force_threshold < 0) or (stop_force_threshold > 40):
-      popup("stop_force_threshold parameter in Newton must be between 0 and 40 Newtons","ERROR rq_insert_spiral_urcap")
-      halt
-    end
-    if (max_radius < 0) or (max_radius > 0.05):
-      popup("max_radius parameter must be between 0 mm and 50 mm","ERROR rq_insert_spiral_urcap")
-      halt
-    end
-    if (radius_incr_per_turn < 0.00001) or (radius_incr_per_turn > 0.005):
-      popup("radius_incr_per_turn parameter in mm must be between 0.01 mm and 5 mm","ERROR rq_insert_spiral_urcap")
-      halt
-    end
-  
-    rq_spiral_not_completed = False
-  
-    ins_x = 0
-    ins_y = 0
-    ins_z = 0
-    ins_pose = p[0, 0, 0, 0, 0, 0]
-    ins_current_pos = p[0, 0, 0, 0, 0, 0]
-    ins_actual_angle = 0
-    ins_search_result = False
-    ins_radius_offset = 0
-    ins_PI = 3.14159
-    radius_inc_per_rad = radius_incr_per_turn / (2*ins_PI)
-    ins_actual_radius = 0.0001  #Start radius
-    ins_desired_arc_length = tangential_speed * rq_controller_time_step
-  
-    sync()
-    #Find the bore of the part
-    ins_current_pos = get_actual_tcp_pose()
-    sync()
-  
-    # if axis == "Z"
-    search_axis = 2
-    other_axis_A = 0
-    other_axis_B = 1
-    if (axis == "X"):
-      search_axis = 0
-      other_axis_A = 1
-      other_axis_B = 2
-    elif (axis == "Y"):
-      search_axis = 1
-      other_axis_A = 2
-      other_axis_B = 0
-    end
-  
-    #********************************************************************************************************************
-    #Spiral Search using any Axis
-    #********************************************************************************************************************
-    while ((ins_actual_radius <= max_radius) and (ins_actual_force_urcap(axis) >= stop_force_threshold)):
-      if peck_mode:
-        #Fragile mode, the robot rises between each new point
-        #Retreat from position
-        ins_pose[search_axis] = -0.002 * direction_sign
-        next_tcp_pose = pose_trans(ins_current_pos,ins_pose)
-        movej(next_tcp_pose)
-        sleep(0.1)
-        #Rotate
-        ins_desired_arc_length = 0.0005
-        delta_angle = ins_desired_arc_length / ins_actual_radius #small angle approximation
-        ins_actual_angle = ins_actual_angle + delta_angle
-  
-        ins_pose[other_axis_A] = cos( ins_actual_angle ) * ins_actual_radius
-        ins_pose[other_axis_B] = sin( ins_actual_angle ) * ins_actual_radius
-  
-        ins_actual_radius = ins_actual_angle * radius_inc_per_rad + ins_radius_offset
-        next_tcp_pose = pose_trans(ins_current_pos, ins_pose)
-        movej(next_tcp_pose)
-        sleep(0.1)
-        #Re-establish contact with the part
-        ins_pose[search_axis] = 0.0005 * direction_sign
-        next_tcp_pose = pose_trans(ins_current_pos, ins_pose)
-        movel(next_tcp_pose, a=0.6, v=rq_ins_speed_setting)
-        sleep(0.2)
-      else:
-        #standard mode: the Spiral_Search function will maintain contact between both mating parts at all times
-        ins_pose[other_axis_A] = cos( ins_actual_angle ) * ins_actual_radius
-        ins_pose[other_axis_B] = sin( ins_actual_angle ) * ins_actual_radius
-  
-        delta_angle = ins_desired_arc_length / ins_actual_radius
-        ins_actual_angle = ins_actual_angle + delta_angle
-        ins_actual_radius = ins_actual_angle * radius_inc_per_rad + ins_radius_offset
-        next_tcp_pose = pose_trans(ins_current_pos,ins_pose)
-        next_joint_pos = get_inverse_kin(next_tcp_pose)
-        servoj(next_joint_pos, 0.1, 0.1, rq_controller_time_step, 0.05, 500)
-      end
-    end # while loop
-    if (ins_actual_radius <= max_radius ):
-      ins_search_result = True
-    else:
-      ins_search_result = False
-      rq_spiral_not_completed = True
-    end
-    stopj(2)
-    return ins_search_result
-  
-  end # insert_spiral_find_hole
-  
-  ####################  SPIRAL #############################
-  def rq_insert_spiral_urcap(direction = "Z",
-                             stop_force_threshold = 3,
-                             max_radius = 0.005,
-                             radius_incr = 0.0003,
-                             peck_mode = False,
-                             tangential_speed = 0.005,
-                             compliant_insert_force_threshold = 10,
-                             spiral_initial_pose_offset_name = "defaultname",
-                             intelligent_approach_enabled = False):
-  
-    max_radius = max_radius / 1000 #TODO: change unit to meters and remove this line
-    radius_incr = radius_incr / 1000 #TODO: change unit to meters and remove this line
-  
-    if (rq_insertion_force_node_id == -1):
-      create_all_insertion_nodes()
-    end
-  
-    hole_found = False
-    spiral_bottom_target_reached = False
-    number_of_failed_spiral_tries = 0
-    number_of_spiral_tries_max = 5
-    max_position_deviation = max_radius
-  
-    # define the direction sign from rq_ins_destination
-    current_pose = get_actual_tcp_pose()
-    rq_actual_to_destination = pose_trans(pose_inv(current_pose), rq_ins_destination)
-    axis = str_at(direction, 0)
-    direction_sign = 1
-    direction = str_cat(axis,"+")
-    if axis == "X":
-      axis_index = 0
-    elif axis == "Y":
-      axis_index = 1
-    elif axis == "Z":
-      axis_index = 2
-    else:
-      textmsg("spiral insert, invalid direction ", direction)
-    end
-    if (rq_actual_to_destination[axis_index] < 0):
-      direction_sign = -1
-      direction = str_cat(axis,"-")
-    end
-  
-    # linearsearch param
-    lin_search_stop_force_threshold = compliant_insert_force_threshold
-    spiral_initial_pose = get_actual_tcp_pose()
-    if intelligent_approach_enabled:
-      #adjust position using previous succesfull insertion final position
-      spiral_initial_pose_offset = storevar.getvariable(spiral_initial_pose_offset_name, p[0,0,0,0,0,0])
-      spiral_initial_pose_refined = pose_trans(spiral_initial_pose, spiral_initial_pose_offset)
-      movel(spiral_initial_pose_refined, a = 0.1, v = 0.01)
-      sleep(0.01)
-    end
-    while ( (spiral_bottom_target_reached == False) and (number_of_failed_spiral_tries < number_of_spiral_tries_max) ):
-      rq_actual_to_destination = pose_trans(pose_inv(get_actual_tcp_pose()), rq_ins_destination)
-      max_distance = norm( rq_actual_to_destination[axis_index] )
-      contact_initiated = rq_linear_search_urcap(direction, lin_search_stop_force_threshold, tangential_speed, max_distance, 1)
-      if contact_initiated:
-        new_max_radius = determine_max_spiral_radius_from_actual_position(direction, spiral_initial_pose, max_radius)
-        hole_found = insert_spiral_find_hole(axis, direction_sign, stop_force_threshold, new_max_radius, radius_incr, peck_mode, tangential_speed)
-        if (hole_found == True): # if hole is found, try to insert
-          max_force_control_position_deviation = determine_max_spiral_radius_from_actual_position(direction, spiral_initial_pose, max_radius)
-          spiral_bottom_target_reached = insertion_compliant_move_urcap(axis, direction_sign, compliant_insert_force_threshold, tangential_speed, 1, max_force_control_position_deviation)
-          if spiral_bottom_target_reached:
-            if intelligent_approach_enabled:
-              update_spiral_offset(direction, spiral_initial_pose, spiral_initial_pose_offset, spiral_initial_pose_offset_name) # update actual hole position.
-            end
-          else:
-            textmsg("Insertion spiral: could not reach hole bottom")
-          end
-        else:
-          textmsg("Insertion error: hole was not found after contact")
-          break
-        end
-      else: # linear_search reached the teach position without contact
-          spiral_bottom_target_reached = True
-      end # if contact_initiated
-      number_of_failed_spiral_tries = number_of_failed_spiral_tries + 1
-    end # while
-    return (not spiral_bottom_target_reached)
-  end # rq_insert_spiral_urcap
-  
-  def insertion_finish_move_urcap(direction = "Z+"):
-    insertion_offset = p[0,0,0,0,0,0]
-    current_pose = get_actual_tcp_pose()
-    rq_actual_to_destination = pose_trans(pose_inv(current_pose), rq_ins_destination)
-    axis = str_at(direction, 0)
-    if axis == "X":
-      insertion_offset = p[rq_actual_to_destination[0],0,0,0,0,0]
-    elif axis == "Y":
-      insertion_offset = p[0,rq_actual_to_destination[1],0,0,0,0]
-    elif axis == "Z":
-      insertion_offset = p[0,0,rq_actual_to_destination[2],0,0,0]
-    else:
-      textmsg("insertion_finish_move_urcap, invalid direction ", direction)
-    end
-    insertion_pose = pose_trans(current_pose, insertion_offset)
-    movel(insertion_pose, a=0.05, v=rq_ins_speed_setting)
-  end
-  
-  def rq_xor(a, b):
-    return (a and not(b)) or (not(a) and b)
-  end
-  
-  def rq_adapt_force_control_to_direction(position_controlled_direction = 2, feature = 1, max_position_deviation = 0.1):
-    force_control_enabled_vector = [True, True, True, False, False, False]
-    force_control_enabled_vector[position_controlled_direction] = False
-    targetForce = [0, 0, 0, 0, 0, 0]
-    max_negative_deviation_vector = [-max_position_deviation, -max_position_deviation, -max_position_deviation, 0, 0, 0]
-    max_positive_deviation_vector = [max_position_deviation, max_position_deviation, max_position_deviation, 0, 0, 0]
-    max_negative_deviation_vector[position_controlled_direction] = 0
-    max_positive_deviation_vector[position_controlled_direction] = 0
-    adaptiveStiffness = True
-    setup_force_node_on_server(rq_insertion_force_node_id,
-                               feature, targetForce,
-                               force_control_enabled_vector,
-                               max_negative_deviation_vector,
-                               max_positive_deviation_vector,
-                               adaptiveStiffness)
-  end
-  
-  def initialise_force_node(position_controlled_direction = 2, feature = 1, max_position_deviation = 0.1):
-    movej(get_actual_joint_positions()) # This moveJ is used to prevent "another thread is already controlling the robot error".
-    rq_adapt_force_control_to_direction(position_controlled_direction = position_controlled_direction,
-                                        feature = 1,
-                                        max_position_deviation = max_position_deviation)
-    set_servoj_node_cmd(get_actual_joint_positions())
-    reset_node_executor()
-    active_and_reset_node(rq_insertion_force_node_id)
-    active_and_reset_node(rq_insertion_servoj_node_id)
-    node_execution_thread = run execute_node_thread()
-    return node_execution_thread
-  end
-  
-  ####################  ROTATIONAL #############################
-  def rq_insert_rotation_urcap(positive_rotation_desired = True,
-                               direction="Z",
-                               speed = 0.004,
-                               force_threshold = 10,
-                               rotation_speed = 5,
-                               max_angle_deg = 360,
-                               peck_mode = False,
-                               max_rotation_torque=1):
-  
-    speed = speed / 1000 # TODO: change speed input units to meters instead of mm and remove this line
-    max_force_control_position_deviation = 0.002 # TODO: add a parameter for this in the interface
-    max_torque_reached_counter_fail_threshold = 1/get_steptime() # try for about one second
-  
-    if (rq_insertion_force_node_id == -1):
-        create_all_insertion_nodes()
-    end
-  
-    # define the direction sign
-    rq_actual_to_destination = pose_trans(pose_inv(get_actual_tcp_pose()), rq_ins_destination)
-    axis = str_at(direction, 0)
-    direction_sign = 1
-    direction = str_cat(axis,"+")
-    if axis == "X":
-      rq_ins_offset = p[rq_actual_to_destination[0], 0, 0, 0, 0, 0]
-      rot_axe = 3
-      axis_index = 0
-    elif axis == "Y":
-      rq_ins_offset = p[0, rq_actual_to_destination[1], 0, 0, 0, 0]
-      rot_axe = 4
-      axis_index = 1
-    elif axis == "Z":
-      rq_ins_offset = p[0, 0, rq_actual_to_destination[2], 0, 0, 0]
-      rot_axe = 5
-      axis_index = 2
-    else:
-      textmsg("insertion: invalid direction ", direction)
-    end
-    if (rq_actual_to_destination[axis_index] < 0):
-      direction_sign = -1
-      direction = str_cat(axis,"-")
-      positive_rotation_desired = not positive_rotation_desired
-    end
-  
-    distance_to_destination = norm( rq_actual_to_destination[axis_index] )
-  
-    contact_with_piece_initiated = rq_linear_search_urcap(direction, force_threshold, speed, distance_to_destination, feature = 1)
-  
-    if( contact_with_piece_initiated ):
-  
-      # verify validity of user inputs
-      if ((rotation_speed <= 0) or (rotation_speed > 60)):
-        popup("rotation speed parameter in degrees / second must be between 0.01 and 60","ERROR rq_insert_rotation_urcap")
-        halt
-      elif ((max_rotation_torque < 0.01) or (max_rotation_torque > 15)):
-        popup("max_rotation_torque parameter in Newton-meter must be between 0.01 and 15","ERROR rq_insert_rotation_urcap")
-        halt
-      elif ((max_angle_deg <= 1) or (max_angle_deg > 360)):
-        popup("max angle parameter in degree must be between 1 and 360","ERROR rq_insert_rotation_urcap")
-        halt
-      end
-  
-      # initialize forcenode: adapt to direction
-      node_execution_thread = initialise_force_node(position_controlled_direction = axis_index,
-                                                    feature = 1,
-                                                    max_position_deviation = max_force_control_position_deviation)
-  
-      if positive_rotation_desired:
-        rot_direction_sign = 1
-      else:
-        rot_direction_sign = -1
-      end
-      rq_ins_speed_setting = speed
-      posrot = p[0,0,0,0,0,0]
-      max_rot_angle = d2r(max_angle_deg)
-      time_step_signed = rq_controller_time_step * rot_direction_sign * direction_sign
-      rot_step = d2r(rotation_speed) * time_step_signed
-      rot_step_5deg_per_second = d2r(5) * time_step_signed
-  
-      line_step = rq_ins_speed_setting * rq_controller_time_step * direction_sign
-      rot_actual_angle = 0
-      rot_actual_mode = 1 #1= linear, 2 = rotation
-      rot_actual_distance = 0
-      ins_rotation_initial_pose = get_actual_tcp_pose()
-      rq_actual_to_destination = pose_trans( pose_inv(ins_rotation_initial_pose), rq_ins_destination )
-      distance_to_destination = norm( rq_actual_to_destination[axis_index] )
-      global rq_insertion_max_torque_reached_counter = 0
-  
-      if peck_mode:
-        #peck mode
-        positive_rotation_computed = positive_rotation_desired
-        while ( (norm(rot_actual_distance) < distance_to_destination) and
-                (norm(rot_actual_angle) <= max_rot_angle) and
-                (rq_insertion_max_torque_reached_counter < max_torque_reached_counter_fail_threshold) ):
-          is_max_torque_reached = norm(get_applied_tcp_force(rot_axe)) > max_rotation_torque
-          if (ins_actual_force_urcap(direction) >= force_threshold):
-            #goes up
-            posrot[axis_index] = rot_actual_distance - 0.002 * direction_sign
-            next_tcp_pose = pose_trans(ins_rotation_initial_pose, posrot)
-            next_joint_pos = get_inverse_kin(next_tcp_pose)
-            node_rpc_server.movejdefinewaypoint(rq_insertion_movej_node_id, next_joint_pos, 0.4, 0.4)
-            execute_node(rq_insertion_movej_node_id, False )
-            #rotate
-            rot_actual_angle = compute_rotation_next_angle(rot_actual_angle, 285 * rot_step, is_max_torque_reached) # value of 285 define the peck mode "step size". determined ad oc
-            posrot[rot_axe] = rot_actual_angle
-            next_tcp_pose = pose_trans(ins_rotation_initial_pose, posrot)
-            next_joint_pos = get_inverse_kin(next_tcp_pose)
-            node_rpc_server.movejdefinewaypoint(rq_insertion_movej_node_id, next_joint_pos, 1, 1)
-            execute_node(rq_insertion_movej_node_id, False )
-            #go back in touch with the part
-            posrot[axis_index] = rot_actual_distance
-            next_tcp_pose = pose_trans(ins_rotation_initial_pose, posrot)
-            next_joint_pos = get_inverse_kin(next_tcp_pose)
-            node_rpc_server.movejdefinewaypoint(rq_insertion_movej_node_id, next_joint_pos, 0.4, 0.3)
-            execute_node(rq_insertion_movej_node_id, False )
-            sleep(0.1)
-          else:
-            rq_insertion_max_torque_reached_counter = 0
-            rot_actual_distance = rot_actual_distance + line_step
-            posrot[axis_index] = rot_actual_distance
-            next_tcp_pose = pose_trans(ins_rotation_initial_pose, posrot)
-            next_joint_pos = get_inverse_kin(next_tcp_pose)
-            update_servoj_node_target(next_joint_pos)
-            if (rq_active_node != rq_insertion_servoj_node_id):
-              active_and_reset_node(rq_insertion_servoj_node_id)
-            end
-          end # if
-        end # while
-      else:
-        #normal mode
-        while ( (norm(rot_actual_distance) <= distance_to_destination) and
-                (norm(rot_actual_angle) <= max_rot_angle) and
-                (rq_insertion_max_torque_reached_counter < max_torque_reached_counter_fail_threshold) ):
-          is_max_torque_reached = norm(get_applied_tcp_force(rot_axe)) > max_rotation_torque
-          if ( norm(get_applied_tcp_force(axis_index)) >= force_threshold ):
-            if (rot_actual_mode == 1):
-              rot_actual_distance = rot_actual_distance - line_step
-              posrot[axis_index] = rot_actual_distance
-            end
-            limited_rotation_step = limit_rotation_step_when_close_to_max_angle(rot_step, rot_step_5deg_per_second, max_rot_angle, rot_actual_angle)
-            rot_actual_angle = compute_rotation_next_angle(rot_actual_angle, limited_rotation_step, is_max_torque_reached)
-            posrot[rot_axe] = rot_actual_angle
-            rot_actual_mode = 2
-          else:
-            rq_insertion_max_torque_reached_counter = 0
-            rot_actual_distance = rot_actual_distance + line_step
-            posrot[axis_index] = rot_actual_distance
-            rot_actual_mode = 1
-          end # if
-          next_tcp_pose = pose_trans(ins_rotation_initial_pose, posrot)
-          next_joint_pos = get_inverse_kin(next_tcp_pose)
-          update_servoj_node_target(next_joint_pos)
-        end # while
-      end # if peck_mode
-  
-      kill_thread( node_execution_thread )
-      stopj(2)
-      rq_rotation_not_completed = ( (norm(rot_actual_angle) > max_rot_angle) or
-                                    (rq_insertion_max_torque_reached_counter >= max_torque_reached_counter_fail_threshold) )
-    else: # initial find_surface was unsuccessfull, assume a direct hit to target, which is a success
-      rq_rotation_not_completed = False
-    end # if contact_with_piece_initiated
-  
-    return rq_rotation_not_completed
-  end # insert rotation 2
-  
-  def limit_rotation_step_when_close_to_max_angle(rot_step, minimal_rot_step, max_rot_angle, rot_actual_angle):
-    rot_deceleration_angle_distance = d2r(3)
-    rot_direction = 1
-    if( rot_step < 0 ):
-      rot_direction = -1
-      rot_step = -1 * rot_step # get positive rot_step for calculation. Direction sign is re-introduced at the end.
-    end
-    angle_distance_to_max_rot_angle = max_rot_angle - norm(rot_actual_angle)
-    if( (angle_distance_to_max_rot_angle < rot_deceleration_angle_distance) and (rot_step > minimal_rot_step) ):
-      decelaration_slope = (rot_step - minimal_rot_step) / rot_deceleration_angle_distance
-      rot_step_limited = decelaration_slope * angle_distance_to_max_rot_angle + minimal_rot_step
-    else:
-      rot_step_limited = rot_step
-    end
-    return ( rot_direction * rot_step_limited )
-  end
-  
-  def compute_rotation_next_angle(current_angle, step, is_max_torque_reached):
-  #This function compute the rotation angle for rotational insertion by
-  # incrementing the current angle by the desired step size.
-  # If the maximal torque is reached, the rotation goes backward to
-  # return to a admissible torque. In the backward direction,
-  # a smaller step size is used to prevent constant oscillation between to steps
-    if (is_max_torque_reached):
-        rq_insertion_max_torque_reached_counter = rq_insertion_max_torque_reached_counter + 1
-        new_angle = current_angle - 0.8 * step
-    else:
-        new_angle = current_angle + step
-    end
-    return new_angle
-  end
-  
-  def center_one_axis(axis, lin_search_stop_force_threshold, speed, max_distance, feature):
-    # Initiate contact in forward direction
-    contact_initiated = rq_linear_search_urcap( str_cat(axis, "+"), lin_search_stop_force_threshold, speed, max_distance, feature)
-    if contact_initiated:
-      forward_contact_pose = get_actual_tcp_pose()
-      # Initiate contact in reverse direction
-      contact_initiated = rq_linear_search_urcap(str_cat(axis, "-"), lin_search_stop_force_threshold, speed, max_distance, feature)
-      if contact_initiated:
-        reverse_contact_pose = get_actual_tcp_pose()
-        # Go to average of contact points
-        pose_center_1 = interpolate_pose(forward_contact_pose, reverse_contact_pose, 0.5)
-        movel(pose_center_1, a=0.6, v=speed)
-      end
-    end
-    return contact_initiated
-  end
-  
-  def rq_insert_recenter_urcap(axis = "Z", max_distance = 0.1, speed = 0.005, feature = 1, lin_search_stop_force_threshold = 5):
-  
-    if (max_distance < 0) or (max_distance > 1):
-      popup("max_distance parameter in m must be between 0 and 1","ERROR rq_insert_recenter_urcap")
-      halt
-    elif (speed < 0.0001) or (speed > 0.5):
-      popup("max_radius parameter in mm must be between 0.0001m/s and 0.5m/s","ERROR rq_insert_recenter_urcap")
-      halt
-    end
-  
-    #--------------------------------------------------------------------------------------------------------------------
-    #For insertion in the X axis
-    #--------------------------------------------------------------------------------------------------------------------
-    if (axis == "X"):
-      recenter_axis_1 = "Y"
-      recenter_axis_2 = "Z"
-    #--------------------------------------------------------------------------------------------------------------------
-    #For insertion in the Y axis
-    #--------------------------------------------------------------------------------------------------------------------
-    elif (axis == "Y"):
-      recenter_axis_1 = "X"
-      recenter_axis_2 = "Z"
-    #--------------------------------------------------------------------------------------------------------------------
-    #For insertion in the Z axis
-    #--------------------------------------------------------------------------------------------------------------------
-    elif (axis == "Z"):
-      recenter_axis_1 = "X"
-      recenter_axis_2 = "Y"
-    end
-  
-    recenter_successfull = center_one_axis(recenter_axis_1, lin_search_stop_force_threshold, speed, max_distance, feature)
-    if recenter_successfull:
-      recenter_successfull = center_one_axis(recenter_axis_2, lin_search_stop_force_threshold, speed, max_distance, feature)
-    end
-  
-    if (recenter_successfull == False):
-      textmsg("rq_insert_recenter_urcap failed, could not initiate contact with piece")
-    end
-  
-    return recenter_successfull
-  end # rq_insert_recenter_urcap
-  
-  # ******************* MAIN of Insertion Preamble *******************
-  storevar.clearall()
-  global rq_insertion_force_node_id = -1
-  #************************************************
-  #Function:  rq_linear_search_urcap(direction="Z+", force[N] = 10, speed[m/s] = 0.004, max_distance[m] = 0.02)
-  #   Find a specific force in the direction of "direction".
-  #   Robot will move towards a max_distance from the current position in the tool frame
-  #   Return True if the force is detected during the robot motion
-  #
-  #************************************************
-  def rq_linear_search_urcap(direction="Z+", force_threshold = 10, speed = 0.004, max_distance = 0.02, feature = 0 ):
-  
-    if (max_distance > 2.0):
-      popup("maximum distance parameter in meters must be between 0 and 2.0","ERROR rq_linear_search_urcap")
-      halt
-    elif (speed < 0.0001) or (speed > 0.15):
-      popup("speed parameter in mm/s must be between 0.1 and 150","ERROR rq_linear_search_urcap")
-      halt
-    elif (force_threshold < 0.0) or (force_threshold > 200):
-      popup("Force parameter in Newtons must be between 0 and 200","ERROR rq_linear_search_urcap")
-      halt
-    elif (feature != 0) and (feature != 1):
-      popup("feature value should be 0 for base or 1 for tool","ERROR rq_linear_search_urcap")
-      halt
-    end
-  
-    feature_base = 0
-    feature_tool = 1
-    steptime = get_steptime()
-    force_index = 0
-  
-    axis = str_at(direction, 0)
-    sign = str_at(direction, 1)
-  
-    direction_sign = 1
-    if sign == "-":
-      direction_sign = -1
-      max_distance = max_distance * direction_sign
-    end
-  
-    pose_offset = p[0,0,0,0,0,0]
-    if (axis == "X") or (axis == "x"):
-      pose_offset = p[max_distance,0,0,0,0,0]
-      force_index = 0
-    elif (axis == "Y") or (axis == "y"):
-      pose_offset = p[0,max_distance,0,0,0,0]
-      force_index = 1
-    elif (axis == "Z") or (axis == "z"):
-      pose_offset = p[0,0,max_distance,0,0,0]
-      force_index = 2
-    else:
-      popup("direction parameter must be X+, X-, Y+, Y-, Z+ or Z-","ERROR rq_linear_search_urcap")
-      halt
-    end
-  
-    pose_from = get_actual_tcp_pose()
-    pose_to = pose_from
-    if feature == feature_base:
-      pose_to = pose_add(pose_from, pose_offset)
-    elif feature == feature_tool:
-      pose_to = pose_trans(pose_from, pose_offset)
-    end
-  
-    distance = point_dist(pose_from, pose_to)
-    number_pose_interpolate = floor(distance / (speed * steptime)) + 1
-    delta_alpha = 1.0 / number_pose_interpolate
-  
-    alpha = 0.0
-    local surface_found = False
-  
-    while (alpha <= 1.0) and (not surface_found):
-      alpha = alpha + delta_alpha
-      pose_interpolate = interpolate_pose(pose_from, pose_to, alpha)
-      servoj(get_inverse_kin(pose_interpolate), 0.1, 0.1, steptime, 0.05, 500)
-  
-      force = 0
-      if feature == feature_base:
-        force = get_applied_base_force(force_index)
-      elif feature == feature_tool:
-        force = get_applied_tcp_force(force_index)
-      end
-  
-      if (direction_sign * force) >= force_threshold:
-        surface_found = True
-      end
-    end
-  
-    return surface_found
-  
-  end
-  
-    ##############################################
-    # OFFSET FEATURE-RELATED VARIABLES AND METHODS
-    ##############################################
-    def cross_product(vector1,vector2):
-      v_temp=[0,0,0]
-      v_temp[0]=vector1[1]*vector2[2]-vector1[2]*vector2[1]
-      v_temp[1]=vector1[2]*vector2[0]-vector1[0]*vector2[2]
-      v_temp[2]=vector1[0]*vector2[1]-vector1[1]*vector2[0]
-      return v_temp
-    end
-  
-    def relocate_xyzr(init_feature, init_touch_pose, touch_pose):
-      init_touch_pose_2_init_feature = pose_trans( pose_inv(init_touch_pose), init_feature)
-      new_feature = pose_trans( touch_pose, init_touch_pose_2_init_feature )
-  
-      return new_feature
-    end
-  
-    def relocate_orientation(touch1_init_pose, touch2_init_pose, feature_init_pose, touch1_pose, touch2_pose):
-      #when relocating using 2 touch, the center of rotation is around touch point 1 (this could be changed)
-  
-      # initial touch2 pose in initial touch 1 pose frame:
-      touch2_initial_pose_in_touch1_initial_pose_frame = pose_trans(pose_inv(touch1_init_pose), touch2_init_pose)
-  
-      # find theoric touch2_pose if no rotation
-      touch2_pose_if_no_rotation = pose_trans(touch1_pose, touch2_initial_pose_in_touch1_initial_pose_frame)
-  
-      # vectors touch1 to touch2
-      touch1_pose_to_touch2_pose = pose_trans(pose_inv(touch1_pose), touch2_pose)
-      touch1_pose_to_touch2_pose_if_no_rotation = pose_trans(pose_inv(touch1_pose), touch2_pose_if_no_rotation)
-  
-      #angle axis calculation
-      normal_vector = cross_product(touch1_pose_to_touch2_pose_if_no_rotation, touch1_pose_to_touch2_pose)
-      normal_vector_norm = norm(normal_vector)
-      if (normal_vector_norm > 10e-6):
-        rotation_angle_rad = asin( normal_vector_norm / (norm(touch1_pose_to_touch2_pose_if_no_rotation) * norm(touch1_pose_to_touch2_pose) ) )
-        normal_vector_to_angle_axis_multiply_norm_factor = rotation_angle_rad / normal_vector_norm
-        angle_axis = [normal_vector[0] * normal_vector_to_angle_axis_multiply_norm_factor, normal_vector[1] * normal_vector_to_angle_axis_multiply_norm_factor, normal_vector[2] * normal_vector_to_angle_axis_multiply_norm_factor]
-        rotation_offset_pose = p[0, 0, 0, angle_axis[0], angle_axis[1], angle_axis[2]]
-  
-        #rotate touch1 pose using touch2 information
-        touch1_pose_rotated = pose_trans(touch1_pose, rotation_offset_pose)
-      else:
-        touch1_pose_rotated = touch1_pose
-      end
-  
-      # relocate the feature using touch1_rotated_pose
-      return relocate_xyzr(feature_init_pose, touch1_init_pose, touch1_pose_rotated)
-    end
-  
-    def relocate_1_touch(touch_init_pose, touch_pose, feature_init_pose, feature_actual_pose):
-      touch_initial_pose_in_initial_feature_frame = pose_trans(pose_inv(feature_init_pose), touch_init_pose)
-      touch_actual_pose_in_actual_feature_frame = pose_trans(pose_inv(feature_actual_pose), touch_pose)
-  
-      # difference between touch poses in their respective feature frame
-      touch_pose_offset = pose_sub(touch_actual_pose_in_actual_feature_frame, touch_initial_pose_in_initial_feature_frame)
-  
-      # remove all rotation from offset
-      touch_pose_offset[3] = 0
-      touch_pose_offset[4] = 0
-      touch_pose_offset[5] = 0
-  
-      # apply pose offset to actual feature
-      return pose_trans(feature_actual_pose, touch_pose_offset)
-    end
-    ##############################################
-    # PALLETIZER-RELATED VARIABLES AND METHODS
-    ##############################################
-    rq_total_box_count = 0
-    rq_current_box_count = 0
-    rq_pallet_one_current_box_count = 0
-    rq_pallet_two_current_box_count = 0
-    rq_pallet_one_current_box_count_updated = False
-    rq_pallet_two_current_box_count_updated = False
-    rq_is_pallet_program_started_once = False
-  
-    def rq_is_last_box_of_layer(box_id, end_of_layer_boxes):
-      number_of_layers = length(end_of_layer_boxes)
-      i = 0
-      while i < number_of_layers:
-        if box_id == end_of_layer_boxes[i]:
-          return True
-          break
-        end
-        i = i + 1
-      end
-      return False
-    end
-  
-    def rq_is_palletOne_activated(pallet_one_current_box_count, pallet_two_current_box_count, second_pallet_activated):
-      return ((pallet_one_current_box_count == 0) and (pallet_two_current_box_count == 0) and (not second_pallet_activated)) or (pallet_one_current_box_count > pallet_two_current_box_count)
-    end
-    global servojId = 2
-  rq_collision_detection_stop()
-  contactOffsetXmlRpcClient = rpc_factory("xmlrpc","http://localhost:37987")
-  palletizerXmlRpcClient = rpc_factory("xmlrpc","http://localhost:35773")
-  # end: URCap Installation Node
-  # begin: URCap Installation Node
-  #   Source: Robotiq_Grippers, 1.8.4.4844, Robotiq Inc.
+  #   Source: Robotiq_Grippers, 1.8.8.13523, Robotiq Inc.
   #   Type: Gripper
   rq_gripper_socket_ip_address = "127.0.0.1"
   rq_gripper_socket_port = 63352
@@ -2122,7 +579,7 @@ def network_test():
           rq_comm_write_variables()
   
           rq_gripper_communication_thread_started = True
-          sync()
+          sleep(0.008)
       end
   end
   
@@ -2218,6 +675,13 @@ def network_test():
       set_gripper_socket_open(gripper_socket, is_open)
   end
   
+  def rq_close_gripper_socket(gripper_socket="1"):
+      socket_close(gripper_socket)
+      set_gripper_socket_open(gripper_socket, False)
+      rq_set_gripper_connected(gripper_socket, False)
+  end
+  
+  
   def is_gripper_socket_open(gripper_socket="1"):
       return gripper_socket_open[rq_socket_to_index(gripper_socket)]
   end
@@ -2226,8 +690,8 @@ def network_test():
       gripper_socket_open[rq_socket_to_index(gripper_socket)] = is_open
   end
   
-  def rq_set_gripper_connected(gripper_id="1"):
-      gripper_connected[rq_socket_to_index(gripper_id)] = True
+  def rq_set_gripper_connected(gripper_socket="1", connected = True):
+      gripper_connected[rq_socket_to_index(gripper_socket)] = connected
   end
   
   def rq_is_gripper_connected(gripper_id="1"):
@@ -2724,7 +1188,7 @@ def network_test():
   
           while(not rq_get_var("ACT", 1, gripper_socket) == 0 or not rq_get_var("STA", 1, gripper_socket) == 0):
               rq_reset(gripper_socket)
-              sync()
+              sleep(0.008)
           end
   
           rq_set_var("ACT",1, gripper_socket)
@@ -2778,7 +1242,7 @@ def network_test():
       while(not rq_get_var("ACT", 1, gripper_socket) == 0 or not rq_get_var("STA", 1, gripper_socket) == 0):
           rq_set_var("ACT", 0, gripper_socket)
           rq_set_var("ATR", 0, gripper_socket)
-          sync()
+          sleep(0.008)
       end
   
       sleep(0.5)
@@ -2860,7 +1324,7 @@ def network_test():
   
       while (not rq_is_motion_complete(gripper_socket)):
           # wait for motion completed
-          sync()
+          sleep(0.008)
       end
   end
   
@@ -2869,7 +1333,7 @@ def network_test():
   
       while (gPRE != pos):
           rq_set_var("POS", pos, gripper_socket)
-          sync()
+          sleep(0.008)
           gPRE = rq_get_var("PRE", 3, gripper_socket)
       end
   end
@@ -2879,7 +1343,7 @@ def network_test():
   
       while (gPRE != pos):
           rq_set_pos_spe_for_var(pos, speed, force, gripper_socket)
-          sync()
+          sleep(0.008)
           gPRE = rq_get_var("PRE", 3, gripper_socket)
       end
   end
@@ -2890,7 +1354,7 @@ def network_test():
       # Wait for the gripper motion to complete
       while (not rq_is_motion_complete(gripper_socket)):
           # wait for motion completed
-          sync()
+          sleep(0.008)
           rq_set_var("GTO", 1, gripper_socket)
       end
   end
@@ -2898,7 +1362,7 @@ def network_test():
   def rq_wait(gripper_socket="1"):
       # Wait for the gripper motion to complete
       while (not rq_is_motion_complete(gripper_socket)):
-          sync()
+          sleep(0.008)
           # The following patch is for Robotiq's Camera issue when communication is lost, but not the activation
           # the communication driver reset the GTO bit
           rq_set_var("GTO", 1, gripper_socket)
@@ -2908,7 +1372,7 @@ def network_test():
   def rq_wait_for_object_detected(gripper_socket="1"):
       # Wait the object detection
       while (not rq_is_object_detected(gripper_socket)):
-          sync()
+          sleep(0.008)
       end
   end
   
@@ -3040,31 +1504,31 @@ def network_test():
   
   def rq_is_motion_complete(gripper_socket="1"):
       gOBJ = rq_get_var("OBJ", 1, gripper_socket)
-      sync()
+      sleep(0.008)
       return is_OBJ_gripper_at_position(gOBJ) or is_OBJ_object_detected(gOBJ)
   end
   
   def rq_is_gripper_activated(gripper_socket="1"):
       gSTA = rq_get_var("STA", 1, gripper_socket)
-      sync()
+      sleep(0.008)
       return is_STA_gripper_activated(gSTA)
   end
   
   def rq_is_object_detected(gripper_socket="1"):
       gOBJ = rq_get_var("OBJ", 1, gripper_socket)
-      sync()
+      sleep(0.008)
       return is_OBJ_object_detected(gOBJ)
   end
   
   def rq_current_pos(gripper_socket="1"):
       gPOS = rq_get_var("POS", 1, gripper_socket)
-      sync()
+      sleep(0.008)
       return gPOS
   end
   
   def rq_motor_current(gripper_socket="1"):
       rq_current = rq_get_var("COU", 1, gripper_socket)
-      sync()
+      sleep(0.008)
       return rq_current * 10
   end
   
@@ -3092,13 +1556,23 @@ def network_test():
       if(is_FLT_no_fault(gFLT)):
           textmsg("Gripper Fault : ", "No Fault (0x00)")
       elif (is_FLT_action_delayed(gFLT)):
-          textmsg("Gripper Fault : ", "Priority Fault: Action delayed, initialization must be completed prior to action (0x05)")
+          textmsg("Gripper Fault : ", "Priority Fault: Action delayed, initialization must be completed prior to performing the action (0x05)")
       elif (is_FLT_not_activated(gFLT)):
-          textmsg("Gripper Fault : ", "Priority Fault: The activation must be set prior to action (0x07)")
+          textmsg("Gripper Fault : ", "Priority Fault: The activation bit must be set prior to performing the action (0x07)")
+      elif (is_FLT_over_temperature(gFLT)):
+          textmsg("Gripper Fault : ", "Minor Fault: Maximum operating temperature exceeded (≥ 85°C internally), let cool down (below 80°C) (0x08)")
+      elif (is_FLT_no_communication(gFLT)):
+          textmsg("Gripper Fault : ", "Minor Fault: No communication during at least 1 second (0x09)")
+      elif (is_FLT_under_voltage(gFLT)):
+          textmsg("Gripper Fault : ", "Major Fault: Under minimum operating voltage (0x0A)")
       elif (is_FLT_autorelease_in_progress(gFLT)):
-          textmsg("Gripper Fault : ", "Minor Fault: Automatic release in progress (0x0B)")
+          textmsg("Gripper Fault : ", "Major Fault: Automatic release in progress (0x0B)")
+      elif (is_FLT_internal_fault(gFLT)):
+          textmsg("Gripper Fault : ", "Major Fault: Internal fault; contact support@robotiq.com (0x0C)")
+      elif (is_FLT_activation_error(gFLT)):
+          textmsg("Gripper Fault : ", "Major Fault: Activation fault; verify that no interference or other error occurred (0x0D)")
       elif (is_FLT_overcurrent(gFLT)):
-          textmsg("Gripper Fault : ", "Minor Fault: Overcurrent protection triggered (0x0E)")
+          textmsg("Gripper Fault : ", "Major Fault: Overcurrent triggered (0x0E)")
       elif (is_FLT_autorelease_completed(gFLT)):
           textmsg("Gripper Fault : ", "Major Fault: Automatic release completed (0x0F)")
       else:
@@ -3232,7 +1706,7 @@ def network_test():
   def rq_set_GTO_and_wait(value, gripper_socket="1"):
       rq_set_var("GTO" ,value, gripper_socket)
       while(not is_GTO(value, rq_get_var("GTO", 1, gripper_socket))):
-        sync()
+        sleep(0.008)
       end
   end
   
@@ -3266,8 +1740,28 @@ def network_test():
       return gFLT == 7
   end
   
+  def is_FLT_over_temperature(gFLT):
+      return gFLT == 8
+  end
+  
+  def is_FLT_no_communication(gFLT):
+      return gFLT == 9
+  end
+  
+  def is_FLT_under_voltage(gFLT):
+      return gFLT == 10
+  end
+  
   def is_FLT_autorelease_in_progress(gFLT):
       return gFLT == 11
+  end
+  
+  def is_FLT_internal_fault(gFLT):
+      return gFLT == 12
+  end
+  
+  def is_FLT_activation_error(gFLT):
+      return gFLT == 13
   end
   
   def is_FLT_overcurrent(gFLT):
@@ -3328,55 +1822,55 @@ def network_test():
   
       if (var_name == "ACT"):
           while(rq_write_act_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "GTO"):
           while(rq_write_gto_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "ATR"):
           while(rq_write_atr_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "ARD"):
           while(rq_write_ard_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "FOR"):
           while(rq_write_pos_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "SPE"):
           while(rq_write_pos_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "POS"):
           while(rq_write_pos_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "LBP"):
           while(rq_write_lbp_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "LRD"):
           while(rq_write_lrd_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "LBL"):
           while(rq_write_lbl_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "LGN"):
           while(rq_write_lgn_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "MSC"):
           while(rq_write_msc_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "MOD"):
           while(rq_write_mod_request[index]):
-              sync()
+              sleep(0.008)
           end
       end
   end
@@ -3403,7 +1897,7 @@ def network_test():
           rq_read_act_req[index] = True
           exit_critical
           while(rq_read_act_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_act[index]
   
@@ -3412,7 +1906,7 @@ def network_test():
           rq_read_gto_req[index] = True
           exit_critical
           while(rq_read_gto_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_gto[index]
   
@@ -3421,7 +1915,7 @@ def network_test():
           rq_read_for_req[index] = True
           exit_critical
           while(rq_read_for_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_for[index]
   
@@ -3430,7 +1924,7 @@ def network_test():
           rq_read_spe_req[index] = True
           exit_critical
           while(rq_read_spe_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_spe[index]
   
@@ -3439,7 +1933,7 @@ def network_test():
           rq_read_obj_req[index] = True
           exit_critical
           while(rq_read_obj_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_obj[index]
   
@@ -3448,7 +1942,7 @@ def network_test():
           rq_read_sta_req[index] = True
           exit_critical
           while(rq_read_sta_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_sta[index]
   
@@ -3457,7 +1951,7 @@ def network_test():
           rq_read_flt_req[index] = True
           exit_critical
           while(rq_read_flt_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_flt[index]
   
@@ -3466,7 +1960,7 @@ def network_test():
           rq_read_pos_req[index] = True
           exit_critical
           while(rq_read_pos_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_pos[index]
   
@@ -3475,7 +1969,7 @@ def network_test():
           rq_read_pre_req[index] = True
           exit_critical
           while(rq_read_pre_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_pre[index]
   
@@ -3484,7 +1978,7 @@ def network_test():
           rq_read_lbp_req[index] = True
           exit_critical
           while(rq_read_lbp_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_lbp[index]
   
@@ -3493,7 +1987,7 @@ def network_test():
           rq_read_lrd_req[index] = True
           exit_critical
           while(rq_read_lrd_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_lrd[index]
   
@@ -3502,7 +1996,7 @@ def network_test():
           rq_read_lbl_req[index] = True
           exit_critical
           while(rq_read_lbl_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_lbl[index]
   
@@ -3511,7 +2005,7 @@ def network_test():
           rq_read_lgn_req[index] = True
           exit_critical
           while(rq_read_lgn_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_lgn[index]
   
@@ -3520,7 +2014,7 @@ def network_test():
           rq_read_msc_req[index] = True
           exit_critical
           while(rq_read_msc_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_msc[index]
   
@@ -3529,7 +2023,7 @@ def network_test():
           rq_read_mod_req[index] = True
           exit_critical
           while(rq_read_mod_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_mod[index]
   
@@ -3538,7 +2032,7 @@ def network_test():
           rq_read_ncy_req[index] = True
           exit_critical
           while(rq_read_ncy_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_ncy[index]
   
@@ -3547,7 +2041,7 @@ def network_test():
           rq_read_pco_req[index] = True
           exit_critical
           while(rq_read_pco_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_pco[index]
   
@@ -3556,7 +2050,7 @@ def network_test():
           rq_read_dst_req[index] = True
           exit_critical
           while(rq_read_dst_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_dst[index]
   
@@ -3935,41 +2429,257 @@ def network_test():
   set_open_mm(50.0, 4)
   rq_current_limit_enabled = False
   while(not rq_gripper_communication_thread_started):
-      sync()
+      sleep(0.008)
   end
   # end: URCap Installation Node
-  global Waypoint_1_p=p[-.026201777289, -.417811331140, .164678729480, -2.476686796128, -.163068572060, -.053373754918]
-  global Waypoint_1_q=[1.2249382734298706, -1.2454803746989747, 1.778642479573385, -1.4731954050115128, -1.783273998891012, 2.7336344718933105]
-  global Waypoint_2_p=p[-.022569547241, -.506108167696, .514302555149, -3.013706591571, -.229228503918, .065751661796]
-  global Waypoint_2_q=[1.2253563404083252, -1.449801118378975, 1.0484712759601038, -1.0786560338786622, -1.6597541014300745, 2.6483891010284424]
   $ 1 "BeforeStart"
-  $ 2 "pcip≔'10.42.0.1'"
-  global pcip="10.42.0.1"
-  $ 3 "connection1≔ False "
+  $ 2 "Before the beginning"
+  # begin: URCap Program Node
+  #   Source: Robotiq_Grippers, 1.8.8.13523, Robotiq Inc.
+  #   Type: Gripper Activate
+  $ 3 "Gripper Activate"
+  
+  kill rq_gripper_communication_thread
+  rq_gripper_communication_thread_started = False
+  rq_close_gripper_socket("1")
+  rq_close_gripper_socket("2")
+  rq_close_gripper_socket("3")
+  rq_close_gripper_socket("4")
+  
+  rq_init_comm_if_connected(9, "1")
+  rq_init_comm_if_connected(2, "2")
+  rq_init_comm_if_connected(3, "3")
+  rq_init_comm_if_connected(4, "4")
+  rq_print_connected_grippers()
+  rq_gripper_communication_thread = run rq_gripper_communication()
+  
+  while(not rq_gripper_communication_thread_started):
+      sleep(0.008)
+  end
+  
+  rq_set_max_current_for_all_grippers()
+  
+  reset_and_activate = False
+  
+  rq_activate_all_grippers(False)
+  # end: URCap Program Node
+  # begin: URCap Program Node
+  #   Source: Robotiq_Grippers, 1.8.8.13523, Robotiq Inc.
+  #   Type: Gripper
+  $ 4 "Gripper Open (1)"
+  if not(gripper_connected[0]):
+    popup("Gripper 1 must be connected to run this program.", "No connection", False, True, True)
+  end
+  if not(rq_is_gripper_activated("1")):
+    popup("Gripper 1 is not activated. Go to Installation tab > Gripper to activate it and run the program again.", "Not activated", False, True, True)
+  end
+  rq_set_pos_spd_for(0, 0, 0, "1")
+  rq_wait_pos_spe_for_request(0, 0, 0, "1")
+  rq_go_to("1")
+  rq_wait("1")
+  # end: URCap Program Node
+  $ 5 "eka_auto≔ True "
+  global eka_auto=  True  
+  $ 6 "'Connect to the control device'"
+  # 'Connect to the control device'
+  $ 7 "pcip≔'192.168.100.5'"
+  global pcip="192.168.100.5"
+  $ 8 "connection1≔ False "
   global connection1=  False  
-  $ 4 "Loop  not connection1"
-  while (  not  connection1):
-    $ 5 "connection1≔socket_open(pcip,1201)"
+  $ 9 "Loop connection1≟ False "
+  while (connection1 ==   False  ):
+    $ 10 "connection1≔socket_open(pcip,1201)"
     global connection1=socket_open(pcip,1201)
   end
   while (True):
-    $ 6 "Robot Program"
-    $ 7 "socket_send_string('Test packet')"
-    socket_send_string("Test packet")
-    $ 8 "recieve_srv≔socket_read_string(timeout=0)"
-    global recieve_srv=socket_read_string(timeout=0)
-    $ 9 "If recieve_srv≟'1'"
-    if (recieve_srv == "1"):
-      $ 10 "MoveJ"
-      $ 11 "Waypoint_1" "breakAfter"
-      movej(get_inverse_kin(Waypoint_1_p, qnear=Waypoint_1_q), a=1.3962634015954636, v=1.0471975511965976)
-    else:
-      $ 12 "ElseIf recieve_srv≟'2'"
-      if (recieve_srv == "2"):
-        $ 13 "MoveJ"
-        $ 14 "Waypoint_2" "breakAfter"
-        movej(get_inverse_kin(Waypoint_2_p, qnear=Waypoint_2_q), a=1.3962634015954636, v=1.0471975511965976)
-      end
+    $ 11 "Robot Program"
+    $ 12 "'Receive order'"
+    # 'Receive order'
+    $ 13 "orders≔socket_read_string(timeout=0)"
+    global orders=socket_read_string(timeout=0)
+    $ 14 "If orders ≟ 'first'"
+    if (orders  ==  "first"):
+      $ 15 "eka_auto≔ True "
+      global eka_auto=  True  
     end
+    $ 16 "MoveJ"
+    $ 17 "start" "breakAfter"
+    movej(get_inverse_kin(p[-.387858136156, -.407222676361, -.032067542519, -.000106807623, -3.043922613793, .777239852502], qnear=[-2.2732937971698206, -1.9717934767352503, -2.157257858906881, -0.19079381624330694, 1.886892318725586, -0.6465566794024866]), a=2.0943951023931953, v=2.6179938779914944)
+    $ 18 "'look for a inbound car'"
+    # 'look for a inbound car'
+    # begin: URCap Program Node
+    #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
+    #   Type: Cam Locate
+    $ 19 "Cam Locate"
+    
+    ###########################################
+    #######VisionLocate node start########
+    
+    f=[0,0.0,0.0,0.0,0.0,0.0,0.0,0]
+    object_location=p[0.0,0.0,0.0,0.0,0.0,0.0]
+    feature_pose_to_restore_18677 = tvt19spl_calib
+    movej([-2.273234192525045, -1.9717934767352503, -2.157233540211813, -0.19072181383241826, 1.8869166374206543, -0.6465447584735315])
+    # Offset in translation only.
+    snapshot_position_offset[3] = 0
+    snapshot_position_offset[4] = 0
+    snapshot_position_offset[5] = 0
+    T_camera_in_flange = p[0, 0, 0, 0, 0, 0] # enlever une fois que l'enseignement du modele sera fait en faisant un movetool avec la pose de la camera dans le repere de la flange. Pour l'instant, on suppose que la camera est situee directement sur la flange.
+    tool_18677 = get_T_in_base_from_flange(T_camera_in_flange)
+    tool_18677 = pose_sub(tool_18677, snapshot_position_offset)
+    snapshot_position = p[-0.387841, -0.325753, 0.117139, -2.56449E-6, -3.04387, 0.777368]
+    textmsg("expected snapshot position : ", snapshot_position)
+    diff = pose_sub(tool_18677, snapshot_position)
+    textmsg("diff = ", diff)
+    is_at_snapshot_position = norm([diff[0], diff[1], diff[2]]) < 0.002
+    is_at_snapshot_position = is_at_snapshot_position and (norm([diff[3], diff[4], diff[5]]) < 0.005)
+    textmsg("is_at_snapshot_position = ", is_at_snapshot_position)
+    is_snapshot_position_offset = norm(snapshot_position_offset) != 0
+    is_at_snapshot_position = is_at_snapshot_position or ignore_snapshot_position
+    if not(is_at_snapshot_position):
+      popup("Robot is not at Snapshot Position. Add Move instruction to Snapshot Position before Camera Locate node.. Error code: [UCC-8]", warning = False, error = True)
+      halt
+    end
+    f_18677 = xmlrpc_server.findmodel("contextName-18677", tool_18677[0], tool_18677[1], tool_18677[2], tool_18677[3], tool_18677[4], tool_18677[5])
+    cam_locate_monitor.setFindModelResult("18677", f_18677)
+    canSaveImage = True
+    logging_service.publish("FIND_MODEL", f_18677)
+    cam_locate_monitor.setCurrentObjectIndex("18677", 0)
+    # begin: URCap Program Node
+    #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
+    #   Type: Cam Locate Loop
+    $ 20 "For object(s) found" "noBreak"
+    object_teaching_location_18677 = p[-0.3583504448136211, -0.2986989169773557, -0.12984172500295008, 0.00901385976097217, -3.1409051698516595, 0.002367949316274461]
+    feature_teaching_location_18677 = p[-0.3583504448136211, -0.2986989169773557, -0.12984172500295008, 3.139459357901666, -0.06191634673955471, -0.0010039244068104087]
+    while (not cam_locate_monitor.isCaptureNeeded("18677")):
+      poseAsArray = cam_locate_monitor.getCurrentObjectPoseAsArray("18677")
+      current_object_location_18677 = p[poseAsArray[0], poseAsArray[1], poseAsArray[2], poseAsArray[3], poseAsArray[4], poseAsArray[5]]
+      object_location = current_object_location_18677
+      f[0] = cam_locate_monitor.getNumberOfObjectsFound("18677")
+      f[1] = object_location[0]
+      f[2] = object_location[1]
+      f[3] = object_location[2]
+      f[4] = object_location[3]
+      f[5] = object_location[4]
+      f[6] = object_location[5]
+      f[7] = cam_locate_monitor.getCurrentObjectDetectionScore("18677")
+      textmsg("current_object_location = ", current_object_location_18677)
+      if (norm(snapshot_position_offset) != 0):
+        current_object_location_18677 = pose_add(current_object_location_18677, snapshot_position_offset)
+        textmsg("current_object_location after snapshot position offset = ", current_object_location_18677)
+      end
+      tvt19spl_calib = pose_trans(current_object_location_18677, pose_trans(pose_inv(object_teaching_location_18677), feature_teaching_location_18677))
+      $ 21 "approach_pos≔pose_trans(tvt19spl_calib, p[0, -0.003, -0.1, 0, 0, 1.57])" "noBreak"
+      global approach_pos= pose_trans (tvt19spl_calib, p[0, -0.003, -0.1, 0, 0, 1.57])
+      $ 22 "pickup_pos≔pose_trans(tvt19spl_calib, p[0, -0.003, 0.03, 0, 0, 1.57])" "noBreak"
+      global pickup_pos= pose_trans (tvt19spl_calib, p[0, -0.003, 0.03, 0, 0, 1.57])
+      $ 23 "MoveJ" "noBreak"
+      $ 24 "approach_pos" "noBreak"
+      movej(approach_pos, a=2.0943951023931953, v=2.6179938779914944)
+      $ 25 "MoveL" "noBreak"
+      $ 26 "pickup_pos" "noBreak"
+      movel(pose_trans(p[0.0,0.0,0.0,0.0,0.0,0.0], pickup_pos), a=1.5, v=0.3)
+      # begin: URCap Program Node
+      #   Source: Robotiq_Grippers, 1.8.8.13523, Robotiq Inc.
+      #   Type: Gripper
+      $ 27 "Gripper Close (1)" "noBreak"
+      if not(gripper_connected[0]):
+        popup("Gripper 1 must be connected to run this program.", "No connection", False, True, True)
+      end
+      if not(rq_is_gripper_activated("1")):
+        popup("Gripper 1 is not activated. Go to Installation tab > Gripper to activate it and run the program again.", "Not activated", False, True, True)
+      end
+      rq_set_pos_spd_for(255, 0, 0, "1")
+      rq_wait_pos_spe_for_request(255, 0, 0, "1")
+      rq_go_to("1")
+      rq_wait("1")
+      # end: URCap Program Node
+      $ 28 "approach_pos" "noBreak"
+      movel(pose_trans(p[0.0,0.0,0.0,0.0,0.0,0.0], approach_pos), a=1.5, v=0.3)
+      $ 29 "MoveJ" "noBreak"
+      $ 30 "more_clear" "noBreak"
+      movej(get_inverse_kin(p[-.061612831735, -.492014418593, .097221489447, -2.289533817478, 2.123487380598, -.029867273401], qnear=[-1.483671013508932, -1.6488898436175745, -1.9217799345599573, -1.140418831502096, 1.5926870107650757, -1.5642884413348597]), a=2.0943951023931953, v=2.6179938779914944)
+      $ 31 "approach_drop" "noBreak"
+      movej(get_inverse_kin(p[.812257174704, -.102276166034, .097201622529, -2.292297787422, -2.120687752896, -.030003718923], qnear=[0.0025893417187035084, -2.4409077803241175, -0.7347176710711878, -1.535492245350973, 1.5909863710403442, -3.0652032534228724]), a=2.0943951023931953, v=2.6179938779914944)
+      $ 32 "If eka_auto≟ True " "noBreak"
+      if (eka_auto ==   True  ):
+        $ 33 "MoveJ" "noBreak"
+        $ 34 "stackbottom" "noBreak"
+        movej(get_inverse_kin(p[.812032833305, -.102904505780, -.245618700960, -2.292453644802, -2.120719444188, -.029871877045], qnear=[0.0021815034560859203, -2.788694206868307, -0.9773533979998987, -0.945132080708639, 1.5937528610229492, -3.0685883204089563]), a=2.0943951023931953, v=2.6179938779914944)
+        # begin: URCap Program Node
+        #   Source: Robotiq_Grippers, 1.8.8.13523, Robotiq Inc.
+        #   Type: Gripper
+        $ 35 "Gripper Open (1)" "noBreak"
+        if not(gripper_connected[0]):
+          popup("Gripper 1 must be connected to run this program.", "No connection", False, True, True)
+        end
+        if not(rq_is_gripper_activated("1")):
+          popup("Gripper 1 is not activated. Go to Installation tab > Gripper to activate it and run the program again.", "Not activated", False, True, True)
+        end
+        rq_set_pos_spd_for(0, 0, 0, "1")
+        rq_wait_pos_spe_for_request(0, 0, 0, "1")
+        rq_go_to("1")
+        rq_wait("1")
+        # end: URCap Program Node
+        $ 36 "stackupper≔stackbottom" "noBreak"
+        global stackupper=p[.812032833305, -.102904505780, -.245618700960, -2.292453644802, -2.120719444188, -.029871877045]
+        $ 37 "eka_auto≔ False " "noBreak"
+        global eka_auto=  False  
+        $ 38 "stackexit" "noBreak"
+        movej(get_inverse_kin(p[.812260861033, -.102475109625, .067840429179, -2.292601177647, -2.120752530110, -.030023769506], qnear=[0.00243354681879282, -2.447819534932272, -0.7971952597247522, -1.4659259955035608, 1.5910344123840332, -3.065669600163595]), a=2.0943951023931953, v=2.6179938779914944)
+        $ 39 "'Alert control device about succesful delivery'" "noBreak"
+        # 'Alert control device about succesful delivery'
+        $ 40 "socket_send_string(1)" "noBreak"
+        socket_send_string(1)
+      else:
+        $ 41 "Else" "noBreak"
+        $ 42 "MoveJ" "noBreak"
+        $ 43 "stackupper≔pose_trans(stackupper, p[0, 0, -0.04, 0, 0, 0])" "noBreak"
+        global stackupper= pose_trans (stackupper, p[0, 0, -0.04, 0, 0, 0])
+        $ 44 "stackupper" "noBreak"
+        movej(stackupper, a=2.0943951023931953, v=2.6179938779914944)
+        # begin: URCap Program Node
+        #   Source: Robotiq_Grippers, 1.8.8.13523, Robotiq Inc.
+        #   Type: Gripper
+        $ 45 "Gripper Open (1)" "noBreak"
+        if not(gripper_connected[0]):
+          popup("Gripper 1 must be connected to run this program.", "No connection", False, True, True)
+        end
+        if not(rq_is_gripper_activated("1")):
+          popup("Gripper 1 is not activated. Go to Installation tab > Gripper to activate it and run the program again.", "Not activated", False, True, True)
+        end
+        rq_set_pos_spd_for(0, 0, 0, "1")
+        rq_wait_pos_spe_for_request(0, 0, 0, "1")
+        rq_go_to("1")
+        rq_wait("1")
+        # end: URCap Program Node
+        $ 46 "stackexit" "noBreak"
+        movej(get_inverse_kin(p[.812260861033, -.102475109625, .067840429179, -2.292601177647, -2.120752530110, -.030023769506], qnear=[0.00243354681879282, -2.447819534932272, -0.7971952597247522, -1.4659259955035608, 1.5910344123840332, -3.065669600163595]), a=2.0943951023931953, v=2.6179938779914944)
+        $ 47 "'Alert control device about succesful delivery'" "noBreak"
+        # 'Alert control device about succesful delivery'
+        $ 48 "socket_send_string(1)" "noBreak"
+        socket_send_string(1)
+      end
+      cam_locate_monitor.incrementIndex("18677")
+    end
+    # end: URCap Program Node
+    # begin: URCap Program Node
+    #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
+    #   Type: If no object found in Camera Locate
+    $ 49 "If no object found" "noBreak"
+    if (not cam_locate_monitor.hasFoundObjects("18677")):
+      f[0] = 0
+      $ 50 "'Packet was not found'" "noBreak"
+      # 'Packet was not found'
+      $ 51 "socket_send_string(0)" "noBreak"
+      socket_send_string(0)
+    end
+    # end: URCap Program Node
+    # Restore feature pose
+    tvt19spl_calib = feature_pose_to_restore_18677
+    
+    #######VisionLocate node end########
+    ###########################################
+    
+    # end: URCap Program Node
   end
 end

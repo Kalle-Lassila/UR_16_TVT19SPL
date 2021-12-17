@@ -1,2 +1,8 @@
 #
-#Tue Nov 16 08:46:14 CET 2021
+#Fri Dec 17 10:54:52 CET 2021
+korner3=p[0, 0, 0, 0, 0, 0]
+korner2=p[0, 0, 0, 0, 0, 0]
+exitti=p[0, 0, 0.05, 0, 0, 0]
+korner1=p[0, 0, 0, 0, 0, 0]
+approachi=p[0, 0, 0.05, 0, 0, 0]
+korner4=p[0, 0, 0, 0, 0, 0]

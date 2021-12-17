@@ -1,20 +1,5 @@
-def rear_table_pickup_system():
+def tvt19spl_auton_tunnistus_14():
   set_safety_mode_transition_hardness(1)
-  set_tool_communication(True, 115200, 0, 1, 1.5, 3.5)
-  set_tool_output_mode(0)
-  set_tool_digital_output_mode(0, 1)
-  set_tool_digital_output_mode(1, 1)
-  set_tool_voltage(24)
-  step_count_4d0d9de6_35e6_429e_bdc8_97d30a6c56a5 = 0.0
-  thread Step_Counter_Thread_d51852f5_4625_4663_a2f4_078efb56e2b7():
-    while (True):
-      step_count_4d0d9de6_35e6_429e_bdc8_97d30a6c56a5 = step_count_4d0d9de6_35e6_429e_bdc8_97d30a6c56a5 + 1.0
-      sync()
-    end
-  end
-  run Step_Counter_Thread_d51852f5_4625_4663_a2f4_078efb56e2b7()
-  set_target_payload(1.200000, [0.000000, 0.000000, 0.070000], [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000])
-  set_tcp(p[0.0,0.0,0.15800999999999998,0.0,0.0,0.0])
   set_standard_analog_input_domain(0, 1)
   set_standard_analog_input_domain(1, 1)
   set_tool_analog_input_domain(0, 1)
@@ -22,20 +7,37 @@ def rear_table_pickup_system():
   set_analog_outputdomain(0, 0)
   set_analog_outputdomain(1, 0)
   set_input_actions_to_default()
+  set_tcp(p[0.0,0.0,0.15800999999999998,0.0,0.0,0.0])
+  set_target_payload(1.200000, [0.000000, 0.000000, 0.070000], [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000])
+  step_count_249fcebd_7ef9_461e_b021_8edeaf21d557 = 0.0
+  thread Step_Counter_Thread_dfbb429a_9166_4a26_8ea6_c42b16c9ac05():
+    while (True):
+      step_count_249fcebd_7ef9_461e_b021_8edeaf21d557 = step_count_249fcebd_7ef9_461e_b021_8edeaf21d557 + 1.0
+      sync()
+    end
+  end
+  run Step_Counter_Thread_dfbb429a_9166_4a26_8ea6_c42b16c9ac05()
+  set_tool_communication(True, 115200, 0, 1, 1.5, 3.5)
+  set_tool_output_mode(0)
+  set_tool_digital_output_mode(0, 1)
+  set_tool_digital_output_mode(1, 1)
+  set_tool_voltage(24)
   set_gravity([0.0, 0.0, 9.82])
-  global Calib_1=p[-0.03623359862212251,-0.43018634925717064,-0.03267274488408867,0.01735573136442801,-3.1406031675345156,0.0016566374506637425]
+  global Cal_new_rear=p[0.0031186944848360836,0.39641669614071473,-0.019810894146271872,-3.124844919778621,0.015391197187678595,0.013117050726677989]
+  global Calib_1=p[-0.0053867573366070615,-0.47231310975799734,-0.006156285596003447,2.179984864745466,2.2620509304445613,-0.0022184701664275715]
   global Calib_2=p[0.0910613477843828,-0.4757037861226157,-0.02856616514693549,3.1398882140179585,-0.04891937033496491,-0.0021656608034391145]
   global Plane_1=p[0.4053735948869057,-0.28569707589610993,-0.1913,8.471973782555211E-4,-0.027711535111693088,-3.1413479618533833]
   global Plane_2=p[0.3888836801148317,-0.8063220222267695,-0.19076365043436722,-0.04177749153409525,0.002775087493024656,-0.0775856548502669]
   global Point_1=p[0.13466891259606373,-0.21188759550883418,0.05650625689013608,-0.040899323276067066,2.956589375001118,0.32941038828907643]
   global Point_2=p[0.00512392746783773,-0.48165788519059727,0.3703586905563553,1.877955397174551,1.9121767882284393,-0.579455009897847]
-  global cal_rear_table=p[0.004832258355760615,0.609261432464665,-0.10576786440338352,-2.028818732580312,2.392611470129047,0.028439735138273248]
+  global cal_new_rear=p[0.504266774875279,0.42332496113829865,-0.023527227003611772,-3.1248148024696043,-0.007252198988807349,0.012927581681035038]
+  global cal_rear_table=p[-0.01976929844002973,0.6458361323410323,-0.015448960993616754,-2.2243470804706256,2.2098463124264236,0.027724163935563133]
   global demo_alusta=p[0.141855513079771,-0.7999285132575794,-0.029827983293901666,-0.033427908390989525,3.107116249559726,-0.09839899925865152]
   global g54=p[0.2931578909513762,-0.4686351626381921,-0.04005107437907998,3.1415806652198035,-0.0013311045083307185,-9.531154633788048E-5]
   global gopigo_alusta=p[-0.0873182240575635,0.7124725438659446,-0.6405228516359519,-3.139762296804946,-0.05917106180462609,0.007734637256706361]
   global rear_table=p[0.0,0.0,0.0,0.0,0.0,0.0]
   # begin: URCap Installation Node
-  #   Source: Robotiq_Grippers, 1.8.4.4844, Robotiq Inc.
+  #   Source: Robotiq_Grippers, 1.8.8.13523, Robotiq Inc.
   #   Type: Vacuum
   #################################################
   # Vacuum Grip Check
@@ -85,7 +87,7 @@ def rear_table_pickup_system():
       socket_send_byte(10, "dashboardServerSocket")
       socket_close("dashboardServerSocket")
   
-      sync()
+      sleep(0.008)
     end
   end
   
@@ -102,7 +104,7 @@ def rear_table_pickup_system():
   
   def waitForVacuumGripCheckThreadStarted():
     while (not(vacuumGripCheckThreadStarted)):
-      sync()
+      sleep(0.008)
     end
     vacuumGripCheckThreadStarted = False
   end
@@ -155,7 +157,7 @@ def rear_table_pickup_system():
   
   def waitForStopPumpOnDistanceTravelledThreadStarted(gripper_socket="1"):
     while (not(stopPumpThreadStarted[rq_socket_to_index(gripper_socket)])):
-      sync()
+      sleep(0.008)
     end
   end
   
@@ -180,7 +182,7 @@ def rear_table_pickup_system():
           if (rq_is_vacuum_timeout(gripper_socket)):
               return False
           end
-          sync()
+          sleep(0.008)
       end
       return True
   end
@@ -190,7 +192,7 @@ def rear_table_pickup_system():
           if (rq_is_vacuum_timeout(gripper_socket)):
               return False
           end
-          sync()
+          sleep(0.008)
       end
       return True
   end
@@ -225,19 +227,19 @@ def rear_table_pickup_system():
   
   def rq_is_vacuum_obj_detected(gripper_socket="1"):
       gOBJ = rq_get_var("OBJ", 1, gripper_socket)
-      sync()
+      sleep(0.008)
       return is_vacuum_OBJ_object_detected(gOBJ)
   end
   
   def rq_is_vacuum_obj_secured(gripper_socket="1"):
       gOBJ = rq_get_var("OBJ", 1, gripper_socket)
-      sync()
+      sleep(0.008)
       return is_vacuum_OBJ_object_secured(gOBJ)
   end
   
   def rq_is_vacuum_obj_in_suction(gripper_socket="1"):
       gOBJ = rq_get_var("OBJ", 1, gripper_socket)
-      sync()
+      sleep(0.008)
   
       if(is_vacuum_OBJ_object_in_motion(gOBJ)):
           return True
@@ -248,7 +250,7 @@ def rear_table_pickup_system():
   
   def rq_is_vacuum_timeout(gripper_socket="1"):
       gFLT = rq_get_var("FLT", 2, gripper_socket)
-      sync()
+      sleep(0.008)
   
       if(gFLT ==6):
           return True
@@ -285,6 +287,24 @@ def rear_table_pickup_system():
       rq_set_pos_spd_for(pressure, timeout, minimum, gripper_socket)
   end
   
+  def rq_set_vacuum_and_wait(pressure, timeout, minimum, mode, gripper_socket="1"):
+      rq_set_pressure_timeout_minimum_vacuum(pressure, timeout, minimum, gripper_socket)
+      gPRE = rq_get_var("PRE", 3, gripper_socket)
+      while (gPRE != pressure):
+          rq_set_pressure_timeout_minimum_vacuum(pressure, timeout, minimum, gripper_socket)
+          sleep(0.008)
+          gPRE = rq_get_var("PRE", 3, gripper_socket)
+      end
+  
+      rq_set_gripper_mode(mode, gripper_socket)
+      gMOD = rq_get_var("MOD", 3, gripper_socket)
+      while (gMOD != mode):
+          rq_set_gripper_mode(mode, gripper_socket)
+          sleep(0.008)
+          gMOD = rq_get_var("MOD", 3, gripper_socket)
+     end
+  end
+  
   def is_FLT_vacuum_timeout(gFLT):
     if (gFLT == 6):
         return True
@@ -307,26 +327,28 @@ def rear_table_pickup_system():
   
   def rq_vacuum_release_raw(advanced_mode, pressure, minimum, timeout, shutoff_distance, wait_for_object_released, gripper_socket):
     rq_reset_fault_and_activate(gripper_socket)
-    rq_set_pressure_timeout_minimum_vacuum(pressure, timeout, minimum, gripper_socket)
   
     if advanced_mode:
-      rq_set_gripper_mode(1, gripper_socket)
+      rq_set_vacuum_and_wait(pressure, timeout, minimum, 1, gripper_socket)
     else:
-      rq_set_gripper_mode(0, gripper_socket)
+      rq_set_vacuum_and_wait(pressure, timeout, minimum, 0, gripper_socket)
     end
   
+    # The following patch is for Robotiq's Camera issue when communication is lost, but not the activation
+    # the communication driver reset the GTO bit
     rq_set_GTO_and_wait(1, gripper_socket)
   
     if wait_for_object_released:
       while (rq_is_vacuum_obj_detected(gripper_socket)):
-        rq_set_pressure_timeout_minimum_vacuum(pressure, timeout, minimum, gripper_socket)
   
         if advanced_mode:
-          rq_set_gripper_mode(1, gripper_socket)
+          rq_set_vacuum_and_wait(pressure, timeout, minimum, 1, gripper_socket)
         else:
-          rq_set_gripper_mode(0, gripper_socket)
+          rq_set_vacuum_and_wait(pressure, timeout, minimum, 0, gripper_socket)
         end
   
+        # The following patch is for Robotiq's Camera issue when communication is lost, but not the activation
+        # the communication driver reset the GTO bit
         rq_set_GTO_and_wait(1, gripper_socket)
         sleep(0.01)
       end
@@ -354,16 +376,13 @@ def rear_table_pickup_system():
     stopStopPumpOnDistanceTravelledThread(gripper_socket)
     rq_reset_fault_and_activate(gripper_socket)
   
-    rq_set_pressure_timeout_minimum_vacuum(pressure, timeout, minimum, gripper_socket)
-  
     if advanced_mode:
-      rq_set_gripper_mode(1, gripper_socket)
+      rq_set_vacuum_and_wait(pressure, timeout, minimum, 1, gripper_socket)
     else:
-      rq_set_gripper_mode(0, gripper_socket)
+      rq_set_vacuum_and_wait(pressure, timeout, minimum, 0, gripper_socket)
     end
   
     rq_set_GTO_and_wait(1, gripper_socket)
-  
   end
   
   def rq_reset_fault_and_activate(gripper_socket):
@@ -390,7 +409,7 @@ def rear_table_pickup_system():
   vacuumGripTimeoutMessage = "Grip has timed out"
   # end: URCap Installation Node
   # begin: URCap Installation Node
-  #   Source: Robotiq_Wrist_Camera, 1.10.2.5254, Robotiq Inc.
+  #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
   #   Type: Camera
   
   ###########################################
@@ -417,17 +436,17 @@ def rear_table_pickup_system():
   xmlrpc_server=rpc_factory("xmlrpc","http://127.0.0.1:4242")
   
   # Open connection with visual offset monitor
-  cam_locate_monitor=rpc_factory("xmlrpc","http://127.0.0.1:39621")
+  cam_locate_monitor=rpc_factory("xmlrpc","http://127.0.0.1:35539")
   
   # Open connection with visual offset monitor
-  visual_offset_monitor=rpc_factory("xmlrpc","http://127.0.0.1:40435")
+  visual_offset_monitor=rpc_factory("xmlrpc","http://127.0.0.1:33861")
   
   #######Vision urcap preamble end##########
   ###########################################
   
   # end: URCap Installation Node
   # begin: URCap Installation Node
-  #   Source: Robotiq_Copilot, 1.14.4.3276, Robotiq Inc.
+  #   Source: Robotiq_Copilot, 1.21.1.12738, Robotiq Inc.
   #   Type: Copilot
   ###############################################################
   # Script file used to communicate with Robotiq's ft sensor
@@ -437,6 +456,7 @@ def rear_table_pickup_system():
   node_rpc_server = rpc_factory("xmlrpc","http://127.0.0.1:4251/node")
   linalg = rpc_factory("xmlrpc","http://127.0.0.1:4251/linalg")
   storevar = rpc_factory("xmlrpc","http://127.0.0.1:4251/storevariable")
+  kinematics_rpc_server = rpc_factory("xmlrpc","http://127.0.0.1:4251/")
 
   global Fx = 0.0
   global Fy = 0.0
@@ -448,6 +468,12 @@ def rear_table_pickup_system():
   global tcp_wrench = [0,0,0,0,0,0]
   global base_wrench = [0,0,0,0,0,0]
   global rq_target_joint_positions = get_actual_joint_positions()
+  global rq_linear_axis_move_abs_target_position = 0.0
+  global rq_linear_axis_move_abs_target_speed = 0.0
+  global rq_linear_axis_move_abs_target_acc = 0.0
+  global rq_linear_axis_move_abs_target_decel = 0.0
+  global rq_linear_axis_move_absolute_thread = 0
+  global rq_linear_axis_move_absolute_thread_running = False
   global rq_ft_sensor_connected = False
   global rq_active_node = 0
   global rq_elapsed_time = 0
@@ -459,8 +485,9 @@ def rear_table_pickup_system():
   sensor_wrench = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
   rq_node_executor_thread_running = False
   rq_lookahead_time = 0.05
+  rq_continue_node_execution = True
 
-  rq_controller_time_step = get_steptime()
+  rq_controller_time_step = 0.008
 
   def pose_to_list(p):
     return [p[0], p[1], p[2], p[3], p[4], p[5]]
@@ -471,6 +498,64 @@ def rear_table_pickup_system():
      verify_path_answer(initPathAnswer)
      return initPathAnswer[0]
   end
+
+  def linear_axis_move_abs(target_position,
+                           target_speed,
+                           target_acceleration,
+                           target_deceleration,
+                           is_blocking):
+    rq_linear_axis_move_abs_target_position = target_position
+    rq_linear_axis_move_abs_target_speed = target_speed
+    rq_linear_axis_move_abs_target_acc = target_acceleration
+    rq_linear_axis_move_abs_target_decel = target_deceleration
+
+    if( rq_linear_axis_move_absolute_thread_running ):
+      kill rq_linear_axis_move_absolute_thread
+    end
+    rq_linear_axis_move_absolute_thread = run linear_axis_move_abs_thread()
+    if(is_blocking):
+      join rq_linear_axis_move_absolute_thread
+    end
+  end #linear_axis_move_abs
+
+  thread linear_axis_move_abs_thread():
+    rq_linear_axis_move_absolute_thread_running = True
+    timeout_in_milliseconds = 500
+    target_position_reached = False
+    number_of_done_status_received_while_not_at_target = 0
+
+    while( not target_position_reached ):
+      move_absolute_response = node_rpc_server.linearaxismove(rq_linear_axis_move_abs_target_position,
+                                                        rq_linear_axis_move_abs_target_speed,
+                                                        rq_linear_axis_move_abs_target_acc,
+                                                        rq_linear_axis_move_abs_target_decel,
+                                                        timeout_in_milliseconds)
+
+      if move_absolute_response == 0: # Done
+        position_tolerance = 1e-3
+        local position = node_rpc_server.linearaxisgetactualposition() # local because it is a variable under 15 chars that a user could have defined
+        target_position_reached = ( norm( position - rq_linear_axis_move_abs_target_position ) < position_tolerance )
+        if not target_position_reached:
+          number_of_done_status_received_while_not_at_target = number_of_done_status_received_while_not_at_target + 1
+          if ( number_of_done_status_received_while_not_at_target > 10 ): #When the move starts, it may take some time before the status changes from done to busy so we accept a certain number of done status without being at the target position
+            textmsg("error: target position should be reached when move absolute status is Done")
+          end
+        end
+      elif move_absolute_response == 1: # Normal (safeguard stopped, busy moving, or paused)
+        # do nothing
+      elif move_absolute_response == 2: # Error
+        textmsg("Linear axis absolute move error")
+        popup("Program paused because axis is not ready or the requested position is outside the allowed range.",
+              title="Linear axis move error", warning=False, error=True, blocking=True)
+        socket_send_line("pause", "RQDashboardClient") # If the axis is not ready, this allows the user to go fix it and then resume the program.
+        sleep(1.0) # The socket_send_line command is non-blocking, so we need to wait for the progam to pause.
+                   # Without the sleep, execution will continue and multiple popups and program pauses will be executed.
+      end
+
+      sleep(0.008)
+    end #while
+    rq_linear_axis_move_absolute_thread_running = False
+  end # linear_axis_move_abs_thread
 
   def setup_force_node_on_server(generic_rq_insertion_force_node_id = 1,
                                  feature=1,
@@ -493,26 +578,33 @@ def rear_table_pickup_system():
 
   def handle_path_node_error_code(initPathStatusCode):
     if initPathStatusCode == -1:
-      popup("Could not compute path with the selected options.", "Robotiq's FT Sensor", error=True)
+      popup("Could not compute path with the selected options.", "Robotiq's FT Sensor", blocking=True, error=True)
     elif initPathStatusCode == 1:
-      popup("Joint solution impossible. Change your starting position.", "Robotiq's FT Sensor", error=True)
+      popup("Joint solution impossible. Change your starting position.", "Robotiq's FT Sensor", blocking=True, error=True)
     elif initPathStatusCode == 2:
-      popup("Discontinuous path detected. Change your starting position.", "Robotiq's FT Sensor", error=True)
+      popup("Discontinuous path detected. Change your starting position.", "Robotiq's FT Sensor", blocking=True, error=True)
     elif initPathStatusCode == 3:
-      popup("Path time limit has been reached. Increase the speed of your path or break it down in multiple shorter paths.", "Robotiq's FT Sensor", error=True)
+      popup("Path time limit has been reached. Increase the speed of your path or break it down in multiple shorter paths.", "Robotiq's FT Sensor", blocking=True, error=True)
     elif initPathStatusCode == 4:
-      popup("Could not compute path with the selected options. Computing path timeout.", "Robotiq's FT Sensor", error=True)
+      popup("Could not compute path with the selected options. Computing path timeout.", "Robotiq's FT Sensor", blocking=True, error=True)
     elif initPathStatusCode == 5:
-      popup("Path computation was aborted.", "Robotiq's FT Sensor", error=True)
+      popup("Path computation was aborted.", "Robotiq's FT Sensor", blocking=True, error=True)
     elif initPathStatusCode == 6:
-      popup("A previous path computation is still in progress. Please try again in a few seconds.", "Robotiq's FT Sensor", error=True)
+      popup("A previous path computation is still in progress. Please try again in a few seconds.", "Robotiq's FT Sensor", blocking=True, error=True)
     elif initPathStatusCode == 7:
       textmsg("Path initialization error: Invalid path id.") # No popup needed in this case.
     elif initPathStatusCode == 8:
-      popup("Palletizer error: box number out of range.")
+      popup("Palletizer error: box number out of range.", blocking=True, error=True)
     elif initPathStatusCode == 9:
-      popup("Palletizer error: collision detected.")
+      popup("Palletizer error: collision detected.", blocking=True, error=True)
+    elif initPathStatusCode == 10:
+      popup("Palletizer error: boxes overlap in layer.", blocking=True, error=True)
+    elif initPathStatusCode == 11:
+      popup("Palletizer error: empty layer.", blocking=True, error=True)
+    elif initPathStatusCode != 0:
+      textmsg("Unexpected initPathStatusCode value : ", initPathStatusCode)
     end
+
     if initPathStatusCode != 0:
       halt
     end
@@ -536,7 +628,7 @@ def rear_table_pickup_system():
     timer = 0
 
     while (not is_sensor_steady) and (timer < timeout):
-      sleep(0.008)
+      sleep(rq_controller_time_step)
       timer = timer + 8
 
       i = 0
@@ -666,6 +758,9 @@ def rear_table_pickup_system():
         end
 
         sync()
+        sync()
+        sync()
+        sync()
 
     end
   end
@@ -722,25 +817,25 @@ def rear_table_pickup_system():
   TARGET_JOINT_4_INPUT_REGISTER_DOUBLE = 44
   TARGET_JOINT_5_INPUT_REGISTER_DOUBLE = 45
   FINISH_NODE_INPUT_REGISTER_INT32 = 40
-  LICENSING_ERROR_INPUT_REGISTER_INT32 = 41
+  RUNTIME_ERROR_INPUT_REGISTER_INT32 = 41
   ACTIVATION_NODE_COUNT_INPUT_REGISTER_INT32 = 42
 
   #RTDE output registers
-  ACTIVE_NODE_OUTPUT_REGISTER_INT32 = 0
-  NODE_EXECUTION_OUTPUT_COUNT_INT32 = 1
-  ACTIVATION_NODE_COUNT_OUTPUT_REGISTER_INT32 = 2
-  TCP_FX_ACTUAL_OUTPUT_DOUBLE = 0
-  TCP_FY_ACTUAL_OUTPUT_DOUBLE = 1
-  TCP_FZ_ACTUAL_OUTPUT_DOUBLE = 2
-  TCP_MX_ACTUAL_OUTPUT_DOUBLE = 3
-  TCP_MY_ACTUAL_OUTPUT_DOUBLE = 4
-  TCP_MZ_ACTUAL_OUTPUT_DOUBLE = 5
-  GENERAL_OUTPUT_DOUBLE_6 = 6
-  GENERAL_OUTPUT_DOUBLE_7 = 7
-  GENERAL_OUTPUT_DOUBLE_8 = 8
-  GENERAL_OUTPUT_DOUBLE_9 = 9
-  GENERAL_OUTPUT_DOUBLE_10 = 10
-  GENERAL_OUTPUT_DOUBLE_11 = 11
+  ACTIVE_NODE_OUTPUT_REGISTER_INT32 = 40
+  NODE_EXECUTION_OUTPUT_COUNT_INT32 = 41
+  ACTIVATION_NODE_COUNT_OUTPUT_REGISTER_INT32 = 42
+  TCP_FX_ACTUAL_OUTPUT_DOUBLE = 34
+  TCP_FY_ACTUAL_OUTPUT_DOUBLE = 35
+  TCP_FZ_ACTUAL_OUTPUT_DOUBLE = 36
+  TCP_MX_ACTUAL_OUTPUT_DOUBLE = 37
+  TCP_MY_ACTUAL_OUTPUT_DOUBLE = 38
+  TCP_MZ_ACTUAL_OUTPUT_DOUBLE = 39
+  GENERAL_OUTPUT_DOUBLE_40 = 40
+  GENERAL_OUTPUT_DOUBLE_41 = 41
+  GENERAL_OUTPUT_DOUBLE_42 = 42
+  GENERAL_OUTPUT_DOUBLE_43 = 43
+  GENERAL_OUTPUT_DOUBLE_44 = 44
+  GENERAL_OUTPUT_DOUBLE_45 = 45
 
   write_output_integer_register(ACTIVE_NODE_OUTPUT_REGISTER_INT32, 0)
   write_output_integer_register(NODE_EXECUTION_OUTPUT_COUNT_INT32, 0)
@@ -763,6 +858,16 @@ def rear_table_pickup_system():
       i=i+1
     end
     return r
+  end
+
+  def element_wise_add(l1, l2):
+    result = l1
+    i = 0
+    while i < length(result):
+      result[i] = l1[i] + l2[i]
+      i = i + 1
+    end
+    return result
   end
 
   def list_by_scalar_multiply(l1, scalar):
@@ -799,7 +904,7 @@ def rear_table_pickup_system():
     write_output_integer_register(ACTIVATION_NODE_COUNT_OUTPUT_REGISTER_INT32, activation_node_count)
 
     while server_activation_node_count == read_input_integer_register(ACTIVATION_NODE_COUNT_INPUT_REGISTER_INT32):
-      sync()
+      sleep(rq_controller_time_step)
     end
   end
 
@@ -809,6 +914,7 @@ def rear_table_pickup_system():
     if startThread:
       rq_target_joint_positions = get_actual_joint_positions()
       movej(rq_target_joint_positions) # This movej is used to prevent the "another thread is already controlling the robot" error.
+      rq_continue_node_execution = True
       node_execution_thread = run execute_node_thread()
     end
     while not active_node_completed():
@@ -823,7 +929,7 @@ def rear_table_pickup_system():
     write_output_integer_register(ACTIVE_NODE_OUTPUT_REGISTER_INT32, 0)
     write_output_integer_register(ACTIVATION_NODE_COUNT_OUTPUT_REGISTER_INT32, activation_node_count)
     write_output_integer_register(NODE_EXECUTION_OUTPUT_COUNT_INT32, node_execution_count)
-    sync()
+    sleep(rq_controller_time_step)
   end
 
   def start_node_executor():
@@ -856,11 +962,11 @@ def rear_table_pickup_system():
 
   def hand_shake_xmlrpcserver():
     timer_thread = run rq_elapsed_timer_ms()
-    sync()
+    sleep(rq_controller_time_step)
     node_execution_initialized = False
     while (not node_execution_initialized) and (rq_elapsed_time < 100):
       node_execution_initialized = (read_input_integer_register(FINISH_NODE_INPUT_REGISTER_INT32) == -1)
-      sync()
+      sleep(rq_controller_time_step)
     end
     kill timer_thread
 
@@ -873,9 +979,9 @@ def rear_table_pickup_system():
   thread execute_node_thread():
     rq_target_joint_positions = get_actual_joint_positions()
     servoj(rq_target_joint_positions)
-    while True:
+    while rq_continue_node_execution:
       new_rq_target_joint_positions = update_target_position()
-      joint_target_distances = element_wise_subtract(rq_target_joint_positions, new_rq_target_joint_positions)
+      joint_target_distances = element_wise_subtract(new_rq_target_joint_positions, rq_target_joint_positions)
       max_joint_target_displacement = norm_inf(joint_target_distances)
       if max_joint_target_displacement > 0.2:
           textmsg("previous target position: ", rq_target_joint_positions)
@@ -884,9 +990,18 @@ def rear_table_pickup_system():
           popup("Node executor error: see Log tab for details", "Robotiq Copilot", False, True, True)
           halt
       end
-      servoj(new_rq_target_joint_positions, t=0.008, lookahead_time=rq_lookahead_time, gain=500)
+
+      i = 1
+      while i < 5: # (servoj frequency)/(rtde frequency) = 500/125 = 4
+        rq_target_joint_positions_interpolated = element_wise_add( rq_target_joint_positions,
+                                                                   list_by_scalar_multiply(joint_target_distances, 0.25*i) )
+        servoj(rq_target_joint_positions_interpolated, t=get_steptime(), lookahead_time=rq_lookahead_time, gain=500)
+        i = i + 1
+      end
+
       rq_target_joint_positions = new_rq_target_joint_positions
     end
+    stopj(5)
   end
 
   # The thread below is used to prevent "another thread is already controlling the robot error".
@@ -896,7 +1011,7 @@ def rear_table_pickup_system():
   def kill_thread( thread_id ):
     kill thread_id
     run_movej_thread = run movej_thread()
-    sync()
+    sleep(rq_controller_time_step)
     kill run_movej_thread
   end
 
@@ -909,11 +1024,25 @@ def rear_table_pickup_system():
            (read_input_integer_register(FINISH_NODE_INPUT_REGISTER_INT32) == rq_active_node)
   end
 
+  def rq_handle_error_code(code):
+    message = "Runtime error!"
+
+    if code == 1:
+      message = "Robotiq license error!"
+    elif code == 2:
+      message = "Program stopped due to runtime error. Please restart the program."
+    end
+
+    popup(message, "Robotiq Copilot", error=True)
+    halt
+  end
+
   def update_target_position():
 
-    if read_input_integer_register(LICENSING_ERROR_INPUT_REGISTER_INT32):
-        popup("Robotiq license error!", "Robotiq Copilot", error=True)
-        halt
+    error_code = read_input_integer_register(RUNTIME_ERROR_INPUT_REGISTER_INT32)
+
+    if error_code != 0:
+      rq_handle_error_code(error_code)
     end
 
     new_rq_target_joint_positions = [0,0,0,0,0,0]
@@ -930,12 +1059,12 @@ def rear_table_pickup_system():
   end
 
   def set_servoj_node_cmd(q):
-    write_output_float_register(GENERAL_OUTPUT_DOUBLE_6, q[0])
-    write_output_float_register(GENERAL_OUTPUT_DOUBLE_7, q[1])
-    write_output_float_register(GENERAL_OUTPUT_DOUBLE_8, q[2])
-    write_output_float_register(GENERAL_OUTPUT_DOUBLE_9, q[3])
-    write_output_float_register(GENERAL_OUTPUT_DOUBLE_10, q[4])
-    write_output_float_register(GENERAL_OUTPUT_DOUBLE_11, q[5])
+    write_output_float_register(GENERAL_OUTPUT_DOUBLE_40, q[0])
+    write_output_float_register(GENERAL_OUTPUT_DOUBLE_41, q[1])
+    write_output_float_register(GENERAL_OUTPUT_DOUBLE_42, q[2])
+    write_output_float_register(GENERAL_OUTPUT_DOUBLE_43, q[3])
+    write_output_float_register(GENERAL_OUTPUT_DOUBLE_44, q[4])
+    write_output_float_register(GENERAL_OUTPUT_DOUBLE_45, q[5])
   end
 
   def rq_collision_detection_start(force_limit = 140, torque_limit = 14, halt_on_collision = True):
@@ -963,6 +1092,28 @@ def rear_table_pickup_system():
     end
   end
 
+  def round(number_to_round):
+    if number_to_round - floor(number_to_round) < 0.5:
+      return floor(number_to_round)
+    else:
+      return ceil(number_to_round)
+    end
+  end
+
+  def rq_execute_box_trajectory(nodeId, current_box_count, has_box_payload, end_pose_offset = p[0,0,0,0,0,0]):
+    payload_mass = get_target_payload()
+    payload_cog  = get_target_payload_cog()
+    flange_payload = [payload_mass, payload_cog[0], payload_cog[1], payload_cog[2]]
+
+    path_answer = node_rpc_server.initboxtrajectory(nodeId, current_box_count, has_box_payload, flange_payload, end_pose_offset)
+
+    verify_path_answer(path_answer)
+    reset_node_executor()
+    node_execution_thread = execute_node(nodeId, True)
+    rq_continue_node_execution = False
+    join node_execution_thread
+  end
+
   ################################
   # MAIN
   ################################
@@ -970,6 +1121,20 @@ def rear_table_pickup_system():
   run read_force()
   start_node_executor()
   
+  preparationErrorXmlRpcClient = rpc_factory("xmlrpc","http://localhost:34755")
+  contactOffsetXmlRpcClient = rpc_factory("xmlrpc","http://localhost:42127")
+  palletizerXmlRpcClient = rpc_factory("xmlrpc","http://localhost:45191")
+    ###############################################################
+    # Halt if a script preparation error occurred
+    ###############################################################
+    def checkForScriptPreparationException():
+      if(preparationErrorXmlRpcClient.hasErrorOccurred()):
+        popup(preparationErrorXmlRpcClient.getErrorMessage(), title=preparationErrorXmlRpcClient.getNodeInErrorTitle(), error=True, blocking=True)
+        halt
+      end
+    end
+  
+    checkForScriptPreparationException()
   #***********************************************************************************************
   # verify tap detection
   #***********************************************************************************************
@@ -1034,7 +1199,7 @@ def rear_table_pickup_system():
     feature_base = 0
     feature_tool = 1
     time_constant = 0.025
-    alpha = 1 - pow(2.718, -1.0 * get_steptime() / time_constant)
+    alpha = 1 - pow(2.718, -1.0 * rq_controller_time_step / time_constant)
   
     thresholds = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     minimal_thresholds = [1.0, 1.0, 1.0, 0.1, 0.1, 0.1]
@@ -1091,9 +1256,9 @@ def rear_table_pickup_system():
         i = i + 1
       end
   
-      timer = timer + get_steptime()
+      timer = timer + rq_controller_time_step
   
-      sync()
+      sleep(rq_controller_time_step)
   
     end
   
@@ -1138,7 +1303,7 @@ def rear_table_pickup_system():
         textmsg("Click detected")
         click_detected=True
       else:
-        sleep(0.008)
+        sleep(rq_controller_time_step)
       end
     end
   
@@ -1188,7 +1353,7 @@ def rear_table_pickup_system():
   
   def update_servoj_node_target(target_joint_pos):
     set_servoj_node_cmd(target_joint_pos)
-    sync()
+    sleep(rq_controller_time_step)
   end
   
   def create_all_insertion_nodes():
@@ -1226,7 +1391,7 @@ def rear_table_pickup_system():
   def update_spiral_offset(direction, spiral_initial_pose, spiral_initial_pose_offset, spiral_initial_pose_offset_name):
     pos_diff_tcp = get_offset_projected_in_spiral_plane(direction, get_actual_tcp_pose(), spiral_initial_pose)
     spiral_initial_pose_offset = interpolate_pose(spiral_initial_pose_offset, pos_diff_tcp, 0.35)
-    storevar.setvariable(spiral_initial_pose_offset_name, spiral_initial_pose_offset)
+    storevar.setvariablepose(spiral_initial_pose_offset_name, spiral_initial_pose_offset)
   end
   
   def determine_max_spiral_radius_from_actual_position(direction, spiral_initial_pose, max_radius):
@@ -1265,7 +1430,7 @@ def rear_table_pickup_system():
     insertion_offset[axis_index] = rq_actual_to_destination[axis_index]
     insertion_pose = pose_trans(current_pose, insertion_offset)
     distance = point_dist(current_pose, insertion_pose)
-    number_of_steps = floor( distance / (speed * get_steptime()) ) + 1
+    number_of_steps = floor( distance / (speed * rq_controller_time_step) ) + 1
     alpha_step  = 1.0 / number_of_steps
   
     # initialize forcenode
@@ -1333,10 +1498,10 @@ def rear_table_pickup_system():
     ins_actual_radius = 0.0001  #Start radius
     ins_desired_arc_length = tangential_speed * rq_controller_time_step
   
-    sync()
+    sleep(rq_controller_time_step)
     #Find the bore of the part
     ins_current_pos = get_actual_tcp_pose()
-    sync()
+    sleep(rq_controller_time_step)
   
     # if axis == "Z"
     search_axis = 2
@@ -1453,7 +1618,7 @@ def rear_table_pickup_system():
     spiral_initial_pose = get_actual_tcp_pose()
     if intelligent_approach_enabled:
       #adjust position using previous succesfull insertion final position
-      spiral_initial_pose_offset = storevar.getvariable(spiral_initial_pose_offset_name, p[0,0,0,0,0,0])
+      spiral_initial_pose_offset = storevar.getvariablepose(spiral_initial_pose_offset_name, p[0,0,0,0,0,0])
       spiral_initial_pose_refined = pose_trans(spiral_initial_pose, spiral_initial_pose_offset)
       movel(spiral_initial_pose_refined, a = 0.1, v = 0.01)
       sleep(0.01)
@@ -1551,7 +1716,7 @@ def rear_table_pickup_system():
   
     speed = speed / 1000 # TODO: change speed input units to meters instead of mm and remove this line
     max_force_control_position_deviation = 0.002 # TODO: add a parameter for this in the interface
-    max_torque_reached_counter_fail_threshold = 1/get_steptime() # try for about one second
+    max_torque_reached_counter_fail_threshold = 1/rq_controller_time_step # try for about one second
   
     if (rq_insertion_force_node_id == -1):
         create_all_insertion_nodes()
@@ -1824,7 +1989,7 @@ def rear_table_pickup_system():
   
     feature_base = 0
     feature_tool = 1
-    steptime = get_steptime()
+    steptime = rq_controller_time_step
     force_index = 0
   
     axis = str_at(direction, 0)
@@ -1866,9 +2031,18 @@ def rear_table_pickup_system():
     alpha = 0.0
     local surface_found = False
   
-    while (alpha <= 1.0) and (not surface_found):
-      alpha = alpha + delta_alpha
-      pose_interpolate = interpolate_pose(pose_from, pose_to, alpha)
+    pose_step = 0
+    end_pose_pause_time = 0.2 # to refine
+    max_pose_steps = number_pose_interpolate + end_pose_pause_time/steptime
+    while (pose_step < max_pose_steps) and (not surface_found):
+      pose_step = pose_step + 1
+      alpha = pose_step * delta_alpha
+      if (alpha < 1.0):
+        pose_interpolate = interpolate_pose(pose_from, pose_to, alpha)
+      else:
+        pose_interpolate = pose_to
+      end
+  
       servoj(get_inverse_kin(pose_interpolate), 0.1, 0.1, steptime, 0.05, 500)
   
       force = 0
@@ -1953,21 +2127,26 @@ def rear_table_pickup_system():
       return pose_trans(feature_actual_pose, touch_pose_offset)
     end
     ##############################################
+    # PALLETIZER INITIALIZATION
+    ##############################################
+    if(not palletizerXmlRpcClient.acknowledgePalletStates()):
+      checkForScriptPreparationException()
+      halt
+    end
+  
+    ##############################################
     # PALLETIZER-RELATED VARIABLES AND METHODS
     ##############################################
-    rq_total_box_count = 0
-    rq_current_box_count = 0
-    rq_pallet_one_current_box_count = 0
-    rq_pallet_two_current_box_count = 0
-    rq_pallet_one_current_box_count_updated = False
-    rq_pallet_two_current_box_count_updated = False
-    rq_is_pallet_program_started_once = False
-  
-    def rq_is_last_box_of_layer(box_id, end_of_layer_boxes):
+    def rq_is_last_box_of_layer(box_id, end_of_layer_boxes, is_depalletizing):
       number_of_layers = length(end_of_layer_boxes)
+      if is_depalletizing:
+        boxes_on_pallet = end_of_layer_boxes[number_of_layers - 1] - box_id
+      else:
+        boxes_on_pallet = box_id
+      end
       i = 0
       while i < number_of_layers:
-        if box_id == end_of_layer_boxes[i]:
+        if boxes_on_pallet == end_of_layer_boxes[i]:
           return True
           break
         end
@@ -1976,16 +2155,50 @@ def rear_table_pickup_system():
       return False
     end
   
-    def rq_is_palletOne_activated(pallet_one_current_box_count, pallet_two_current_box_count, second_pallet_activated):
-      return ((pallet_one_current_box_count == 0) and (pallet_two_current_box_count == 0) and (not second_pallet_activated)) or (pallet_one_current_box_count > pallet_two_current_box_count)
+    palletizerXmlRpcClient.setCurrentPalletizerNode("")
+  
+    def rq_get_nb_processed_boxes():
+      rq_palletizer_uuid = palletizerXmlRpcClient.getCurrentPalletizerNode()
+      if rq_palletizer_uuid == "":
+        popup("rq_get_nb_processed_boxes() should only be called from within a Palletizer node.", title="Palletizer", error=True, blocking=True)
+        halt
+      end
+  
+      rq_box_count = palletizerXmlRpcClient.getCurrentBoxCount(rq_palletizer_uuid)
+      if rq_box_count == -1:
+        popup("Invalid Palletizer node id used for rq_get_nb_processed_boxes()", title="Palletizer", error=True, blocking=True)
+        halt
+      end
+      return rq_box_count
+    end
+  
+    def rq_demo_mode_switch_palletizer_mode():
+      palletizerXmlRpcClient.demoModeFakePalletSwapAndAndSwitchPalletizerMode()
+    end
+    ###############################################################
+    # Linear Axis Move related methods
+    ###############################################################
+    def verify_is_in_linear_axis_range(target_axis_position):
+      axis_position_range = node_rpc_server.linearaxisgetpositionrange()
+  
+      if target_axis_position < axis_position_range[0] or target_axis_position > axis_position_range[1]:
+        textmsg("Linear axis target position : ", target_axis_position)
+        textmsg("Linear axis position range : ", axis_position_range)
+        popup("Linear axis position is unreachable.", "Linear Axis Move", blocking=True, error=True)
+        halt
+      end
+    end
+  
+    def rq_get_linear_axis_pos():
+        axis_position = node_rpc_server.linearaxisgetactualposition()
+        textmsg("Linear axis actual position : ", axis_position)
+        return axis_position
     end
     global servojId = 2
   rq_collision_detection_stop()
-  contactOffsetXmlRpcClient = rpc_factory("xmlrpc","http://localhost:37987")
-  palletizerXmlRpcClient = rpc_factory("xmlrpc","http://localhost:35773")
   # end: URCap Installation Node
   # begin: URCap Installation Node
-  #   Source: Robotiq_Grippers, 1.8.4.4844, Robotiq Inc.
+  #   Source: Robotiq_Grippers, 1.8.8.13523, Robotiq Inc.
   #   Type: Gripper
   rq_gripper_socket_ip_address = "127.0.0.1"
   rq_gripper_socket_port = 63352
@@ -2122,7 +2335,7 @@ def rear_table_pickup_system():
           rq_comm_write_variables()
   
           rq_gripper_communication_thread_started = True
-          sync()
+          sleep(0.008)
       end
   end
   
@@ -2218,6 +2431,13 @@ def rear_table_pickup_system():
       set_gripper_socket_open(gripper_socket, is_open)
   end
   
+  def rq_close_gripper_socket(gripper_socket="1"):
+      socket_close(gripper_socket)
+      set_gripper_socket_open(gripper_socket, False)
+      rq_set_gripper_connected(gripper_socket, False)
+  end
+  
+  
   def is_gripper_socket_open(gripper_socket="1"):
       return gripper_socket_open[rq_socket_to_index(gripper_socket)]
   end
@@ -2226,8 +2446,8 @@ def rear_table_pickup_system():
       gripper_socket_open[rq_socket_to_index(gripper_socket)] = is_open
   end
   
-  def rq_set_gripper_connected(gripper_id="1"):
-      gripper_connected[rq_socket_to_index(gripper_id)] = True
+  def rq_set_gripper_connected(gripper_socket="1", connected = True):
+      gripper_connected[rq_socket_to_index(gripper_socket)] = connected
   end
   
   def rq_is_gripper_connected(gripper_id="1"):
@@ -2724,7 +2944,7 @@ def rear_table_pickup_system():
   
           while(not rq_get_var("ACT", 1, gripper_socket) == 0 or not rq_get_var("STA", 1, gripper_socket) == 0):
               rq_reset(gripper_socket)
-              sync()
+              sleep(0.008)
           end
   
           rq_set_var("ACT",1, gripper_socket)
@@ -2778,7 +2998,7 @@ def rear_table_pickup_system():
       while(not rq_get_var("ACT", 1, gripper_socket) == 0 or not rq_get_var("STA", 1, gripper_socket) == 0):
           rq_set_var("ACT", 0, gripper_socket)
           rq_set_var("ATR", 0, gripper_socket)
-          sync()
+          sleep(0.008)
       end
   
       sleep(0.5)
@@ -2860,7 +3080,7 @@ def rear_table_pickup_system():
   
       while (not rq_is_motion_complete(gripper_socket)):
           # wait for motion completed
-          sync()
+          sleep(0.008)
       end
   end
   
@@ -2869,7 +3089,7 @@ def rear_table_pickup_system():
   
       while (gPRE != pos):
           rq_set_var("POS", pos, gripper_socket)
-          sync()
+          sleep(0.008)
           gPRE = rq_get_var("PRE", 3, gripper_socket)
       end
   end
@@ -2879,7 +3099,7 @@ def rear_table_pickup_system():
   
       while (gPRE != pos):
           rq_set_pos_spe_for_var(pos, speed, force, gripper_socket)
-          sync()
+          sleep(0.008)
           gPRE = rq_get_var("PRE", 3, gripper_socket)
       end
   end
@@ -2890,7 +3110,7 @@ def rear_table_pickup_system():
       # Wait for the gripper motion to complete
       while (not rq_is_motion_complete(gripper_socket)):
           # wait for motion completed
-          sync()
+          sleep(0.008)
           rq_set_var("GTO", 1, gripper_socket)
       end
   end
@@ -2898,7 +3118,7 @@ def rear_table_pickup_system():
   def rq_wait(gripper_socket="1"):
       # Wait for the gripper motion to complete
       while (not rq_is_motion_complete(gripper_socket)):
-          sync()
+          sleep(0.008)
           # The following patch is for Robotiq's Camera issue when communication is lost, but not the activation
           # the communication driver reset the GTO bit
           rq_set_var("GTO", 1, gripper_socket)
@@ -2908,7 +3128,7 @@ def rear_table_pickup_system():
   def rq_wait_for_object_detected(gripper_socket="1"):
       # Wait the object detection
       while (not rq_is_object_detected(gripper_socket)):
-          sync()
+          sleep(0.008)
       end
   end
   
@@ -3040,31 +3260,31 @@ def rear_table_pickup_system():
   
   def rq_is_motion_complete(gripper_socket="1"):
       gOBJ = rq_get_var("OBJ", 1, gripper_socket)
-      sync()
+      sleep(0.008)
       return is_OBJ_gripper_at_position(gOBJ) or is_OBJ_object_detected(gOBJ)
   end
   
   def rq_is_gripper_activated(gripper_socket="1"):
       gSTA = rq_get_var("STA", 1, gripper_socket)
-      sync()
+      sleep(0.008)
       return is_STA_gripper_activated(gSTA)
   end
   
   def rq_is_object_detected(gripper_socket="1"):
       gOBJ = rq_get_var("OBJ", 1, gripper_socket)
-      sync()
+      sleep(0.008)
       return is_OBJ_object_detected(gOBJ)
   end
   
   def rq_current_pos(gripper_socket="1"):
       gPOS = rq_get_var("POS", 1, gripper_socket)
-      sync()
+      sleep(0.008)
       return gPOS
   end
   
   def rq_motor_current(gripper_socket="1"):
       rq_current = rq_get_var("COU", 1, gripper_socket)
-      sync()
+      sleep(0.008)
       return rq_current * 10
   end
   
@@ -3092,13 +3312,23 @@ def rear_table_pickup_system():
       if(is_FLT_no_fault(gFLT)):
           textmsg("Gripper Fault : ", "No Fault (0x00)")
       elif (is_FLT_action_delayed(gFLT)):
-          textmsg("Gripper Fault : ", "Priority Fault: Action delayed, initialization must be completed prior to action (0x05)")
+          textmsg("Gripper Fault : ", "Priority Fault: Action delayed, initialization must be completed prior to performing the action (0x05)")
       elif (is_FLT_not_activated(gFLT)):
-          textmsg("Gripper Fault : ", "Priority Fault: The activation must be set prior to action (0x07)")
+          textmsg("Gripper Fault : ", "Priority Fault: The activation bit must be set prior to performing the action (0x07)")
+      elif (is_FLT_over_temperature(gFLT)):
+          textmsg("Gripper Fault : ", "Minor Fault: Maximum operating temperature exceeded (≥ 85°C internally), let cool down (below 80°C) (0x08)")
+      elif (is_FLT_no_communication(gFLT)):
+          textmsg("Gripper Fault : ", "Minor Fault: No communication during at least 1 second (0x09)")
+      elif (is_FLT_under_voltage(gFLT)):
+          textmsg("Gripper Fault : ", "Major Fault: Under minimum operating voltage (0x0A)")
       elif (is_FLT_autorelease_in_progress(gFLT)):
-          textmsg("Gripper Fault : ", "Minor Fault: Automatic release in progress (0x0B)")
+          textmsg("Gripper Fault : ", "Major Fault: Automatic release in progress (0x0B)")
+      elif (is_FLT_internal_fault(gFLT)):
+          textmsg("Gripper Fault : ", "Major Fault: Internal fault; contact support@robotiq.com (0x0C)")
+      elif (is_FLT_activation_error(gFLT)):
+          textmsg("Gripper Fault : ", "Major Fault: Activation fault; verify that no interference or other error occurred (0x0D)")
       elif (is_FLT_overcurrent(gFLT)):
-          textmsg("Gripper Fault : ", "Minor Fault: Overcurrent protection triggered (0x0E)")
+          textmsg("Gripper Fault : ", "Major Fault: Overcurrent triggered (0x0E)")
       elif (is_FLT_autorelease_completed(gFLT)):
           textmsg("Gripper Fault : ", "Major Fault: Automatic release completed (0x0F)")
       else:
@@ -3232,7 +3462,7 @@ def rear_table_pickup_system():
   def rq_set_GTO_and_wait(value, gripper_socket="1"):
       rq_set_var("GTO" ,value, gripper_socket)
       while(not is_GTO(value, rq_get_var("GTO", 1, gripper_socket))):
-        sync()
+        sleep(0.008)
       end
   end
   
@@ -3266,8 +3496,28 @@ def rear_table_pickup_system():
       return gFLT == 7
   end
   
+  def is_FLT_over_temperature(gFLT):
+      return gFLT == 8
+  end
+  
+  def is_FLT_no_communication(gFLT):
+      return gFLT == 9
+  end
+  
+  def is_FLT_under_voltage(gFLT):
+      return gFLT == 10
+  end
+  
   def is_FLT_autorelease_in_progress(gFLT):
       return gFLT == 11
+  end
+  
+  def is_FLT_internal_fault(gFLT):
+      return gFLT == 12
+  end
+  
+  def is_FLT_activation_error(gFLT):
+      return gFLT == 13
   end
   
   def is_FLT_overcurrent(gFLT):
@@ -3328,55 +3578,55 @@ def rear_table_pickup_system():
   
       if (var_name == "ACT"):
           while(rq_write_act_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "GTO"):
           while(rq_write_gto_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "ATR"):
           while(rq_write_atr_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "ARD"):
           while(rq_write_ard_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "FOR"):
           while(rq_write_pos_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "SPE"):
           while(rq_write_pos_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "POS"):
           while(rq_write_pos_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "LBP"):
           while(rq_write_lbp_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "LRD"):
           while(rq_write_lrd_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "LBL"):
           while(rq_write_lbl_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "LGN"):
           while(rq_write_lgn_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "MSC"):
           while(rq_write_msc_request[index]):
-              sync()
+              sleep(0.008)
           end
       elif (var_name == "MOD"):
           while(rq_write_mod_request[index]):
-              sync()
+              sleep(0.008)
           end
       end
   end
@@ -3403,7 +3653,7 @@ def rear_table_pickup_system():
           rq_read_act_req[index] = True
           exit_critical
           while(rq_read_act_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_act[index]
   
@@ -3412,7 +3662,7 @@ def rear_table_pickup_system():
           rq_read_gto_req[index] = True
           exit_critical
           while(rq_read_gto_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_gto[index]
   
@@ -3421,7 +3671,7 @@ def rear_table_pickup_system():
           rq_read_for_req[index] = True
           exit_critical
           while(rq_read_for_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_for[index]
   
@@ -3430,7 +3680,7 @@ def rear_table_pickup_system():
           rq_read_spe_req[index] = True
           exit_critical
           while(rq_read_spe_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_spe[index]
   
@@ -3439,7 +3689,7 @@ def rear_table_pickup_system():
           rq_read_obj_req[index] = True
           exit_critical
           while(rq_read_obj_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_obj[index]
   
@@ -3448,7 +3698,7 @@ def rear_table_pickup_system():
           rq_read_sta_req[index] = True
           exit_critical
           while(rq_read_sta_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_sta[index]
   
@@ -3457,7 +3707,7 @@ def rear_table_pickup_system():
           rq_read_flt_req[index] = True
           exit_critical
           while(rq_read_flt_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_flt[index]
   
@@ -3466,7 +3716,7 @@ def rear_table_pickup_system():
           rq_read_pos_req[index] = True
           exit_critical
           while(rq_read_pos_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_pos[index]
   
@@ -3475,7 +3725,7 @@ def rear_table_pickup_system():
           rq_read_pre_req[index] = True
           exit_critical
           while(rq_read_pre_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_pre[index]
   
@@ -3484,7 +3734,7 @@ def rear_table_pickup_system():
           rq_read_lbp_req[index] = True
           exit_critical
           while(rq_read_lbp_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_lbp[index]
   
@@ -3493,7 +3743,7 @@ def rear_table_pickup_system():
           rq_read_lrd_req[index] = True
           exit_critical
           while(rq_read_lrd_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_lrd[index]
   
@@ -3502,7 +3752,7 @@ def rear_table_pickup_system():
           rq_read_lbl_req[index] = True
           exit_critical
           while(rq_read_lbl_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_lbl[index]
   
@@ -3511,7 +3761,7 @@ def rear_table_pickup_system():
           rq_read_lgn_req[index] = True
           exit_critical
           while(rq_read_lgn_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_lgn[index]
   
@@ -3520,7 +3770,7 @@ def rear_table_pickup_system():
           rq_read_msc_req[index] = True
           exit_critical
           while(rq_read_msc_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_msc[index]
   
@@ -3529,7 +3779,7 @@ def rear_table_pickup_system():
           rq_read_mod_req[index] = True
           exit_critical
           while(rq_read_mod_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_mod[index]
   
@@ -3538,7 +3788,7 @@ def rear_table_pickup_system():
           rq_read_ncy_req[index] = True
           exit_critical
           while(rq_read_ncy_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_ncy[index]
   
@@ -3547,7 +3797,7 @@ def rear_table_pickup_system():
           rq_read_pco_req[index] = True
           exit_critical
           while(rq_read_pco_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_pco[index]
   
@@ -3556,7 +3806,7 @@ def rear_table_pickup_system():
           rq_read_dst_req[index] = True
           exit_critical
           while(rq_read_dst_req[index]):
-              sync()
+              sleep(0.008)
           end
           var_value = rq_read_dst[index]
   
@@ -3935,97 +4185,77 @@ def rear_table_pickup_system():
   set_open_mm(50.0, 4)
   rq_current_limit_enabled = False
   while(not rq_gripper_communication_thread_started):
-      sync()
+      sleep(0.008)
   end
   # end: URCap Installation Node
-  global start_p=p[-.060610933992, .637395532598, .286893535978, -.440374033908, -3.097081866409, .009359254062]
-  global start_q=[4.52581787109375, -1.2628021401217957, 1.4747408072101038, -1.7759181461729945, -1.5587552229510706, 3.2370753288269043]
-  global rt_approach_p=p[.005370363194, .627259283569, -.081799935238, -.079284108386, -3.131792124838, -.025870750768]
-  global rt_approach_q=[4.416595935821533, -0.7908528608134766, 1.9580281416522425, -2.7513214550414027, -1.558568302785055, 2.8953447341918945]
-  global rt_pickup_from_p=p[.005370759942, .627272000743, -.081781395639, -.079170829119, -3.131881188991, -.025915933947]
-  global rt_pickup_to_p=p[.005386829739, .627255714719, -.113169700566, -.079342499356, -3.131847733749, -.025864943338]
-  global rt_clear_from_p=p[.005373800915, .627277999080, -.113149100918, -.079354194493, -3.131769475041, -.025950418443]
-  global rt_clear_to_p=p[.005403815983, .627263273700, -.059725405860, -.079364358098, -3.131814952070, -.025855945356]
-  global clear_for_turn_p=p[.005352386010, .627248676199, .295701345622, -.079307200502, -3.131723922351, -.025852326019]
-  global clear_for_turn_q=[4.416541576385498, -1.304623858337738, 1.5145648161517542, -1.7940675220885218, -1.5589864889727991, 2.896103858947754]
-  global turn_to_front_p=p[.035308243418, -.531508029228, .171329420413, 3.141527733068, -.017155587017, .000032641901]
-  global turn_to_front_q=[1.3035463094711304, -1.3849672389081498, 1.995439354573385, -2.1810513935484828, -1.5719359556781214, 2.8848555088043213]
-  global approach_qr_p=p[-.126331594557, -.452098844954, .077188198195, -2.641628223824, .000007339499, -.000023033321]
-  global approach_qr_q=[1.0610809326171875, -1.1387265187552948, 1.8934829870807093, -1.8804298839964808, -1.8081472555743616, 2.6853599548339844]
-  global approach_letgo_p=p[.035291717431, -.531512628701, -.006039377900, 3.141531258952, -.017199441451, -.000078224160]
-  global approach_letgo_q=[1.3036222457885742, -1.0520534080317994, 2.204933468495504, -2.72347416500234, -1.5717065970050257, 2.884408712387085]
-  global clear_letgo_p=p[.035292521333, -.531496722661, .025881677700, 3.141511993019, -.017205121643, -.000070994884]
-  global clear_letgo_q=[1.3035836219787598, -1.125417874460556, 2.18160850206484, -2.6268021068968714, -1.571780029927389, 2.88447642326355]
-  global clear_turn_1_p=p[.207782775926, -.624262674006, .261202473129, 3.138934994519, -.049721169997, -.040754428809]
-  global clear_turn_1_q=[1.6353697776794434, -1.2098854047111054, 1.4739144484149378, -1.83451571087026, -1.5978181997882288, 3.2373857498168945]
+  global start_p=p[.476445325383, .319648989491, .087962059422, .001631014108, -3.044455017533, .759623698847]
+  global start_q=[3.6262218952178955, -1.0400421184352417, 1.7511833349811, -2.035672803918356, -1.9988163153277796, 2.1074979305267334]
+  global clear_for_turn1_p=p[.488609844194, .434730459270, .178216608681, -2.886989623347, -.115415479293, .017142356595]
+  global clear_for_turn1_q=[3.4924588203430176, -1.2129902702621003, 1.78257924715151, -2.207256933251852, -1.3281901518451136, -1.2923296133624476]
+  global paketti_qr_p=p[-.021018894206, -.589950614873, .073343327060, -.099068556308, 3.003770378167, -.889003204106]
+  global paketti_qr_q=[1.102047324180603, -1.0570516151240845, 2.442219320927755, -3.469151636163229, -1.29970628419985, -0.4644358793841761]
+  global pickup_box_p=p[-.000490575086, -.525346496818, .154686878987, .074044090384, -3.139747310213, .001608022830]
+  global pickup_box_q=[1.2317291498184204, -1.37679576993499, 2.0428269545184534, -2.2379008732237757, -1.572503391896383, -0.3866661230670374]
+  global down_from_p=p[-.000476754745, -.525341762228, .154673509100, .074083662478, -3.139757887356, .001579523567]
+  global down_to_p=p[-.000590824902, -.525483093308, -.006188474555, .074061717249, -3.139784973804, .001545937325]
+  global Waypoint_1_from_p=p[-.000622529606, -.525517389986, -.006166014709, .074053462542, -3.139732157925, .001631720580]
+  global Waypoint_1_to_p=p[-.000544296240, -.525404414544, .098834812701, .073944321263, -3.139749923830, .001624229300]
   $ 1 "BeforeStart"
-  # begin: URCap Program Node
-  #   Source: Robotiq_Grippers, 1.8.4.4844, Robotiq Inc.
-  #   Type: Gripper Activate
-  $ 2 "Gripper Activate"
-  
-  kill rq_gripper_communication_thread
-  rq_gripper_communication_thread_started = False
-  
-  rq_init_comm_if_connected(9, "1")
-  rq_init_comm_if_connected(2, "2")
-  rq_init_comm_if_connected(3, "3")
-  rq_init_comm_if_connected(4, "4")
-  rq_print_connected_grippers()
-  rq_gripper_communication_thread = run rq_gripper_communication()
-  
-  while(not rq_gripper_communication_thread_started):
-      sync()
+  $ 2 "BeforeStartF"
+  $ 3 "pcip≔'192.168.100.5'"
+  global pcip="192.168.100.5"
+  $ 4 "connection1≔False"
+  global connection1=False
+  $ 5 "Loop not connection1"
+  while (not connection1):
+    $ 6 "connection1≔socket_open(pcip,1201)"
+    global connection1=socket_open(pcip,1201)
   end
-  
-  rq_set_max_current_for_all_grippers()
-  
-  reset_and_activate = False
-  
-  rq_activate_all_grippers(False)
-  # end: URCap Program Node
-  # begin: URCap Program Node
-  #   Source: Robotiq_Grippers, 1.8.4.4844, Robotiq Inc.
-  #   Type: Gripper
-  $ 3 "Gripper Open (1)"
-  if not(gripper_connected[0]):
-    popup("Gripper 1 must be connected to run this program.", "No connection", False, True, True)
-  end
-  if not(rq_is_gripper_activated("1")):
-    popup("Gripper 1 is not activated. Go to Installation tab > Gripper to activate it and run the program again.", "Not activated", False, True, True)
-  end
-  rq_set_pos_spd_for(0, 255, 255, "1")
-  rq_wait_pos_spe_for_request(0, 255, 255, "1")
-  rq_go_to("1")
-  rq_wait("1")
-  # end: URCap Program Node
   while (True):
-    $ 4 "Robot Program"
-    $ 5 "MoveJ"
-    $ 6 "start" "breakAfter"
+    $ 7 "Robot Program"
+    $ 8 "MoveJ"
+    $ 9 "start" "breakAfter"
     movej(get_inverse_kin(start_p, qnear=start_q), a=1.3962634015954636, v=1.0471975511965976)
+    $ 10 "loaded≔ False "
+    global loaded=  False  
+    $ 11 "car_found≔ False "
+    global car_found=  False  
+    $ 12 "socket_send_string('Enter car')"
+    socket_send_string("Enter car")
+    $ 13 "receive_srv≔socket_read_string(timeout=0)"
+    global receive_srv=socket_read_string(timeout=0)
+    $ 14 "socket_send_string('Enter packet')"
+    socket_send_string("Enter packet")
+    $ 15 "receive_srv1≔socket_read_string(timeout=0)"
+    global receive_srv1=socket_read_string(timeout=0)
+    $ 16 "socket_send_string(receive_srv)"
+    socket_send_string(receive_srv)
+    $ 17 "socket_send_string(receive_srv1)"
+    socket_send_string(receive_srv1)
+    $ 18 "'Cam locate to check for GoPiGo(s) in the loading zone'"
+    # 'Cam locate to check for GoPiGo(s) in the loading zone'
     # begin: URCap Program Node
-    #   Source: Robotiq_Wrist_Camera, 1.10.2.5254, Robotiq Inc.
+    #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
     #   Type: Cam Locate
-    $ 7 "Cam Locate"
+    $ 19 "Cam Locate"
     
     ###########################################
     #######VisionLocate node start########
     
     f=[0,0.0,0.0,0.0,0.0,0.0,0.0,0]
     object_location=p[0.0,0.0,0.0,0.0,0.0,0.0]
-    feature_pose_to_restore_14302 = cal_rear_table
-    movej([4.462183475494385, -1.0984905821136017, 1.5664122740374964, -1.551704005604126, -1.691035572682516, 2.920868158340454])
+    feature_pose_to_restore_4791 = cal_new_rear
+    movej([3.626171588897705, -1.0400675696185608, 1.7512033621417444, -2.0356890163817347, -1.9988740126239222, 2.1075141429901123])
     # Offset in translation only.
     snapshot_position_offset[3] = 0
     snapshot_position_offset[4] = 0
     snapshot_position_offset[5] = 0
     T_camera_in_flange = p[0, 0, 0, 0, 0, 0] # enlever une fois que l'enseignement du modele sera fait en faisant un movetool avec la pose de la camera dans le repere de la flange. Pour l'instant, on suppose que la camera est situee directement sur la flange.
-    tool_14302 = get_T_in_base_from_flange(T_camera_in_flange)
-    tool_14302 = pose_sub(tool_14302, snapshot_position_offset)
-    snapshot_position = p[-0.00913945, 0.612499, 0.28723, -3.69686E-5, 3.04395, -0.777106]
+    tool_4791 = get_T_in_base_from_flange(T_camera_in_flange)
+    tool_4791 = pose_sub(tool_4791, snapshot_position_offset)
+    snapshot_position = p[0.477009, 0.393883, 0.227503, 0.00149777, -3.04463, 0.75959]
     textmsg("expected snapshot position : ", snapshot_position)
-    diff = pose_sub(tool_14302, snapshot_position)
+    diff = pose_sub(tool_4791, snapshot_position)
     textmsg("diff = ", diff)
     is_at_snapshot_position = norm([diff[0], diff[1], diff[2]]) < 0.002
     is_at_snapshot_position = is_at_snapshot_position and (norm([diff[3], diff[4], diff[5]]) < 0.005)
@@ -4036,116 +4266,293 @@ def rear_table_pickup_system():
       popup("Robot is not at Snapshot Position. Add Move instruction to Snapshot Position before Camera Locate node.. Error code: [UCC-8]", warning = False, error = True)
       halt
     end
-    f_14302 = xmlrpc_server.findmodel("contextName-14302", tool_14302[0], tool_14302[1], tool_14302[2], tool_14302[3], tool_14302[4], tool_14302[5])
-    cam_locate_monitor.setFindModelResult("14302", f_14302)
+    f_4791 = xmlrpc_server.findmodel("contextName-4791", tool_4791[0], tool_4791[1], tool_4791[2], tool_4791[3], tool_4791[4], tool_4791[5])
+    cam_locate_monitor.setFindModelResult("4791", f_4791)
     canSaveImage = True
-    logging_service.publish("FIND_MODEL", f_14302)
-    cam_locate_monitor.setCurrentObjectIndex("14302", 0)
+    logging_service.publish("FIND_MODEL", f_4791)
+    cam_locate_monitor.setCurrentObjectIndex("4791", 0)
     # begin: URCap Program Node
-    #   Source: Robotiq_Wrist_Camera, 1.10.2.5254, Robotiq Inc.
+    #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
     #   Type: Cam Locate Loop
-    $ 8 "For object(s) found" "noBreak"
-    object_teaching_location_14302 = p[0.004832258355760615, 0.609261432464665, -0.10576786440338352, -0.012586435946820027, -3.1330785422611873, -0.026146457746223224]
-    feature_teaching_location_14302 = p[0.004832258355760615, 0.609261432464665, -0.10576786440338352, -2.028818732580318, 2.392611470129052, 0.028439735138257198]
-    while (not cam_locate_monitor.isCaptureNeeded("14302")):
-      poseAsArray = cam_locate_monitor.getCurrentObjectPoseAsArray("14302")
-      current_object_location_14302 = p[poseAsArray[0], poseAsArray[1], poseAsArray[2], poseAsArray[3], poseAsArray[4], poseAsArray[5]]
-      object_location = current_object_location_14302
-      f[0] = cam_locate_monitor.getNumberOfObjectsFound("14302")
+    $ 20 "For object(s) found" "noBreak"
+    object_teaching_location_4791 = p[0.5043233965545477, 0.4250833587958083, -0.023498287764681356, -0.012586435946725968, -3.133078542261244, -0.02614645774631396]
+    feature_teaching_location_4791 = p[0.5043233965545477, 0.4250833587958083, -0.023498287764681356, -3.124637165397994, -0.02858001795767802, 0.012748500316914725]
+    while (not cam_locate_monitor.isCaptureNeeded("4791")):
+      poseAsArray = cam_locate_monitor.getCurrentObjectPoseAsArray("4791")
+      current_object_location_4791 = p[poseAsArray[0], poseAsArray[1], poseAsArray[2], poseAsArray[3], poseAsArray[4], poseAsArray[5]]
+      object_location = current_object_location_4791
+      f[0] = cam_locate_monitor.getNumberOfObjectsFound("4791")
       f[1] = object_location[0]
       f[2] = object_location[1]
       f[3] = object_location[2]
       f[4] = object_location[3]
       f[5] = object_location[4]
       f[6] = object_location[5]
-      f[7] = cam_locate_monitor.getCurrentObjectDetectionScore("14302")
-      textmsg("current_object_location = ", current_object_location_14302)
+      f[7] = cam_locate_monitor.getCurrentObjectDetectionScore("4791")
+      textmsg("current_object_location = ", current_object_location_4791)
       if (norm(snapshot_position_offset) != 0):
-        current_object_location_14302 = pose_add(current_object_location_14302, snapshot_position_offset)
-        textmsg("current_object_location after snapshot position offset = ", current_object_location_14302)
+        current_object_location_4791 = pose_add(current_object_location_4791, snapshot_position_offset)
+        textmsg("current_object_location after snapshot position offset = ", current_object_location_4791)
       end
-      cal_rear_table = pose_trans(current_object_location_14302, pose_trans(pose_inv(object_teaching_location_14302), feature_teaching_location_14302))
-      $ 9 "MoveJ" "noBreak"
-      $ 10 "rt_approach" "noBreak"
-      movej(get_inverse_kin(pose_trans(cal_rear_table, pose_trans(p[.600179424538, -.093605982606, -.115897641612, 2.028818732580, -2.392611470129, -.028439735138], rt_approach_p)), qnear=rt_approach_q), a=1.3962634015954636, v=1.0471975511965976)
-      $ 11 "MoveL" "noBreak"
-      $ 12 "rt_pickup" "noBreak"
-      movel(pose_add(get_target_tcp_pose(), pose_sub(rt_pickup_to_p, rt_pickup_from_p)), a=1.2, v=0.25)
+      cal_new_rear = pose_trans(current_object_location_4791, pose_trans(pose_inv(object_teaching_location_4791), feature_teaching_location_4791))
+      $ 21 "read_qr_pos≔pose_trans(cal_new_rear, p[0 ,0.12, -0.05, 0, 0.78, 3.14])" "noBreak"
+      global read_qr_pos=pose_trans(cal_new_rear, p[0 ,0.12, -0.05, 0, 0.78, 3.14])
+      $ 22 "MoveJ" "noBreak"
+      $ 23 "read_qr_pos" "noBreak"
+      movej(read_qr_pos, a=1.7453292519943295, v=1.7453292519943295)
+      $ 24 "'Checking if the GoPiGo is present in the loading zone'" "noBreak"
+      # 'Checking if the GoPiGo is present in the loading zone'
       # begin: URCap Program Node
-      #   Source: Robotiq_Grippers, 1.8.4.4844, Robotiq Inc.
-      #   Type: Gripper
-      $ 13 "Gripper Close (1)" "noBreak"
-      if not(gripper_connected[0]):
-        popup("Gripper 1 must be connected to run this program.", "No connection", False, True, True)
-      end
-      if not(rq_is_gripper_activated("1")):
-        popup("Gripper 1 is not activated. Go to Installation tab > Gripper to activate it and run the program again.", "Not activated", False, True, True)
-      end
-      rq_set_pos_spd_for(255, 255, 128, "1")
-      rq_wait_pos_spe_for_request(255, 255, 128, "1")
-      rq_go_to("1")
-      rq_wait("1")
-      # end: URCap Program Node
-      $ 14 "Set Payload: black_pen" "noBreak"
-      set_target_payload(1.220000, [-0.007000, -0.006000, 0.055000], [0.002144, 0.002144, 0.002144, 0.000000, 0.000000, 0.000000])
-      $ 15 "rt_clear" "noBreak"
-      movel(pose_add(get_target_tcp_pose(), pose_sub(rt_clear_to_p, rt_clear_from_p)), a=1.2, v=0.25)
-      $ 16 "MoveJ" "noBreak"
-      $ 17 "clear_for_turn" "noBreak"
-      movej(get_inverse_kin(clear_for_turn_p, qnear=clear_for_turn_q), a=1.3962634015954636, v=1.0471975511965976)
-      $ 18 "Wait: 3.0" "noBreak"
-      sleep(3.0)
-      $ 19 "turn_to_front" "noBreak"
-      movej(get_inverse_kin(turn_to_front_p, qnear=turn_to_front_q), a=1.3962634015954636, v=1.0471975511965976)
-      $ 20 "MoveJ" "noBreak"
-      $ 21 "approach_qr" "noBreak"
-      movej(get_inverse_kin(approach_qr_p, qnear=approach_qr_q), a=1.3962634015954636, v=1.0471975511965976)
-      $ 22 "Folder" "noBreak"
-      # begin: URCap Program Node
-      #   Source: Robotiq_Wrist_Camera, 1.10.2.5254, Robotiq Inc.
+      #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
       #   Type: Scan Code
-      $ 23 "Scan Code" "noBreak"
+      $ 25 "Scan Code" "noBreak"
       
       ###########################################
       #######Scan code node start########
       
       canSaveImage = True
-      socket_enabled_23651992 = False
-      rq_find_code_23651992 = xmlrpc_server.findbarcode("contextName-82056", socket_enabled_23651992, "0.0.0.0", 0)
-      nb_occurence_23651992 = rq_find_code_23651992[0]
-      global rq_is_code_found = nb_occurence_23651992 > 0
+      socket_enabled_4651609 = False
+      rq_find_code_4651609 = xmlrpc_server.findbarcode("contextName-37876", socket_enabled_4651609, "0.0.0.0", 0)
+      nb_occurence_4651609 = rq_find_code_4651609[0]
+      global rq_is_code_found = nb_occurence_4651609 > 0
       textmsg("rq_is_code_found = ", rq_is_code_found)
-      i_23651992 = 0
+      i_4651609 = 0
       # begin: URCap Program Node
-      #   Source: Robotiq_Wrist_Camera, 1.10.2.5254, Robotiq Inc.
+      #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
       #   Type: If a code is found in Scan Code
-      $ 24 "If a code is found" "noBreak"
-      if (nb_occurence_23651992 > 0):
-        while (i_23651992 < nb_occurence_23651992):
-          rq_code_string_23651992 = xmlrpc_server.getbarcoderesult("contextName-82056", i_23651992)
-          global rq_code_string = rq_code_string_23651992
-          rq_code_quality = rq_find_code_23651992[2*i_23651992+1]
-          rq_code_type = rq_find_code_23651992[2*i_23651992+2]
+      $ 26 "If a code is found" "noBreak"
+      if (nb_occurence_4651609 > 0):
+        while (i_4651609 < nb_occurence_4651609):
+          rq_code_string_4651609 = xmlrpc_server.getbarcoderesult("contextName-37876", i_4651609)
+          global rq_code_string = rq_code_string_4651609
+          rq_code_quality = rq_find_code_4651609[2*i_4651609+1]
+          rq_code_type = rq_find_code_4651609[2*i_4651609+2]
           textmsg("rq_code_string = ", rq_code_string)
           textmsg("rq_code_type = ", rq_code_type)
-          i_23651992 = i_23651992 + 1
+          i_4651609 = i_4651609 + 1
         end
-        $ 25 "qr_type≔rq_code_string" "noBreak"
-        global qr_type=rq_code_string
+        $ 27 "MoveJ" "noBreak"
+        $ 28 "clear_for_turn1" "noBreak"
+        movej(get_inverse_kin(pose_trans(cal_rear_table, pose_trans(p[.645600457556, -.015373178769, -.026410603389, 2.224347080471, -2.209846312426, -.027724163936], clear_for_turn1_p)), qnear=clear_for_turn1_q), a=1.7453292519943295, v=1.7453292519943295)
+        $ 29 "If rq_code_string≟receive_srv" "noBreak"
+        if (rq_code_string == receive_srv):
+          $ 30 "'Cam locate for the packet(s)'" "noBreak"
+          # 'Cam locate for the packet(s)'
+          $ 31 "Loop  not loaded" "noBreak"
+          while (  not  loaded):
+            # begin: URCap Program Node
+            #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
+            #   Type: Cam Locate
+            $ 32 "Cam Locate" "noBreak"
+            
+            ###########################################
+            #######VisionLocate node start########
+            
+            f=[0,0.0,0.0,0.0,0.0,0.0,0.0,0]
+            object_location=p[0.0,0.0,0.0,0.0,0.0,0.0]
+            feature_pose_to_restore_62702 = Calib_1
+            if (cam_locate_monitor.isCaptureNeeded("62702")):
+              movej([1.0477962493896484, -1.6324502430357875, 2.222819153462545, -2.6086260281004847, -1.3241484800921839, -0.46616870561708623])
+              # Offset in translation only.
+              snapshot_position_offset[3] = 0
+              snapshot_position_offset[4] = 0
+              snapshot_position_offset[5] = 0
+              T_camera_in_flange = p[0, 0, 0, 0, 0, 0] # enlever une fois que l'enseignement du modele sera fait en faisant un movetool avec la pose de la camera dans le repere de la flange. Pour l'instant, on suppose que la camera est situee directement sur la flange.
+              tool_62702 = get_T_in_base_from_flange(T_camera_in_flange)
+              tool_62702 = pose_sub(tool_62702, snapshot_position_offset)
+              snapshot_position = p[-0.0371989, -0.470642, 0.409203, 0.00138416, 3.03806, -0.788106]
+              textmsg("expected snapshot position : ", snapshot_position)
+              diff = pose_sub(tool_62702, snapshot_position)
+              textmsg("diff = ", diff)
+              is_at_snapshot_position = norm([diff[0], diff[1], diff[2]]) < 0.002
+              is_at_snapshot_position = is_at_snapshot_position and (norm([diff[3], diff[4], diff[5]]) < 0.005)
+              textmsg("is_at_snapshot_position = ", is_at_snapshot_position)
+              is_snapshot_position_offset = norm(snapshot_position_offset) != 0
+              is_at_snapshot_position = is_at_snapshot_position or ignore_snapshot_position
+              if not(is_at_snapshot_position):
+                popup("Robot is not at Snapshot Position. Add Move instruction to Snapshot Position before Camera Locate node.. Error code: [UCC-8]", warning = False, error = True)
+                halt
+              end
+              f_62702 = xmlrpc_server.findmodel("contextName-62702", tool_62702[0], tool_62702[1], tool_62702[2], tool_62702[3], tool_62702[4], tool_62702[5])
+              cam_locate_monitor.setFindModelResult("62702", f_62702)
+              canSaveImage = True
+              logging_service.publish("FIND_MODEL", f_62702)
+              cam_locate_monitor.setCurrentObjectIndex("62702", 0)
+            end
+            # begin: URCap Program Node
+            #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
+            #   Type: Cam Locate Loop
+            $ 33 "For next object" "noBreak"
+            object_teaching_location_62702 = p[-0.0053867573366070615, -0.47231310975799734, -0.006156285596003447, 0.005683687366064273, -3.140649904557625, 0.0016621203611247204]
+            feature_teaching_location_62702 = p[-0.0053867573366070615, -0.47231310975799734, -0.006156285596003447, 2.179984864748392, 2.262050930447599, -0.002218470167007045]
+            if (not cam_locate_monitor.isCaptureNeeded("62702")):
+              poseAsArray = cam_locate_monitor.getCurrentObjectPoseAsArray("62702")
+              current_object_location_62702 = p[poseAsArray[0], poseAsArray[1], poseAsArray[2], poseAsArray[3], poseAsArray[4], poseAsArray[5]]
+              object_location = current_object_location_62702
+              f[0] = cam_locate_monitor.getNumberOfObjectsFound("62702")
+              f[1] = object_location[0]
+              f[2] = object_location[1]
+              f[3] = object_location[2]
+              f[4] = object_location[3]
+              f[5] = object_location[4]
+              f[6] = object_location[5]
+              f[7] = cam_locate_monitor.getCurrentObjectDetectionScore("62702")
+              textmsg("current_object_location = ", current_object_location_62702)
+              if (norm(snapshot_position_offset) != 0):
+                current_object_location_62702 = pose_add(current_object_location_62702, snapshot_position_offset)
+                textmsg("current_object_location after snapshot position offset = ", current_object_location_62702)
+              end
+              Calib_1 = pose_trans(current_object_location_62702, pose_trans(pose_inv(object_teaching_location_62702), feature_teaching_location_62702))
+              $ 34 "MoveJ" "noBreak"
+              $ 35 "paketti_qr" "noBreak"
+              movej(get_inverse_kin(pose_trans(Calib_1, pose_trans(p[.471785258853, .022822739036, -.006662039349, -2.179984864755, -2.262050930455, .002218470161], paketti_qr_p)), qnear=paketti_qr_q), a=1.7453292519943295, v=1.7453292519943295)
+              $ 36 "'Checking the Qr code in the packet(s)'" "noBreak"
+              # 'Checking the Qr code in the packet(s)'
+              # begin: URCap Program Node
+              #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
+              #   Type: Scan Code
+              $ 37 "Scan Code" "noBreak"
+              
+              ###########################################
+              #######Scan code node start########
+              
+              canSaveImage = True
+              socket_enabled_29393916 = False
+              rq_find_code_29393916 = xmlrpc_server.findbarcode("contextName-2564", socket_enabled_29393916, "0.0.0.0", 0)
+              nb_occurence_29393916 = rq_find_code_29393916[0]
+              global rq_is_code_found = nb_occurence_29393916 > 0
+              textmsg("rq_is_code_found = ", rq_is_code_found)
+              i_29393916 = 0
+              # begin: URCap Program Node
+              #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
+              #   Type: If a code is found in Scan Code
+              $ 38 "If a code is found" "noBreak"
+              if (nb_occurence_29393916 > 0):
+                while (i_29393916 < nb_occurence_29393916):
+                  rq_code_string_29393916 = xmlrpc_server.getbarcoderesult("contextName-2564", i_29393916)
+                  global rq_code_string = rq_code_string_29393916
+                  rq_code_quality = rq_find_code_29393916[2*i_29393916+1]
+                  rq_code_type = rq_find_code_29393916[2*i_29393916+2]
+                  textmsg("rq_code_string = ", rq_code_string)
+                  textmsg("rq_code_type = ", rq_code_type)
+                  i_29393916 = i_29393916 + 1
+                end
+                $ 39 "If rq_code_string≟receive_srv1" "noBreak"
+                if (rq_code_string == receive_srv1):
+                  $ 40 "MoveJ" "noBreak"
+                  $ 41 "pickup_box" "noBreak"
+                  movej(get_inverse_kin(pose_trans(Calib_1, pose_trans(p[-.527758257806, -.030467615848, -.006662039354, -2.284063234482, 2.154944042682, -.000074196285], pickup_box_p)), qnear=pickup_box_q), a=1.7453292519943295, v=1.7453292519943295)
+                  $ 42 "down" "noBreak"
+                  movej(pose_add(get_target_tcp_pose(), pose_sub(down_to_p, down_from_p)), a=1.7453292519943295, v=1.7453292519943295)
+                  # begin: URCap Program Node
+                  #   Source: Robotiq_Grippers, 1.8.8.13523, Robotiq Inc.
+                  #   Type: Vacuum
+                  $ 43 "Vacuum Grip  (1)           " "noBreak"
+                  if(not rq_is_gripper_connected("1")):
+                      popup("A vacuum is not connected. ID: 1", "Vacuum Error", False, True, True)
+                  end
+                  
+                  rq_vacuum_grip_raw(True, 0, 60, 30, "1")
+                  
+                      suction_completed = rq_wait_for_vacuum_object_suction_complete("1")
+                      if(not suction_completed):
+                          rq_set_var("GTO", 0, "1")
+                      end
+                  
+                  # end: URCap Program Node
+                  $ 44 "Waypoint_1" "noBreak"
+                  movej(pose_add(get_target_tcp_pose(), pose_sub(Waypoint_1_to_p, Waypoint_1_from_p)), a=1.7453292519943295, v=1.7453292519943295)
+                  $ 45 "MoveJ" "noBreak"
+                  $ 46 "start" "noBreak"
+                  movej(get_inverse_kin(start_p, qnear=start_q), a=1.7453292519943295, v=1.7453292519943295)
+                  $ 47 "drop_pos≔pose_trans(cal_new_rear, p[0, 0, -0.05, 0, 0, 3.14])" "noBreak"
+                  global drop_pos= pose_trans (cal_new_rear, p[0, 0, -0.05, 0, 0, 3.14])
+                  $ 48 "drop_pos" "noBreak"
+                  movej(drop_pos, a=1.7453292519943295, v=1.7453292519943295)
+                  # begin: URCap Program Node
+                  #   Source: Robotiq_Grippers, 1.8.8.13523, Robotiq Inc.
+                  #   Type: Vacuum
+                  $ 49 "Vacuum Release  (1)           " "noBreak"
+                  if(not rq_is_gripper_connected("1")):
+                      popup("A vacuum is not connected. ID: 1", "Vacuum Error", False, True, True)
+                  end
+                  
+                  if(vacuumGripCheckThread1Running):
+                      stopVacuumGripCheckThread(vacuumGripCheckThread1)
+                      vacuumGripCheckThread1Running = False
+                  end
+                  
+                  rq_vacuum_release_raw(True, 100, 60, 255, 0.05, True, "1")
+                  
+                  # end: URCap Program Node
+                  $ 50 "Wait: 1.0" "noBreak"
+                  sleep(1.0)
+                  $ 51 "socket_send_string('Loaded')" "noBreak"
+                  socket_send_string("Loaded")
+                  $ 52 "loaded≔ True " "noBreak"
+                  global loaded=  True  
+                  $ 53 "start" "noBreak"
+                  movej(get_inverse_kin(start_p, qnear=start_q), a=1.7453292519943295, v=1.7453292519943295)
+                end
+              end
+              # end: URCap Program Node
+              # begin: URCap Program Node
+              #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
+              #   Type: If no code found in Scan Code
+              $ 54 "If no code found" "noBreak"
+              if (nb_occurence_29393916 == 0):
+                global rq_code_string = ""
+                rq_code_quality = -1
+                rq_code_type = -1
+                $ 55 "'Optional'" "noBreak"
+                # 'Optional'
+                $ 56 "socket_send_string('paketti found, but not QR')" "noBreak"
+                socket_send_string("paketti found, but not QR")
+              end
+              # end: URCap Program Node
+              
+              #######Scan Code node end########
+              ###########################################
+              
+              # end: URCap Program Node
+              cam_locate_monitor.incrementIndex("62702")
+            end
+            # end: URCap Program Node
+            # begin: URCap Program Node
+            #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
+            #   Type: If no object found in Camera Locate
+            $ 57 "If no object found" "noBreak"
+            if (not cam_locate_monitor.hasFoundObjects("62702")):
+              f[0] = 0
+              $ 58 "'Optional'" "noBreak"
+              # 'Optional'
+              $ 59 "socket_send_string('no paketti found')" "noBreak"
+              socket_send_string("no paketti found")
+            end
+            # end: URCap Program Node
+            # Restore feature pose
+            Calib_1 = feature_pose_to_restore_62702
+            
+            #######VisionLocate node end########
+            ###########################################
+            
+            # end: URCap Program Node
+          end
+        end
       end
       # end: URCap Program Node
       # begin: URCap Program Node
-      #   Source: Robotiq_Wrist_Camera, 1.10.2.5254, Robotiq Inc.
+      #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
       #   Type: If no code found in Scan Code
-      $ 26 "If no code found" "noBreak"
-      if (nb_occurence_23651992 == 0):
+      $ 60 "If no code found" "noBreak"
+      if (nb_occurence_4651609 == 0):
         global rq_code_string = ""
         rq_code_quality = -1
         rq_code_type = -1
-        $ 27 "'Optional'" "noBreak"
+        $ 61 "'Optional'" "noBreak"
         # 'Optional'
-        $ 28 "qr_type≔'fail'" "noBreak"
-        global qr_type="fail"
+        $ 62 "socket_send_string('auto found, but not QR')" "noBreak"
+        socket_send_string("auto found, but not QR")
       end
       # end: URCap Program Node
       
@@ -4153,85 +4560,23 @@ def rear_table_pickup_system():
       ###########################################
       
       # end: URCap Program Node
-      $ 29 "If (qr_type≟'Drop')" "noBreak"
-      if ((qr_type == "Drop")):
-        $ 30 "MoveL" "noBreak"
-        $ 31 "approach_letgo" "noBreak"
-        movel(approach_letgo_p, a=1.2, v=0.25)
-        # begin: URCap Program Node
-        #   Source: Robotiq_Copilot, 1.14.4.3276, Robotiq Inc.
-        #   Type: Find Surface
-        $ 32 "Find Surface" "noBreak"
-        zero_ftsensor()
-        sleep(0.1)
-        surface_found = rq_linear_search_urcap("Z+", 10.000, 0.005, 0.100, 1)
-        storevar.setvariable("rq_findSurface_5db4e70d-3996-40fc-b0cc-f7cc21204548_exitPosition", get_actual_tcp_pose())
-        $ 33 "'Add Stop conditions from the Find Surface node'" "noBreak"
-        # 'Add Stop conditions from the Find Surface node'
-        # end: URCap Program Node
-        # begin: URCap Program Node
-        #   Source: Robotiq_Grippers, 1.8.4.4844, Robotiq Inc.
-        #   Type: Gripper
-        $ 34 "Gripper Open (1)" "noBreak"
-        if not(gripper_connected[0]):
-          popup("Gripper 1 must be connected to run this program.", "No connection", False, True, True)
-        end
-        if not(rq_is_gripper_activated("1")):
-          popup("Gripper 1 is not activated. Go to Installation tab > Gripper to activate it and run the program again.", "Not activated", False, True, True)
-        end
-        rq_set_pos_spd_for(0, 0, 0, "1")
-        rq_wait_pos_spe_for_request(0, 0, 0, "1")
-        rq_go_to("1")
-        rq_wait("1")
-        # end: URCap Program Node
-        $ 35 "Set Payload: Payload" "noBreak"
-        set_target_payload(1.200000, [0.000000, 0.000000, 0.070000], [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000])
-        $ 36 "clear_letgo" "noBreak"
-        movel(clear_letgo_p, a=1.2, v=0.25)
-        $ 37 "MoveJ" "noBreak"
-        $ 38 "clear_turn_1" "noBreak"
-        movej(get_inverse_kin(clear_turn_1_p, qnear=clear_turn_1_q), a=1.3962634015954636, v=1.0471975511965976)
-      end
-      $ 39 "If (qr_type≟'Back') or (qr_type≟'fail')" "noBreak"
-      if ((qr_type == "Back")  or  (qr_type == "fail")):
-        $ 40 "MoveJ" "noBreak"
-        $ 41 "clear_turn_1" "noBreak"
-        movej(get_inverse_kin(clear_turn_1_p, qnear=clear_turn_1_q), a=1.3962634015954636, v=1.0471975511965976)
-        $ 42 "start" "noBreak"
-        movej(get_inverse_kin(start_p, qnear=start_q), a=1.3962634015954636, v=1.0471975511965976)
-        # begin: URCap Program Node
-        #   Source: Robotiq_Grippers, 1.8.4.4844, Robotiq Inc.
-        #   Type: Gripper
-        $ 43 "Gripper Open (1)" "noBreak"
-        if not(gripper_connected[0]):
-          popup("Gripper 1 must be connected to run this program.", "No connection", False, True, True)
-        end
-        if not(rq_is_gripper_activated("1")):
-          popup("Gripper 1 is not activated. Go to Installation tab > Gripper to activate it and run the program again.", "Not activated", False, True, True)
-        end
-        rq_set_pos_spd_for(0, 255, 255, "1")
-        rq_wait_pos_spe_for_request(0, 255, 255, "1")
-        rq_go_to("1")
-        rq_wait("1")
-        # end: URCap Program Node
-        $ 44 "Set Payload: Payload" "noBreak"
-        set_target_payload(1.200000, [0.000000, 0.000000, 0.070000], [0.000000, 0.000000, 0.000000, 0.000000, 0.000000, 0.000000])
-      end
-      cam_locate_monitor.incrementIndex("14302")
+      cam_locate_monitor.incrementIndex("4791")
     end
     # end: URCap Program Node
     # begin: URCap Program Node
-    #   Source: Robotiq_Wrist_Camera, 1.10.2.5254, Robotiq Inc.
+    #   Source: Robotiq_Wrist_Camera, 1.11.3.13312, Robotiq Inc.
     #   Type: If no object found in Camera Locate
-    $ 45 "If no object found" "noBreak"
-    if (not cam_locate_monitor.hasFoundObjects("14302")):
+    $ 63 "If no object found" "noBreak"
+    if (not cam_locate_monitor.hasFoundObjects("4791")):
       f[0] = 0
-      $ 46 "'Optional'" "noBreak"
+      $ 64 "'Optional'" "noBreak"
       # 'Optional'
+      $ 65 "socket_send_string('auto not found')" "noBreak"
+      socket_send_string("auto not found")
     end
     # end: URCap Program Node
     # Restore feature pose
-    cal_rear_table = feature_pose_to_restore_14302
+    cal_new_rear = feature_pose_to_restore_4791
     
     #######VisionLocate node end########
     ###########################################
