@@ -1,7 +1,7 @@
 {
 	"Banana":
 	{
-		"quantity": "0",
+		"quantity": "3",
 		"UrStatus": "0",
 		"GoPiGoStatus": "0"
 	},
@@ -13,7 +13,7 @@
 	},
 	"Milk":
 	{
-		"quantity": "0",
+		"quantity": "1",
 		"UrStatus": "0",
 		"GoPiGoStatus": "0"
 	}

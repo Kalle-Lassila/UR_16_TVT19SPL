@@ -1,13 +1,24 @@
-import firebase_admin, json, threading, time, re
-from firebase_admin import db
+import firebase_admin, json, threading, time, re, key1
+from firebase_admin import db, credentials
 
 class database_manager():
 	def __init__(self):
-		self.__cred_obj = firebase_admin.credentials.Certificate(json.load(open(__file__.replace("firebase_manager.py", "key.json"))))
+		#self.db_url = 'https://ur16-dev-default-rtdb.europe-west1.firebasedatabase.app'	#ur test
+		self.db_url = 'https://backend-2d7fd-default-rtdb.firebaseio.com/'	#backend
+		#self.__cred_obj = firebase_admin.credentials.Certificate(json.load(open(__file__.replace("firebase_manager.py", "key.json"))))	#test db
+		self.__cred_obj = firebase_admin.credentials.Certificate(json.load(open(__file__.replace("firebase_manager.py", "backend_key.json"))))	#backend db
 		self.__default_app = firebase_admin.initialize_app(self.__cred_obj, {
-			'databaseURL':'https://ur16-dev-default-rtdb.europe-west1.firebasedatabase.app'
+			'databaseURL':self.db_url
 		})
 		self.ref = db.reference("/")
+
+	#Do not use this as of now
+	def __xddd__init__(self):
+		self.db_url = 'https://ur16-dev-default-rtdb.europe-west1.firebasedatabase.app'	#ur test
+		self.__cred_obj = credentials.Certificate(json.load(open(__file__.replace("firebase_manager.py", "key.json"))))
+		firebase_admin.initialize_app(self.__cred_obj, key1.firebaseConfig)
+		self.ref = db.reference("/")
+
 
 	def recreate(self):
 		#with open("firebase/current_order.json", "r") as f:
@@ -44,7 +55,8 @@ class database_manager():
 	
 	def listen_callback(self, event):
 		if event.data != "0":
-			self.create_process_table()
+			if self.ref.child("orderList").get() == "0":	#so to not do duplicate updates
+				self.create_process_table()
 		
 	def rpa_callback(self, event) -> int:	#Yo! not used rn.
 		'''Return the number of products in orderList table'''
@@ -54,10 +66,7 @@ class database_manager():
 
 	def start_listener(self):
 		#TODO explain the line below
-		try:
-			listen_thread = threading.Thread(self.ref.child("CurrentOrder").listen(self.listen_callback))
-		except:
-			pass
+		self.ref.child("CurrentOrder").listen(self.listen_callback)
 
 	def delete_process_table(self):
 		#The point is to set the value of the whole Process table to zero

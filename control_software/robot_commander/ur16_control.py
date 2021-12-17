@@ -29,14 +29,34 @@ class ur16_control():
         self.fm.start_listener()
         self.state_thread.start()
         self.load_thread.start()
+        #threading.Thread(self.fm.ref.child("orderList").listen(self.__listener_event))
+        
+        self.fm.ref.child("orderList").listen(self.__listener_event)
         #TODO check and remove 3 lines below
         #wait until something is added to the db table
         #don't think the line below is necessary
         #product_num = self.fm.return_product_ammount()
 
-        while True:
-            time.sleep(10)
-            #Get all products from orderList
+        # while True:
+        #     time.sleep(10)
+        #     #Get all products from orderList
+        #     products = self.fm.ref.child("orderList").get()
+        #     if products != "0":   #to not try to get orderList from "0"
+        #         for product in products:
+        #             if products[product]["status"] == "loading":
+        #                 print(f"{product} loading")
+        #                 #Translate packet name for the robot
+        #                 packet_name = self.translate_product_name(products[product]["item"])
+        #                 if packet_name != 0 and not self.this_car_sent:
+        #                     print(f"Load one {packet_name}")  #TODO remove this
+        #                     self.current_product = product  #to keep track which productX we are dealing with
+        #                     self.car_id = products[product]["gopigo"]
+        #                     self.packet_id = packet_name
+        #                     #self.this_car_loaded = False
+        #     print("Nothing to load yet")    #not descriptive printout
+    
+    def __listener_event(self, event):
+                    #Get all products from orderList
             products = self.fm.ref.child("orderList").get()
             if products != "0":   #to not try to get orderList from "0"
                 for product in products:
@@ -52,8 +72,6 @@ class ur16_control():
                             #self.this_car_loaded = False
             print("Nothing to load yet")    #not descriptive printout
     
-    def __listener_event(event):
-        pass
     def __load_product(self):
         '''Threaded to continuously send instructions if needed'''
         while True:
@@ -84,14 +102,14 @@ class ur16_control():
                 self.fm.ref.child(f"orderList/{self.current_product}").update({"status": "loaded"})
                 self.this_pkg_sent = False
                 self.this_car_sent = False
-            print(rcv)
+            if rcv != "": print(rcv)
    
     @staticmethod
     def translate_product_name(db_name) -> str:
         #I did not do this in python 3.10 so no match here
         if db_name == "Banana": return "paketti1"
         elif db_name == "Cheese": return "paketti2"
-        elif db_name == "Milk": return "paketti3"
+        elif db_name == "Milk": return "paketti4"
         else: return 1  #error
 
 if __name__ == "__main__":
